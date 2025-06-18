@@ -36,8 +36,8 @@
     }
 
     header .logo img {
-      height: 120px; /* Increased from 80px */
-      max-width: 100%; /* Prevent overflow */
+      height: 120px;
+      max-width: 100%;
     }
 
     nav {
@@ -66,6 +66,22 @@
     }
 
     nav ul li a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+
+    .contact-info a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
       text-decoration: underline;
     }
 
@@ -132,7 +148,22 @@
     .intro-section p {
       font-size: 1.2rem;
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 20px;
+    }
+
+    .intro-section .cta-button {
+      background: #0066cc;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .intro-section .cta-button:hover {
+      background: #005bb5;
     }
 
     .container {
@@ -229,14 +260,14 @@
       }
 
       header .logo img {
-        height: 96px; /* Increased from 64px */
+        height: 96px;
       }
 
       nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 90px; /* Adjusted for larger logo */
+        top: 90px;
         left: 0;
         background: #2A6BBF;
         width: 100%;
@@ -261,6 +292,12 @@
         display: flex;
       }
 
+      .contact-info {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 5px;
+      }
+
       .swiper {
         height: 50vh;
       }
@@ -279,7 +316,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" />
+      <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="Logo-Seika.jpeg 1x, Logo-Seika-2x.jpeg 2x" />
     </div>
 
     <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -297,6 +334,11 @@
       </ul>
     </nav>
 
+    <div class="contact-info">
+      <a href="tel:+1234567890">+1-234-567-890</a>
+      <a href="mailto:info@seikaedu.com">info@seikaedu.com</a>
+    </div>
+
     <div class="language-switch">
       <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
     </div>
@@ -306,21 +348,21 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-           <picture>
+          <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Japanese+Culture" />
-            <img src="Logo-Seika.jpeg" alt="Japanese culture scene" />
+            <img src="Logo-Seika.jpeg" alt="Japanese culture scene" loading="lazy" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=University+Campus" />
-            <img src="Seika-Final-Logo.jpeg" alt="Japanese university campus" />
+            <img src="Seika-Final-Logo.jpeg" alt="Japanese university campus" loading="lazy" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Students+Studying" />
-            <img src="Logo-Seika.jpeg" alt="Students studying in Japan" />
+            <img src="Logo-Seika.jpeg" alt="Students studying in Japan" loading="lazy" />
           </picture>
         </div>
       </div>
@@ -332,6 +374,7 @@
     <section class="intro-section">
       <h1>Welcome to Seika Education Consultancy</h1>
       <p>Your trusted partner for studying in Japan</p>
+      <a href="#contact" class="cta-button">Get Started</a>
     </section>
 
     <section class="services" id="services">
@@ -367,7 +410,7 @@
     <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
     <div class="social-links">
       <a href="https://facebook.com/seikaedu" target="_blank">Facebook</a> |
-      <a href="https://www.tiktok.com/seikaedu" target="_blank">TikTok</a> |
+      <a href="https://tiktok.com/seikaedu" target="_blank">TikTok</a> |
       <a href="https://instagram.com/seikaedu" target="_blank">Instagram</a>
     </div>
   </footer>
@@ -412,6 +455,7 @@
         ],
         contactTitle: "Contact Us for More Information",
         contactButton: "Send Message",
+        ctaButton: "Get Started",
       },
       jp: {
         introTitle: "清華教育コンサルタンシーへようこそ",
@@ -423,12 +467,14 @@
         ],
         contactTitle: "詳細はご連絡ください",
         contactButton: "メッセージを送信",
+        ctaButton: "始める",
       },
     };
 
     function switchLanguage(lang) {
       document.querySelector(".intro-section h1").textContent = translations[lang].introTitle;
       document.querySelector(".intro-section p").textContent = translations[lang].introSubtitle;
+      document.querySelector(".intro-section .cta-button").textContent = translations[lang].ctaButton;
       document.querySelector(".contact-cta h2").textContent = translations[lang].contactTitle;
       document.querySelector(".contact-form button").textContent = translations[lang].contactButton;
 
