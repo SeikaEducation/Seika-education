@@ -18,7 +18,7 @@
     }
 
     header {
-      background: #B22222;
+      background: #B22222; /* Retaining your original header color */
       color: white;
       text-align: center;
       padding: 20px;
@@ -40,6 +40,94 @@
     .about-section h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
+    }
+
+    /* Styles for the "Message From The MD/CEO" section */
+    .owner-message-section {
+      margin-bottom: 40px;
+      padding: 40px 30px; /* Adjust padding as seen in image */
+      background: #2A6BBF; /* Blue background for this section */
+      border-radius: 8px;
+      color: white; /* Text color inside this section */
+      display: flex;
+      flex-direction: column; /* Stacks the main title above the content-wrapper */
+      align-items: flex-start; /* Align content to the left by default */
+      text-align: left; /* Default text alignment for paragraphs */
+    }
+
+    /* Main title of the message box */
+    .owner-message-section .main-title {
+      font-size: 2.5rem; /* Large font size */
+      font-weight: bold;
+      margin-bottom: 30px; /* Space below the main title */
+      position: relative;
+      display: inline-block; /* Allows width/margin to control positioning */
+      line-height: 1.2; /* Adjust line height for multi-line title */
+      text-align: left; /* Align text within the main-title itself to the left */
+      width: 100%; /* Take full width to allow left-alignment from start */
+      padding-left: 20px; /* Adjust this value to nudge it further left */
+      box-sizing: border-box; /* Include padding in the width calculation */
+    }
+
+    /* Underline for "Seika Education Consultancy" */
+    .owner-message-section .main-title .underline {
+      position: relative;
+      display: inline-block; /* Make sure span takes up space for underline */
+    }
+
+    .owner-message-section .main-title .underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px; /* Position the underline below the text */
+      width: 100%;
+      height: 4px; /* Thickness of the underline */
+      background: white; /* Color of the underline */
+    }
+
+    .owner-message-section .content-wrapper {
+      display: flex;
+      flex-direction: row; /* Text and image side-by-side */
+      gap: 30px; /* Space between text and image */
+      align-items: flex-start; /* Align content to the top */
+      width: 100%; /* Ensure it takes full width of its parent */
+    }
+
+    .owner-message-section .message-text-column {
+      flex: 1; /* Allows this column to grow and take available space */
+      max-width: calc(100% - 250px - 30px); /* Max width for text: total width - image width - gap */
+    }
+
+    /* Styling for owner's name when below the photo */
+    .owner-message-section .owner-image-column .owner-name-below-photo {
+      font-size: 1.8rem; /* Size for "SRISHTI POUDEL" */
+      font-weight: bold;
+      margin-top: 15px; /* Space above the name */
+      color: white; /* Color for the name */
+      text-align: center; /* Center the name below the photo */
+    }
+
+    .owner-message-section p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      text-align: justify; /* Justify text as in the image */
+      color: white; /* Paragraph text color */
+    }
+
+    .owner-message-section .owner-image-column {
+      flex-shrink: 0; /* Prevent image column from shrinking */
+      width: 250px; /* Fixed width for the image column */
+      text-align: center; /* Center image AND name within this column */
+      display: flex; /* Use flex to easily stack image and name */
+      flex-direction: column; /* Stack image above name */
+      align-items: center; /* Center items horizontally within this column */
+    }
+
+    .owner-message-section .owner-image-column img {
+      width: 250px; /* Image size */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Remove extra space below image */
     }
 
     .contact-info {
@@ -92,19 +180,66 @@
     }
 
     footer {
-      background: #D3D3D3;
-      color: #333;
+      background: #2A6BBF; /* Footer background remains #2A6BBF */
+      color: white; /* Footer text color remains white */
       text-align: center;
       padding: 10px;
-      position: fixed;
+      position: relative;
       width: 100%;
-      bottom: 0;
     }
 
     @media (max-width: 768px) {
       header {
         padding: 15px;
         font-size: 1.2rem;
+      }
+
+      /* Responsive adjustments for the owner message section */
+      .owner-message-section {
+        padding: 30px 15px; /* Adjust padding for mobile */
+      }
+
+      .owner-message-section .main-title {
+        font-size: 1.8rem; /* Adjust title size for mobile */
+        margin-bottom: 25px;
+        padding-left: 0; /* Remove left padding on mobile to center it naturally */
+        text-align: center; /* Center the title on mobile */
+      }
+
+      .owner-message-section .main-title .underline::after {
+        bottom: -5px; /* Adjust underline position for mobile */
+        height: 3px;
+      }
+
+      .owner-message-section .content-wrapper {
+        flex-direction: column; /* Stack columns vertically */
+        align-items: center; /* Center items when stacked */
+        gap: 20px; /* Adjust gap for mobile */
+      }
+
+      .owner-message-section .message-text-column {
+        max-width: 100%; /* Allow text to take full width */
+        text-align: left; /* Keep justified or left-aligned on mobile for readability */
+      }
+
+      /* Owner name styling for mobile when below photo */
+      .owner-message-section .owner-image-column .owner-name-below-photo {
+        font-size: 1.5rem; /* Adjust name size for mobile */
+        margin-top: 10px; /* Adjust space above name on mobile */
+      }
+
+      .owner-message-section p {
+        font-size: 1rem;
+      }
+
+      .owner-message-section .owner-image-column {
+        order: -1; /* Place image above text on mobile */
+        width: 180px; /* Adjust image width for mobile */
+        margin-bottom: 0; /* Remove extra margin if already handled by gap */
+      }
+
+      .owner-message-section .owner-image-column img {
+        width: 180px;
       }
 
       .contact-info {
@@ -128,6 +263,10 @@
       .map-container iframe {
         height: 300px;
       }
+
+      footer {
+        position: relative;
+      }
     }
   </style>
 </head>
@@ -148,6 +287,32 @@
       </p>
     </section>
 
+    <section class="owner-message-section">
+      <div class="main-title">
+        Message From The MD/CEO Of<br><span class="underline">Seika Education Consultancy</span>
+      </div>
+      <div class="content-wrapper">
+        <div class="message-text-column">
+          <p>
+            It is with great pleasure that I announce the establishment of Seika Education Consultancy. I would like to express my heartfelt gratitude to all the students, instructors, and staff members for their dedication and unwavering support.
+          </p>
+          <p>
+            In today’s globalized world, Seika Education Consultancy, located in Butwal-9, Milan Chowk, is committed to promoting the Japanese language and fostering an educational environment rooted in peace and cross-cultural understanding of Japan. Since its inception, Seika Education Consultancy has strived to be a high-quality and progressive Japanese language school, guided by an innovative teaching philosophy.
+          </p>
+          <p>
+            With a team of enthusiastic staff and professional instructors, we offer a vibrant atmosphere and a wide range of specialized, goal-oriented Japanese language and cultural programs. We encourage students to embrace new challenges and pursue their dreams. If you aspire to study abroad in Japan, we are dedicated to providing our utmost support to help you achieve your goals.
+          </p>
+          <p>
+            We warmly welcome you to join us, and we look forward to supporting you on your educational journey.
+          </p>
+        </div>
+        <div class="owner-image-column">
+          <img src="srishti.jpg" alt="SRISHTI POUDEL, MD/CEO of Seika Education Consultancy" />
+          <div class="owner-name-below-photo">SRISHTI POUDEL</div>
+        </div>
+      </div>
+    </section>
+
     <div class="contact-info">
       <div class="contact-item">
         <img src="mail-icon.png" alt="Email icon" />
@@ -164,10 +329,10 @@
       <div class="contact-item">
         <img src="location-icon.png" alt="Location icon" />
         <div class="title">Our location</div>
-        <p>Butwal-9, MilanChowk</p>
-        <p>Near Dream International Hotel</p>
+        <p>Near Dream International Hotel, Milan Chowk</p>
+        <p>Butwal 32900</p>
         <div class="map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3551.1234567890123!2d83.4489!3d27.6989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3996f1a2b3c4d5e6%3A0x7f8a9b1c2d3e4f5g!2sNear%20Dream%20International%20Hotel%2C%20Milan%20Chowk%2C%20Butwal%2032900%2C%20Nepal!5e0!3m2!1sen!2snp!4v1718698860000!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11111.11111111111!2d83.456789!3d27.678901!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQwJzQ0LjAiTiA4M8KwMjcnMjQuNSJF!5e0!3m2!1sen!2sjp!4v16789012345674" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -176,5 +341,9 @@
   <footer>
     <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Any JavaScript code would go here.
+  </script>
 </body>
 </html>
