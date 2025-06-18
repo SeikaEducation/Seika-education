@@ -127,11 +127,16 @@
       z-index: 1;
     }
 
+    .swiper-slide {
+      background: #2A6BBF; /* Fallback background if image fails */
+    }
+
     .swiper-slide img {
-      object-fit: cover; /* Changed from contain to cover */
-      object-position: center; /* Center cropping */
+      object-fit: cover;
+      object-position: center;
       width: 100%;
       height: 100%;
+      display: block; /* Ensure image takes full space */
     }
 
     .intro-section {
@@ -302,14 +307,6 @@
       .swiper {
         height: 50vh;
       }
-
-      .intro-section h1 {
-        font-size: 1.8rem;
-      }
-
-      .intro-section p {
-        font-size: 1rem;
-      }
     }
   </style>
 </head>
@@ -334,12 +331,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-
-    <div class="contact-info">
-      <a href="tel:+1234567890">+1-234-567-890</a>
-      <a href="mailto:info@seikaedu.com">info@seikaedu.com</a>
-    </div>
-
+    
     <div class="language-switch">
       <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
     </div>
@@ -366,9 +358,10 @@
             <img src="Logo-Seika.jpeg" alt="Students studying in Japan" />
           </picture>
         </div>
-        </div>
       </div>
       <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </section>
 
@@ -431,6 +424,18 @@
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      on: {
+        init: function () {
+          this.update(); // Force update on init
+        },
+        resize: function () {
+          this.update(); // Force update on resize
+        },
       },
     });
 
