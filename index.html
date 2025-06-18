@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Seika Education Consultancy provides expert guidance for studying in Japan, including visa support and language training." />
+  <meta name="keywords" content="study in Japan, education consultancy, visa support, Japanese language training" />
+  <meta name="author" content="Seika Education Consultancy" />
   <title>Seika Education Consultancy</title>
 
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
       background: #2A6BBF;
       color: white;
     }
@@ -39,7 +47,10 @@
     nav ul {
       list-style: none;
       display: flex;
-      margin: 0; padding: 0;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.3s ease-in-out;
+      max-height: 300px;
     }
 
     nav ul li {
@@ -69,7 +80,10 @@
       margin-left: 5px;
     }
 
-    /* Hamburger Menu Button (スマホ用) */
+    .language-switch button.active {
+      text-decoration: underline;
+    }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -84,7 +98,6 @@
       transition: 0.4s;
     }
 
-    /* Hero with Swiper */
     .hero {
       position: relative;
     }
@@ -163,13 +176,27 @@
       margin: 50px 0;
     }
 
-    .contact-cta button {
-      background: #0066cc;
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      margin: 20px auto;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 10px;
       border: none;
-      padding: 14px 32px;
-      font-size: 1.1rem;
+      border-radius: 4px;
+    }
+
+    .contact-form button {
+      background: #0066cc;
       color: white;
-      border-radius: 6px;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
     }
@@ -182,7 +209,16 @@
       font-size: 0.9rem;
     }
 
-    /* Responsive */
+    .social-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    .social-links a:hover {
+      color: white;
+    }
+
     @media (max-width: 768px) {
       header {
         flex-direction: row;
@@ -202,6 +238,13 @@
         background: #2A6BBF;
         width: 100%;
         padding: 10px 0;
+        max-height: 0;
+        overflow: hidden;
+      }
+
+      nav ul.show {
+        display: flex;
+        max-height: 300px;
       }
 
       nav ul li {
@@ -209,16 +252,12 @@
         text-align: center;
       }
 
-      nav ul.show {
-        display: flex;
-      }
-
       .menu-toggle {
         display: flex;
       }
 
       .swiper {
-        height: 300px;
+        height: 400px;
       }
 
       .hero-text h1 {
@@ -233,47 +272,42 @@
 </head>
 
 <body>
-
-  <!-- Header -->
   <header>
     <div class="logo">
-      <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy" />
+      <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" />
     </div>
 
-    <!-- Hamburger button -->
-    <div class="menu-toggle" onclick="toggleMenu()">
+    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <!-- Nav menu -->
     <nav>
       <ul id="nav-menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
 
     <div class="language-switch">
-      <button id="enBtn">English</button> | <button id="jpBtn">日本語</button>
+      <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
     </div>
   </header>
 
-  <!-- Hero Slider Section -->
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="Logo-Seika.jpeg" alt="Welcome Image 1" />
+          <img src="Logo-Seika.jpeg" alt="Japanese culture scene" />
         </div>
         <div class="swiper-slide">
-          <img src="Seika-Final-Logo.jpeg" alt="Welcome Image 2" />
+          <img src="Seika-Final-Logo.jpeg" alt="Japanese university campus" />
         </div>
         <div class="swiper-slide">
-          <img src="Logo-Seika.jpeg" alt="Welcome Image 3" />
+          <img src="Logo-Seika.jpeg" alt="Students studying in Japan" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -285,42 +319,50 @@
     </div>
   </section>
 
-  <!-- Services -->
   <main class="container">
-    <section class="services">
+    <section class="services" id="services">
       <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Study+Consultation" alt="Consultation" />
+        <img src="https://via.placeholder.com/300x200?text=Study+Consultation" alt="Consultant guiding a student" />
         <h3>Study Consultation</h3>
         <p>Personalized guidance for your study plans in Japan.</p>
       </div>
       <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Visa+Support" alt="Visa Support" />
+        <img src="https://via.placeholder.com/300x200?text=Visa+Support" alt="Visa application process" />
         <h3>Visa Support</h3>
         <p>Assistance with visa application and documentation.</p>
       </div>
       <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Language+Training" alt="Language Training" />
+        <img src="https://via.placeholder.com/300x200?text=Language+Training" alt="Japanese language class" />
         <h3>Language Training</h3>
         <p>Japanese language courses to prepare you for your studies.</p>
       </div>
     </section>
 
-    <section class="contact-cta">
+    <section class="contact-cta" id="contact">
       <h2>Contact Us for More Information</h2>
-      <button onclick="alert('Contact form coming soon!')">Contact Us</button>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://facebook.com/seikaedu" target="_blank">Facebook</a> |
+      <a href="https://twitter.com/seikaedu" target="_blank">Twitter</a> |
+      <a href="https://instagram.com/seikaedu" target="_blank">Instagram</a>
+    </div>
   </footer>
 
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <!-- Swiper Init -->
   <script>
+    // Swiper Initialization
     const swiper = new Swiper(".mySwiper", {
       loop: true,
       autoplay: {
@@ -333,12 +375,61 @@
       },
     });
 
-    // Hamburger menu toggle
+    // Hamburger Menu Toggle
     function toggleMenu() {
-      const navMenu = document.getElementById('nav-menu');
-      navMenu.classList.toggle('show');
+      const navMenu = document.getElementById("nav-menu");
+      const menuToggle = document.querySelector(".menu-toggle");
+      navMenu.classList.toggle("show");
+      menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
     }
-  </script>
 
+    // Language Switcher
+    const translations = {
+      en: {
+        heroTitle: "Welcome to Seika Education Consultancy",
+        heroSubtitle: "Your trusted partner for studying in Japan",
+        services: [
+          { title: "Study Consultation", desc: "Personalized guidance for your study plans in Japan." },
+          { title: "Visa Support", desc: "Assistance with visa application and documentation." },
+          { title: "Language Training", desc: "Japanese language courses to prepare you for your studies." },
+        ],
+        contactTitle: "Contact Us for More Information",
+        contactButton: "Send Message",
+      },
+      jp: {
+        heroTitle: "清華教育コンサルタンシーへようこそ",
+        heroSubtitle: "日本留学の信頼できるパートナー",
+        services: [
+          { title: "留学相談", desc: "日本での留学計画のための個別指導。" },
+          { title: "ビザサポート", desc: "ビザ申請と書類の手続き支援。" },
+          { title: "言語トレーニング", desc: "留学準備のための日本語コース。" },
+        ],
+        contactTitle: "詳細はご連絡ください",
+        contactButton: "メッセージを送信",
+      },
+    };
+
+    function switchLanguage(lang) {
+      document.querySelector(".hero-text h1").textContent = translations[lang].heroTitle;
+      document.querySelector(".hero-text p").textContent = translations[lang].heroSubtitle;
+      document.querySelector(".contact-cta h2").textContent = translations[lang].contactTitle;
+      document.querySelector(".contact-form button").textContent = translations[lang].contactButton;
+
+      const services = document.querySelectorAll(".service");
+      services.forEach((service, index) => {
+        service.querySelector("h3").textContent = translations[lang].services[index].title;
+        service.querySelector("p").textContent = translations[lang].services[index].desc;
+      });
+
+      document.getElementById("enBtn").classList.toggle("active", lang === "en");
+      document.getElementById("jpBtn").classList.toggle("active", lang === "jp");
+    }
+
+    document.getElementById("enBtn").addEventListener("click", () => switchLanguage("en"));
+    document.getElementById("jpBtn").addEventListener("click", () => switchLanguage("jp"));
+
+    // Default language
+    switchLanguage("en");
+  </script>
 </body>
 </html>
