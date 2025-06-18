@@ -36,7 +36,8 @@
     }
 
     header .logo img {
-      height: 80px;
+      height: 120px; /* Increased from 80px */
+      max-width: 100%; /* Prevent overflow */
     }
 
     nav {
@@ -101,13 +102,13 @@
 
     .hero {
       position: relative;
-      z-index: 0; /* Establish stacking context */
+      z-index: 0;
     }
 
     .swiper {
       width: 100%;
       height: 600px;
-      z-index: 1; /* Below hero-text */
+      z-index: 1;
     }
 
     .swiper-slide img {
@@ -116,24 +117,22 @@
       height: 100%;
     }
 
-    .hero-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
+    .intro-section {
       text-align: center;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-      z-index: 10; /* Above swiper */
+      padding: 40px 20px;
+      background: #2A6BBF;
+      color: white;
     }
 
-    .hero-text h1 {
-      font-size: 3rem;
+    .intro-section h1 {
+      font-size: 2.5rem;
       margin-bottom: 10px;
     }
 
-    .hero-text p {
-      font-size: 1.5rem;
+    .intro-section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .container {
@@ -230,14 +229,14 @@
       }
 
       header .logo img {
-        height: 64px;
+        height: 96px; /* Increased from 64px */
       }
 
       nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 70px;
+        top: 90px; /* Adjusted for larger logo */
         left: 0;
         background: #2A6BBF;
         width: 100%;
@@ -266,11 +265,11 @@
         height: 50vh;
       }
 
-      .hero-text h1 {
+      .intro-section h1 {
         font-size: 1.8rem;
       }
 
-      .hero-text p {
+      .intro-section p {
         font-size: 1rem;
       }
     }
@@ -327,14 +326,14 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
-
-    <div class="hero-text">
-      <h1>Welcome to Seika Education Consultancy</h1>
-      <p>Your trusted partner for studying in Japan</p>
-    </div>
   </section>
 
   <main class="container">
+    <section class="intro-section">
+      <h1>Welcome to Seika Education Consultancy</h1>
+      <p>Your trusted partner for studying in Japan</p>
+    </section>
+
     <section class="services" id="services">
       <div class="service">
         <img src="https://via.placeholder.com/300x200?text=Study+Consultation" alt="Consultant guiding a student" />
@@ -404,8 +403,8 @@
     // Language Switcher
     const translations = {
       en: {
-        heroTitle: "Welcome to Seika Education Consultancy",
-        heroSubtitle: "Your trusted partner for studying in Japan",
+        introTitle: "Welcome to Seika Education Consultancy",
+        introSubtitle: "Your trusted partner for studying in Japan",
         services: [
           { title: "Study Consultation", desc: "Personalized guidance for your study plans in Japan." },
           { title: "Visa Support", desc: "Assistance with visa application and documentation." },
@@ -415,8 +414,8 @@
         contactButton: "Send Message",
       },
       jp: {
-        heroTitle: "清華教育コンサルタンシーへようこそ",
-        heroSubtitle: "日本留学の信頼できるパートナー",
+        introTitle: "清華教育コンサルタンシーへようこそ",
+        introSubtitle: "日本留学の信頼できるパートナー",
         services: [
           { title: "留学相談", desc: "日本での留学計画のための個別指導。" },
           { title: "ビザサポート", desc: "ビザ申請と書類の手続き支援。" },
@@ -428,8 +427,8 @@
     };
 
     function switchLanguage(lang) {
-      document.querySelector(".hero-text h1").textContent = translations[lang].heroTitle;
-      document.querySelector(".hero-text p").textContent = translations[lang].heroSubtitle;
+      document.querySelector(".intro-section h1").textContent = translations[lang].introTitle;
+      document.querySelector(".intro-section p").textContent = translations[lang].introSubtitle;
       document.querySelector(".contact-cta h2").textContent = translations[lang].contactTitle;
       document.querySelector(".contact-form button").textContent = translations[lang].contactButton;
 
