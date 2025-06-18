@@ -12,10 +12,11 @@
       color: white;
     }
     header {
-      background: #0a1f4a; /* match logo color */
+      background: #0a1f4a;
       color: white;
-      padding: 10px 30px;
+      padding: 10px 20px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
     }
@@ -28,7 +29,7 @@
       margin: 0; padding: 0;
     }
     nav ul li {
-      margin-left: 25px;
+      margin-left: 20px;
     }
     nav ul li a {
       color: white;
@@ -39,7 +40,7 @@
       text-decoration: underline;
     }
     .language-switch {
-      margin-left: 20px;
+      margin-left: 10px;
     }
     .language-switch button {
       background: none;
@@ -47,7 +48,7 @@
       color: white;
       cursor: pointer;
       font-weight: 600;
-      margin-left: 10px;
+      margin-left: 5px;
     }
     .hero {
       background: url('https://via.placeholder.com/1200x400/0a1f4a/ffffff?text=Study+in+Japan') center/cover no-repeat;
@@ -64,15 +65,15 @@
       margin: 0 auto;
     }
     .container {
-      max-width: 960px;
+      max-width: 1000px;
       margin: 40px auto;
       padding: 0 20px;
     }
     .services {
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
       flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
     .service {
       background: white;
@@ -118,6 +119,27 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -160,4 +182,16 @@
         <h3>Language Training</h3>
         <p>Japanese language courses to prepare you for your studies.</p>
       </div>
-    </sect
+    </section>
+
+    <section class="contact-cta">
+      <h2>Contact Us for More Info</h2>
+      <button onclick="alert('Contact form coming soon!')">Contact Us</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
+  </footer>
+</body>
+</html>
