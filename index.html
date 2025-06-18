@@ -49,8 +49,9 @@
       display: flex;
       margin: 0;
       padding: 0;
-      transition: max-height 0.3s ease-in-out;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       max-height: 300px;
+      opacity: 1;
     }
 
     nav ul li {
@@ -100,27 +101,30 @@
 
     .hero {
       position: relative;
+      z-index: 0; /* Establish stacking context */
     }
 
     .swiper {
       width: 100%;
       height: 600px;
+      z-index: 1; /* Below hero-text */
     }
 
     .swiper-slide img {
-      object-fit: cover;
+      object-fit: contain;
       width: 100%;
       height: 100%;
     }
 
     .hero-text {
       position: absolute;
-      top: 40%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       color: white;
       text-align: center;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+      z-index: 10; /* Above swiper */
     }
 
     .hero-text h1 {
@@ -239,12 +243,14 @@
         width: 100%;
         padding: 10px 0;
         max-height: 0;
+        opacity: 0;
         overflow: hidden;
       }
 
       nav ul.show {
         display: flex;
         max-height: 300px;
+        opacity: 1;
       }
 
       nav ul li {
@@ -257,15 +263,15 @@
       }
 
       .swiper {
-        height: 400px;
+        height: 50vh;
       }
 
       .hero-text h1 {
-        font-size: 2.2rem;
+        font-size: 1.8rem;
       }
 
       .hero-text p {
-        font-size: 1.2rem;
+        font-size: 1rem;
       }
     }
   </style>
@@ -277,7 +283,7 @@
       <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" />
     </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle navigation" aria-expanded="false">
+    <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -301,13 +307,22 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="Logo-Seika.jpeg" alt="Japanese culture scene" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Japanese+Culture" />
+            <img src="https://via.placeholder.com/1200x600?text=Japanese+Culture" alt="Japanese culture scene" />
+          </picture>
         </div>
         <div class="swiper-slide">
-          <img src="Seika-Final-Logo.jpeg" alt="Japanese university campus" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=University+Campus" />
+            <img src="https://via.placeholder.com/1200x600?text=University+Campus" alt="Japanese university campus" />
+          </picture>
         </div>
         <div class="swiper-slide">
-          <img src="Logo-Seika.jpeg" alt="Students studying in Japan" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Students+Studying" />
+            <img src="https://via.placeholder.com/1200x600?text=Students+Studying" alt="Students studying in Japan" />
+          </picture>
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -376,12 +391,15 @@
     });
 
     // Hamburger Menu Toggle
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMenu = document.getElementById("nav-menu");
+
     function toggleMenu() {
-      const navMenu = document.getElementById("nav-menu");
-      const menuToggle = document.querySelector(".menu-toggle");
       navMenu.classList.toggle("show");
       menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
     }
+
+    menuToggle.addEventListener("click", toggleMenu);
 
     // Language Switcher
     const translations = {
