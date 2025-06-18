@@ -27,7 +27,7 @@
     header {
       background: #2A6BBF;
       color: white;
-      padding: 12px 30px;
+      padding: 15px 30px; /* Increased padding for larger elements */
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -36,7 +36,7 @@
     }
 
     header .logo img {
-      height: 120px;
+      height: 150px; /* Increased from 120px */
       max-width: 100%;
     }
 
@@ -56,17 +56,20 @@
     }
 
     nav ul li {
-      margin-left: 25px;
+      margin-left: 30px; /* Increased spacing for larger text */
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700; /* Bolder text */
+      font-size: 20px; /* Increased from ~16px */
+      transition: color 0.2s;
     }
 
     nav ul li a:hover {
-      text-decoration: underline;
+      color: #e0e0e0; /* Subtle color change on hover */
+      text-decoration: none;
     }
 
     .contact-info {
@@ -95,6 +98,7 @@
       color: white;
       cursor: pointer;
       font-weight: 600;
+      font-size: 16px; /* Slightly larger for visibility */
       margin-left: 5px;
     }
 
@@ -128,7 +132,7 @@
     }
 
     .swiper-slide {
-      background: #2A6BBF; /* Fallback background if image fails */
+      background: #2A6BBF; /* Fallback background */
     }
 
     .swiper-slide img {
@@ -136,7 +140,7 @@
       object-position: center;
       width: 100%;
       height: 100%;
-      display: block; /* Ensure image takes full space */
+      display: block;
     }
 
     .intro-section {
@@ -263,21 +267,22 @@
       header {
         flex-direction: row;
         justify-content: space-between;
+        padding: 10px 20px;
       }
 
       header .logo img {
-        height: 96px;
+        height: 120px; /* Increased from 96px */
       }
 
       nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 90px;
+        top: 110px; /* Adjusted for larger logo */
         left: 0;
         background: #2A6BBF;
         width: 100%;
-        padding: 10px 0;
+        padding: 15px 0;
         max-height: 0;
         opacity: 0;
         overflow: hidden;
@@ -290,8 +295,12 @@
       }
 
       nav ul li {
-        margin: 10px 0;
+        margin: 15px 0;
         text-align: center;
+      }
+
+      nav ul li a {
+        font-size: 18px; /* Larger for mobile readability */
       }
 
       .menu-toggle {
@@ -304,8 +313,20 @@
         gap: 5px;
       }
 
+      .language-switch button {
+        font-size: 14px;
+      }
+
       .swiper {
         height: 50vh;
+      }
+
+      .intro-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .intro-section p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -326,12 +347,17 @@
     <nav>
       <ul id="nav-menu">
         <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
-    
+
+    <div class="contact-info">
+      <a href="tel:+1234567890">+1-234-567-890</a>
+      <a href="mailto:info@seikaedu.com">info@seikaedu.com</a>
+    </div>
+
     <div class="language-switch">
       <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
     </div>
@@ -343,19 +369,19 @@
         <div class="swiper-slide">
            <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Japanese+Culture" />
-            <img src="banner-2.png" alt="Japanese culture scene" />
+            <img src="banner-2.png" alt="Seika Education Consultancy Reception" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=University+Campus" />
-            <img src="banner-5.png" alt="Japanese university campus" />
+            <img src="banner-5.png" alt="Study & Work in JAPAN" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Students+Studying" />
-            <img src="banner-1.png" alt="Students studying in Japan" />
+            <img src="banner-1.png" alt="Seika Education Consultancy Class" />
           </picture>
         </div>
       </div>
@@ -374,14 +400,17 @@
 
     <section class="services" id="services">
       <div class="service">
+        <img src="https://via.placeholder.com/300x200?text=Study+Consultation" alt="Consultant guiding a student" />
         <h3>Study Consultation</h3>
         <p>Personalized guidance for your study plans in Japan.</p>
       </div>
       <div class="service">
+        <img src="https://via.placeholder.com/300x200?text=Visa+Support" alt="Visa application process" />
         <h3>Visa Support</h3>
         <p>Assistance with visa application and documentation.</p>
       </div>
       <div class="service">
+        <img src="https://via.placeholder.com/300x200?text=Language+Training" alt="Japanese language class" />
         <h3>Language Training</h3>
         <p>Japanese language courses to prepare you for your studies.</p>
       </div>
@@ -428,10 +457,10 @@
       },
       on: {
         init: function () {
-          this.update(); // Force update on init
+          this.update();
         },
         resize: function () {
-          this.update(); // Force update on resize
+          this.update();
         },
       },
     });
