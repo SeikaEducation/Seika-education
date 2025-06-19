@@ -38,7 +38,7 @@
       color: white;
       padding: 15px 30px;
       display: flex;
-      flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+      flex-wrap: nowrap; /* Prevent wrapping elements in header, handle with media queries */
       justify-content: space-between;
       align-items: center;
       position: relative; /* For mobile menu positioning */
@@ -102,6 +102,9 @@
       padding: 5px 8px; /* Add padding for easier clicking */
       border-radius: 4px; /* Slight roundness */
       transition: background-color 0.2s;
+      white-space: nowrap; /* Prevents text from wrapping */
+      min-width: fit-content; /* Ensures button is wide enough for text */
+      flex-shrink: 0; /* Prevents buttons from shrinking if space is tight */
     }
 
     .language-switch button:hover {
@@ -113,12 +116,16 @@
       background-color: rgba(255, 255, 255, 0.2);
     }
     
+    .language-switch span { /* For the '|' separator */
+        color: white;
+    }
+
     .menu-toggle {
       display: none; /* Hidden by default on desktop */
       flex-direction: column;
       cursor: pointer;
       padding: 10px; /* Easier to tap */
-      margin-left: 15px; /* Space from language switch */
+      /* margin-left: 15px; This will be adjusted in mobile media query */
     }
 
     .menu-toggle span {
@@ -128,7 +135,7 @@
       margin: 4px 0;
       transition: 0.4s;
     }
-   
+    
     .hero {
       position: relative;
       z-index: 0; /* Below header */
@@ -199,6 +206,17 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      padding-top: 20px; /* Add padding to the top of the section */
+    }
+
+    /* OUR SERVICES heading style */
+    .services > h2 { /* Direct child of services class */
+      width: 100%; /* Take full width */
+      text-align: center;
+      margin-bottom: 40px;
+      color: white; /* Ensure it's visible on the blue background */
+      font-size: 2.5rem;
+      padding: 0 10px; /* Add some horizontal padding */
     }
 
     .service {
@@ -303,65 +321,93 @@
       color: white;
     }
 
+    /* Mobile Menu Logo */
+    .mobile-menu-logo-container {
+      display: none; /* Hidden by default on desktop */
+    }
+
+
     /* --- Media Queries for Mobile Responsiveness --- */
     @media (max-width: 768px) {
       header {
         padding: 10px 20px;
-        flex-wrap: nowrap; /* Prevent wrapping of logo/toggle/lang on very small screens */
-        justify-content: space-between;
+        flex-wrap: nowrap;
+        justify-content: space-between; /* Ensures space between hamburger and lang switcher */
       }
 
-      header .logo img {
-        height: 100px; /* Smaller logo on mobile */
+      /* モバイルで元のヘッダーロゴを非表示 */
+      header .logo {
+        display: none;
       }
 
+      /* ハンバーガーメニューを左端に移動し、ロゴの代わりにする */
+      .menu-toggle {
+        display: flex; /* ハンバーガーメニューを表示 */
+        order: 1; /* flexアイテムの並び順を一番最初に設定 */
+        margin-right: auto; /* 右側の要素（言語切り替え）を右に押し出す */
+        margin-left: 0; /* 左寄せを確実にする */
+      }
+
+      /* 言語切り替えボタンの配置を調整 */
+      .language-switch {
+        order: 2; /* ハンバーガーの次に配置 */
+        margin-left: 0; /* ハンバーガーが右マージンを持つため、自動マージンをリセット */
+        margin-right: 0; /* 右端に配置 */
+        padding-right: 5px; /* 必要に応じて右パディングを調整 */
+        gap: 3px; /* ボタン間のスペースを微調整 */
+      }
+      
       nav {
-        order: 3; /* Push nav to a new line below logo/toggle on small screens */
-        flex-basis: 100%; /* Take full width */
-        justify-content: center; /* Center menu items when collapsed */
+        order: 3; /* ナビゲーションメニューは一番最後に */
+        flex-basis: 100%; /* 全幅を使用 */
+        justify-content: center; /* メニュー項目を中央寄せ */
       }
 
       nav ul {
-        display: none; /* Hide by default on mobile */
-        flex-direction: column;
+        /* 既存のスタイルはそのまま、display: noneはデフォルト */
         position: absolute;
-        top: 120px; /* Position below header content */
+        top: 80px; /* ヘッダーの高さに合わせて調整 */
         left: 0;
-        background: #2A6BBF;
         width: 100%;
+        background: #2A6BBF;
         padding: 15px 0;
-        max-height: 0; /* Start hidden */
-        opacity: 0; /* Start invisible */
+        max-height: 0;
+        opacity: 0;
         overflow: hidden;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 5px 10px rgba(0,0,0,0.2);
       }
 
       nav ul.show {
-        display: flex; /* Show when toggled */
-        max-height: 300px; /* Animate height */
-        opacity: 1; /* Animate opacity */
+        display: flex; /* 表示時にはflex */
+        max-height: 300px;
+        opacity: 1;
       }
 
       nav ul li {
-        margin: 15px 0; /* Vertical spacing for mobile menu items */
+        margin: 15px 0;
         text-align: center;
       }
 
       nav ul li a {
         font-size: 18px;
-        padding: 10px 0; /* Make entire link area tappable */
+        padding: 10px 0;
         display: block;
       }
 
-      .menu-toggle {
-        display: flex; /* Show hamburger menu on mobile */
+      /* モバイルメニュー内のロゴをモバイルで表示 */
+      .mobile-menu-logo-container {
+        display: block; /* li要素を表示 */
+        text-align: center; /* ロゴを中央寄せ */
+        padding: 10px 0 20px; /* 上下のパディングで間隔を調整 */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 下線で区切り */
+        margin-bottom: 20px; /* 下のメニュー項目との間隔 */
       }
 
-      .language-switch {
-        margin-left: auto; /* Push language switch to the right, next to toggle */
-        margin-right: 0;
-        order: 2; /* Position language switcher after logo and before toggle visually */
+      .mobile-menu-logo-container .mobile-menu-logo {
+        height: 80px; /* メニュー内のロゴの高さ */
+        width: auto;
+        max-width: 90%; /* はみ出さないように最大幅を設定 */
       }
 
       .swiper {
@@ -375,6 +421,11 @@
 
       .intro-section p {
         font-size: 1rem;
+      }
+
+      .services > h2 { /* Mobile specific style for OUR SERVICES heading */
+        font-size: 2rem;
+        margin-bottom: 30px;
       }
 
       .service {
@@ -400,6 +451,12 @@
       <span></span>
     </div>
 
+    <div class="language-switch" aria-live="polite">
+      <button id="enBtn" class="active" aria-pressed="true">English</button>
+      <span>|</span>
+      <button id="jpBtn" aria-pressed="false">日本語</button>
+    </div>
+
     <nav>
       <ul id="nav-menu">
         <li class="mobile-menu-logo-container">
@@ -411,12 +468,6 @@
         <li><a href="#contact" data-key="navContact">Contact</a></li>
       </ul>
     </nav>
-
-    <div class="language-switch" aria-live="polite">
-      <button id="enBtn" class="active" aria-pressed="true">English</button>
-      <span style="color: white;">|</span>
-      <button id="jpBtn" aria-pressed="false">日本語</button>
-    </div>
   </header>
 
   <section class="hero" id="home">
@@ -446,43 +497,35 @@
     </section>
 
     <section class="services" id="services">
-      <div class="service">
-        
+      <h2 data-key="ourServicesTitle">OUR SERVICES</h2> <div class="service">
         <h3 data-key="service1Title">Abroad Study Consultation</h3>
         <p data-key="service1Desc">We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
       <div class="service">
-        
+        <img src="/Seika-education/service-2.jpg" alt="Language Training" loading="lazy" onerror="this.src='https://via.placeholder.com/300x200?text=Service+2';" />
         <h3 data-key="service2Title">Language Training</h3>
         <p data-key="service2Desc">Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
       </div>
       <div class="service">
-        
         <h3 data-key="service3Title">Exam Preparation</h3>
         <p data-key="service3Desc">Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
       </div>
-      <div class="service">
-        
-        <h3 data-key="service4Title">Interview Preparation</h3>
+      <div class="service">        <h3 data-key="service4Title">Interview Preparation</h3>
         <p data-key="service4Desc">Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
       </div>
       <div class="service">
-        
         <h3 data-key="service5Title">Documentation Support</h3>
         <p data-key="service5Desc">Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
       </div>
       <div class="service">
-        
         <h3 data-key="service6Title">SSW Language Training</h3>
         <p data-key="service6Desc">Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
       </div>
       <div class="service">
-       
         <h3 data-key="service7Title">Visa Application Support</h3>
         <p data-key="service7Desc">Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
       </div>
       <div class="service">
-        
         <h3 data-key="service8Title">Engineer / Specialist in Humanities / International Services Visa Support</h3>
         <p data-key="service8Desc">We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
       </div>
@@ -521,7 +564,6 @@
         try {
           const swiper = new Swiper(swiperContainer, {
             loop: true,
-            // Try different speeds. 700ms is a good start, but 500ms or 1000ms might also work
             speed: 700, 
             autoplay: {
               delay: 4000,
@@ -588,6 +630,7 @@
           introTitle: "Welcome to Seika Education Consultancy",
           introSubtitle: "Your trusted partner for study & work in Japan",
           ctaButton: "Get Started",
+          ourServicesTitle: "OUR SERVICES", // Added for 'Our Services' heading
           service1Title: "Abroad Study Consultation",
           service1Desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.",
           service2Title: "Language Training",
@@ -618,6 +661,7 @@
           introTitle: "清華教育コンサルタンシーへようこそ",
           introSubtitle: "日本での留学と仕事の信頼できるパートナー",
           ctaButton: "始める",
+          ourServicesTitle: "サービス内容", // Added for 'Our Services' heading
           service1Title: "海外留学相談",
           service1Desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。",
           service2Title: "言語トレーニング",
