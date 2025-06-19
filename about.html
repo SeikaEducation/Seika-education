@@ -21,155 +21,7 @@
       color: #333;
     }
 
-    /* Header Styles */
-    header {
-      background: #2A6BBF;
-      color: white;
-      padding: 15px 30px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-    }
-
-    header .logo img {
-      height: 150px;
-      max-width: 100%;
-    }
-
-    nav {
-      display: flex;
-      align-items: center;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      margin: 0;
-      padding: 0;
-      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-      max-height: 300px;
-      opacity: 1;
-    }
-
-    nav ul li {
-      margin-left: 30px;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 20px;
-      transition: color 0.2s;
-      white-space: nowrap;
-    }
-
-    nav ul li a:hover {
-      color: #e0e0e0;
-    }
-
-    .header-contact {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    .header-contact a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .header-contact a:hover {
-      text-decoration: underline;
-    }
-
-    .language-switch {
-      margin-left: 15px;
-    }
-
-    .language-switch button {
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-      margin-left: 5px;
-    }
-
-    .language-switch button.active {
-      text-decoration: underline;
-    }
-
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-    }
-
-    .menu-toggle span {
-      background: white;
-      height: 3px;
-      width: 25px;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    /* Header Media Queries */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 10px 20px;
-      }
-
-      header .logo img {
-        height: 120px;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 110px;
-        left: 0;
-        background: #2A6BBF;
-        width: 100%;
-        padding: 15px 0;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-      }
-
-      nav ul.show {
-        display: flex;
-        max-height: 300px;
-        opacity: 1;
-      }
-
-      nav ul li {
-        margin: 15px 0;
-        text-align: center;
-      }
-
-      nav ul li a {
-        font-size: 18px;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .language-switch {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        margin-left: 0;
-      }
-    }
+    /* ヘッダーのスタイルはheader.htmlに移動したため、このファイルから削除 */
 
     /* Main Content Styles */
     .container {
@@ -420,7 +272,7 @@
       color: white;
     }
 
-    /* Media Queries for Responsive Design */
+    /* Media Queries for Responsive Design (Main Content and Footer) */
     @media (max-width: 768px) {
       .owner-message-section {
         padding: 30px 15px;
@@ -512,42 +364,19 @@
 </head>
 
 <body>
-  <header>
-    <div class="logo">
-      <img src="Logo-Seika.webp" alt="Seika Education Consultancy Logo" srcset="Logo-Seika.webp 1x, Logo-Seika-2x.webp 2x" />
-    </div>
-
-    <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-
-    <nav>
-      <ul id="nav-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <div class="language-switch">
-      <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
-    </div>
-  </header>
+  <div id="header-placeholder"></div>
 
   <div class="container">
     <section class="about-section">
-      <h1>About Us</h1>
-      <p>
+      <h1 data-key="aboutUsTitle">About Us</h1>
+      <p data-key="aboutUsPara1">
         Since 2018, Seika Education Consultancy has been offering professional support for students pursuing education abroad.<br>
         In addition to our experience assisting with studies in countries like Australia, we are actively providing expert services<br> for students aiming to study & work in Japan.
       </p>
     </section>
 
     <section class="basic-info-section">
-      <h2>Basic Information</h2>
+      <h2 data-key="basicInfoTitle">Basic Information</h2>
       <table>
         <tr>
           <th>Particular</th>
@@ -555,107 +384,107 @@
         </tr>
         <tr>
           <td>Company Name</td>
-          <td>Seika Education Consultancy Pvt. Ltd</td>
+          <td data-key="companyName">Seika Education Consultancy Pvt. Ltd</td>
         </tr>
         <tr>
           <td>Established Date</td>
-          <td>2018</td>
+          <td data-key="establishedDate">2018</td>
         </tr>
         <tr>
           <td>Company Registration Number</td>
-          <td>202148/075/076</td>
+          <td data-key="companyRegNum">202148/075/076</td>
         </tr>
         <tr>
           <td>VAT/PAN Number</td>
-          <td>606551472</td>
+          <td data-key="vatPanNum">606551472</td>
         </tr>
         <tr>
           <td>Office</td>
-          <td>Butwal-9, Milan Chowk (Near Dream International Hotel)</td>
+          <td data-key="office">Butwal-9, Milan Chowk (Near Dream International Hotel)</td>
         </tr>
       </table>
     </section>
 
     <section class="workforce-section">
-      <h2>Our Team</h2>
+      <h2 data-key="teamTitle">Our Team</h2>
       <div class="team-members">
         <div class="team-member">
-          <img src="srishti.jpg" alt="Poudel Srishti, CEO" />
-          <div class="name">Poudel Srishti</div>
-          <div class="role">CEO/MD</div>
+          <img src="/Seika-education/srishti.jpg" alt="Poudel Srishti, CEO" />
+          <div class="name" data-key="teamSrishti">Poudel Srishti</div>
+          <div class="role" data-key="teamSrishtiRole">CEO/MD</div>
         </div>
         <div class="team-member">
-          <img src="sanjeeb.jpg" alt="Chaulagain Sanjeeb, Co-CHAIRMAN" />
-          <div class="name">Chaulagain Sanjeeb</div>
-          <div class="role">Co-CHAIRMAN/Japan Representative</div>
+          <img src="/Seika-education/sanjeeb.jpg" alt="Chaulagain Sanjeeb, Co-CHAIRMAN" />
+          <div class="name" data-key="teamSanjeeb">Chaulagain Sanjeeb</div>
+          <div class="role" data-key="teamSanjeebRole">Co-CHAIRMAN/Japan Representative</div>
         </div>
         <div class="team-member">
-          <img src="subhas.jpg" alt="Poudel Subhas, Co-CHAIRMAN" />
-          <div class="name">Poudel Subhas</div>
-          <div class="role">Co-CHAIRMAN/Japan Representative</div>
+          <img src="/Seika-education/subhas.jpg" alt="Poudel Subhas, Co-CHAIRMAN" />
+          <div class="name" data-key="teamSubhas">Poudel Subhas</div>
+          <div class="role" data-key="teamSubhasRole">Co-CHAIRMAN/Japan Representative</div>
         </div>
         <div class="team-member">
-          <img src="suman.jpg" alt="Paudel Suman, Manager" />
-          <div class="name">Paudel Suman</div>
-          <div class="role">Manager/Japan Representative/Language Teacher</div>
+          <img src="/Seika-education/suman.jpg" alt="Paudel Suman, Manager" />
+          <div class="name" data-key="teamSuman">Paudel Suman</div>
+          <div class="role" data-key="teamSumanRole">Manager/Japan Representative/Language Teacher</div>
         </div>
         <div class="team-member">
-          <img src="yubraj.jpg" alt="Ghimire YubRaj, Teacher" />
-          <div class="name">Ghimire YubRaj</div>
-          <div class="role">Language Teacher</div>
+          <img src="/Seika-education/yubraj.jpg" alt="Ghimire YubRaj, Teacher" />
+          <div class="name" data-key="teamYubRaj">Ghimire YubRaj</div>
+          <div class="role" data-key="teamYubRajRole">Language Teacher</div>
         </div>
       </div>
     </section>
 
     <section class="owner-message-section">
-      <div class="main-title">
+      <div class="main-title" data-key="mdCeoMessageTitle">
         Message From The MD/CEO Of<br><span class="underline">Seika Education Consultancy</span>
       </div>
       <div class="content-wrapper">
         <div class="message-text-column">
-          <p>
+          <p data-key="mdCeoPara1">
             It is with great pleasure that I announce the establishment of Seika Education Consultancy. I would like to express my heartfelt gratitude to all the students, instructors, and staff members for their dedication and unwavering support.
           </p>
-          <p>
+          <p data-key="mdCeoPara2">
             In today’s globalized world, Seika Education Consultancy, located in Butwal-9, Milan Chowk, is committed to promoting the Japanese language and fostering an educational environment rooted in peace and cross-cultural understanding of Japan. Since its inception, Seika Education Consultancy has strived to be a high-quality and progressive Japanese language school, guided by an innovative teaching philosophy.
           </p>
-          <p>
+          <p data-key="mdCeoPara3">
             With a team of enthusiastic staff and professional instructors, we offer a vibrant atmosphere and a wide range of specialized, goal-oriented Japanese language and cultural programs. We encourage students to embrace new challenges and pursue their dreams. If you aspire to study abroad in Japan, we are dedicated to providing our utmost support to help you achieve your goals.
           </p>
-          <p>
+          <p data-key="mdCeoPara4">
             We warmly welcome you to join us, and we look forward to supporting you on your educational journey.
           </p>
         </div>
         <div class="owner-image-column">
-          <img src="srishti.jpg" alt="Srishti Poudel, MD/CEO of Seika Education Consultancy" />
-          <div class="owner-name-below-photo">SRISHTI POUDEL</div>
+          <img src="/Seika-education/srishti.jpg" alt="Srishti Poudel, MD/CEO of Seika Education Consultancy" />
+          <div class="owner-name-below-photo" data-key="ownerName">SRISHTI POUDEL</div>
         </div>
       </div>
     </section>
 
     <div class="contact-info">
       <div class="contact-item">
-        <img src="mail-icon.png" alt="Email icon" />
-        <div class="title">Feel free to write to us</div>
+        <img src="/Seika-education/mail-icon.png" alt="Email icon" />
+        <div class="title" data-key="mailTitle">Feel free to write to us</div>
         <a href="mailto:info@seikaeducation.com" aria-label="Email Seika Education Consultancy">info@seikaeducation.com</a>
       </div>
       <div class="contact-item">
-        <img src="phone-icon.png" alt="Phone icon" />
-        <div class="title">Call us</div>
+        <img src="/Seika-education/phone-icon.png" alt="Phone icon" />
+        <div class="title" data-key="callTitle">Call us</div>
         <p><a href="tel:+977017850000" aria-label="Call Seika Education Consultancy at 01-5918911">01-5918911</a></p>
         <p><a href="tel:+9779857000000" aria-label="Call Seika Education Consultancy at 9851183897">9851183897</a></p>
       </div>
       <div class="contact-item">
-        <img src="location-icon.png" alt="Location icon" />
-        <div class="title">Our location</div>
-        <p>Near Dream International Hotel</p>
-        <p>Butwal-09, Milan Chowk, Rupandehi</p>
+        <img src="/Seika-education/location-icon.png" alt="Location icon" />
+        <div class="title" data-key="locationTitle">Our location</div>
+        <p data-key="locationAddress1">Near Dream International Hotel</p>
+        <p data-key="locationAddress2">Butwal-09, Milan Chowk, Rupandehi</p>
       </div>
     </div>
   </div>
 
   <footer>
-    <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
+    <p data-key="footerText">© 2025 Seika Education Consultancy. All rights reserved.</p>
     <div class="social-links">
       <a href="https://www.facebook.com/isanabroad" target="_blank" aria-label="Visit Seika Education Consultancy on Facebook">Facebook</a> |
       <a href="https://tiktok.com/seikaedu" target="_blank" aria-label="Visit Seika Education Consultancy on TikTok">TikTok</a> |
@@ -664,18 +493,24 @@
   </footer>
 
   <script>
-    // Hamburger Menu Toggle
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.getElementById("nav-menu");
+    // ヘッダーを動的に読み込む
+    fetch('/Seika-education/header.html') // header.htmlの正しいパスを指定
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
 
-    function toggleMenu() {
-      navMenu.classList.toggle("show");
-      menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
-    }
+        // ヘッダーがロードされた後に、DOMContentLoaded イベントを発火させる (必要に応じて)
+        const event = new Event('headerLoaded');
+        document.dispatchEvent(event);
+      })
+      .catch(error => console.error('Error loading header:', error));
 
-    menuToggle.addEventListener("click", toggleMenu);
-
-    // Language Switcher
+    // Language Switcher の翻訳データ
     const translations = {
       en: {
         aboutUsTitle: "About Us",
@@ -752,11 +587,14 @@
 
       // テーブルの各行を動的に更新
       const rows = document.querySelectorAll(".basic-info-section table tr");
-      rows[1].querySelector("td:nth-child(2)").textContent = translations[lang].companyName; // Company Name
-      rows[2].querySelector("td:nth-child(2)").textContent = translations[lang].establishedDate; // Established Date
-      rows[3].querySelector("td:nth-child(2)").textContent = translations[lang].companyRegNum; // Company Registration Number
-      rows[4].querySelector("td:nth-child(2)").textContent = translations[lang].vatPanNum; // VAT/PAN Number
-      rows[5].querySelector("td:nth-child(2)").textContent = translations[lang].office; // Office (MD/CEOを削除し、Officeに調整)
+      // ヘッダー行を除くためにインデックスを1から開始
+      if (rows.length > 1) { // ヘッダー行が存在することを確認
+        rows[1].querySelector("td:nth-child(2)").textContent = translations[lang].companyName; // Company Name
+        rows[2].querySelector("td:nth-child(2)").textContent = translations[lang].establishedDate; // Established Date
+        rows[3].querySelector("td:nth-child(2)").textContent = translations[lang].companyRegNum; // Company Registration Number
+        rows[4].querySelector("td:nth-child(2)").textContent = translations[lang].vatPanNum; // VAT/PAN Number
+        rows[5].querySelector("td:nth-child(2)").textContent = translations[lang].office; // Office
+      }
 
       // チームメンバーの更新
       document.querySelector(".workforce-section h2").textContent = translations[lang].teamTitle;
@@ -783,19 +621,37 @@
       document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(1)").textContent = translations[lang].locationAddress1;
       document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(2)").textContent = translations[lang].locationAddress2;
       document.querySelector("footer p").textContent = translations[lang].footerText;
+
+      console.log(`Main content language switched to: ${lang}`);
     }
 
-    function switchLanguage(lang) {
-      document.getElementById("enBtn").classList.toggle("active", lang === "en");
-      document.getElementById("jpBtn").classList.toggle("active", lang === "jp");
-      updatePageContent(lang);
-    }
+    // --- DOMContentLoaded イベントリスナー ---
+    document.addEventListener("DOMContentLoaded", () => {
+      // ページ読み込み時に保存された言語を設定 (メインコンテンツ)
+      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+      updatePageContent(savedLang);
 
-    document.getElementById("enBtn").addEventListener("click", () => switchLanguage("en"));
-    document.getElementById("jpBtn").addEventListener("click", () => switchLanguage("jp"));
+      // headerLoaded イベントをリッスンし、言語切り替えを適用
+      document.addEventListener('headerLoaded', () => {
+        const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+        // ヘッダー内の言語切り替え関数を呼び出す
+        if (typeof window.switchHeaderLanguage === 'function') { // グローバルスコープにあることを確認
+          window.switchHeaderLanguage(currentLang);
+        }
+      });
+    });
 
-    // Set default language on load
-    switchLanguage("en");
+    // 言語ボタンがクリックされたら、ヘッダーとコンテンツの両方を更新
+    document.addEventListener("click", (event) => {
+      if (event.target.id === "enBtn" || event.target.id === "jpBtn") {
+        const lang = event.target.id === "enBtn" ? "en" : "jp";
+        updatePageContent(lang);
+        // header.html 内の switchHeaderLanguage も呼び出す
+        if (typeof window.switchHeaderLanguage === 'function') { // グローバルスコープにあることを確認
+          window.switchHeaderLanguage(lang);
+        }
+      }
+    });
   </script>
 </body>
 </html>
