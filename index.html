@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Seika Education Consultancy provides expert guidance for studying in Japan, including visa support and language training." />
   <meta name="keywords" content="study in Japan, education consultancy, visa support, Japanese language training" />
   <meta name="author" content="Seika Education Consultancy" />
@@ -72,22 +72,6 @@
       text-decoration: none;
     }
 
-    .contact-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-    }
-
-    .contact-info a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .contact-info a:hover {
-      text-decoration: underline;
-    }
-
     .language-switch {
       margin-left: 15px;
     }
@@ -133,6 +117,7 @@
 
     .swiper-slide {
       background: #2A6BBF;
+      min-height: 200px; /* Fallback height for mobile */
     }
 
     .swiper-slide img {
@@ -141,7 +126,7 @@
       width: 100%;
       height: 100%;
       display: block;
-      min-height: 1px; /* Ensure visibility on mobile */
+      min-height: 1px;
     }
 
     .intro-section {
@@ -309,18 +294,13 @@
         display: flex;
       }
 
-      .contact-info {
-        font-size: 0.8rem;
-        flex-direction: column;
-        gap: 5px;
-      }
-
       .language-switch button {
         font-size: 14px;
       }
 
       .swiper {
         height: 50vh;
+        min-height: 200px; /* Ensure minimum height on mobile */
       }
 
       .intro-section h1 {
@@ -341,7 +321,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="Logo-Seika.jpeg 1x, Logo-Seika-2x.jpeg 2x" />
+      <img src="https://seikaeducation.github.io/Seika-education/Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="https://seikaeducation.github.io/Seika-education/Logo-Seika.jpeg 1x, https://seikaeducation.github.io/Seika-education/Logo-Seika-2x.jpeg 2x" />
     </div>
 
     <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -354,7 +334,7 @@
       <ul id="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="https://seikaeducation.github.io/Seika-education/about.html">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -370,19 +350,19 @@
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="banner-2.png" alt="Seika Education Consultancy Reception" />
+            <img src="https://seikaeducation.github.io/Seika-education/banner-2.png" alt="Seika Education Consultancy Reception" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="banner-5.png" alt="Study & Work in Japan" />
+            <img src="https://seikaeducation.github.io/Seika-education/banner-5.png" alt="Study & Work in Japan" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="banner-1.png" alt="Seika Education Consultancy Class" />
+            <img src="https://seikaeducation.github.io/Seika-education/banner-1.png" alt="Seika Education Consultancy Class" />
           </picture>
         </div>
       </div>
@@ -401,42 +381,42 @@
 
     <section class="services" id="services">
       <div class="service">
-        <img src="service-1.jpg" alt="Abroad Study Consultation" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-1.jpg" alt="Abroad Study Consultation" />
         <h3>Abroad Study Consultation</h3>
         <p>We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
       <div class="service">
-        <img src="service-2.jpg" alt="Language Training" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-2.jpg" alt="Language Training" />
         <h3>Language Training</h3>
         <p>Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
       </div>
       <div class="service">
-        <img src="service-3.jpg" alt="Exam Preparation" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-3.jpg" alt="Exam Preparation" />
         <h3>Exam Preparation</h3>
         <p>Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
       </div>
       <div class="service">
-        <img src="service-4.jpg" alt="Interview Preparation" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-4.jpg" alt="Interview Preparation" />
         <h3>Interview Preparation</h3>
         <p>Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
       </div>
       <div class="service">
-        <img src="service-5.jpg" alt="Documentation Support" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-5.jpg" alt="Documentation Support" />
         <h3>Documentation Support</h3>
         <p>Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
       </div>
       <div class="service">
-        <img src="service-6.jpg" alt="SSW Language Training" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-6.jpg" alt="SSW Language Training" />
         <h3>SSW Language Training</h3>
         <p>Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
       </div>
       <div class="service">
-        <img src="service-7.jpg" alt="Visa Application Support" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-7.jpg" alt="Visa Application Support" />
         <h3>Visa Application Support</h3>
         <p>Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
       </div>
       <div class="service">
-        <img src="service-8.jpg" alt="Engineer Visa Support" />
+        <img src="https://seikaeducation.github.io/Seika-education/service-8.jpg" alt="Engineer Visa Support" />
         <h3>Engineer / Specialist in Humanities / International Services Visa Support</h3>
         <p>We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
       </div>
@@ -466,29 +446,36 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // Swiper Initialization
-    const swiper = new Swiper(".mySwiper", {
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      on: {
-        init: function () {
-          this.update();
-        },
-        resize: function () {
-          this.update();
-        },
-      },
+    // Swiper Initialization with Error Handling
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const swiper = new Swiper(".mySwiper", {
+          loop: true,
+          autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          on: {
+            init: function () {
+              this.update();
+              console.log("Swiper initialized successfully");
+            },
+            resize: function () {
+              this.update();
+            },
+          },
+        });
+      } catch (error) {
+        console.error("Swiper initialization failed:", error);
+      }
     });
 
     // Hamburger Menu Toggle
