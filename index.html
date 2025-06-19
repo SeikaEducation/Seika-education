@@ -363,10 +363,6 @@
       }
 
       nav ul {
-        /*
-          重要: ここでflex-direction: column; を確実に適用することで、
-          メニュー項目が縦一列に並ぶようになります。
-        */
         display: flex; /* メニューが 'show' クラスで表示される際にflexboxとして機能 */
         flex-direction: column; /* これがメニュー項目を縦に並べる重要なプロパティ */
         position: absolute;
@@ -383,7 +379,6 @@
       }
 
       nav ul.show {
-        /* 'show' クラスが追加されたときに表示されるスタイル */
         max-height: 300px; /* アニメーションで開くための最大高さ */
         opacity: 1; /* 透明度を上げて表示 */
       }
@@ -541,7 +536,110 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // Ensure all script runs after the DOM is fully loaded
+    // --- Language Switcher の翻訳データ ---
+    const translations = {
+      en: {
+        navHome: "Home",
+        navServices: "Services",
+        navAbout: "About",
+        navContact: "Contact",
+        introTitle: "Welcome to Seika Education Consultancy",
+        introSubtitle: "Your trusted partner for study & work in Japan",
+        ctaButton: "Get Started",
+        ourServicesTitle: "OUR SERVICES",
+        service1Title: "Abroad Study Consultation",
+        service1Desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.",
+        service2Title: "Language Training",
+        service2Desc: "Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.",
+        service3Title: "Exam Preparation",
+        service3Desc: "Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.",
+        service4Title: "Interview Preparation",
+        service4Desc: "Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.",
+        service5Title: "Documentation Support",
+        service5Desc: "Assistance in preparing and organizing required documents for Japanese visa applications and school admission.",
+        service6Title: "SSW Language Training",
+        service6Desc: "Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.",
+        service7Title: "Visa Application Support",
+        service7Desc: "Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.",
+        service8Title: "Engineer / Specialist in Humanities / International Services Visa Support",
+        service8Desc: "We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).",
+        contactTitle: "Contact Us for More Information",
+        contactButton: "Send Message",
+        contactNamePlaceholder: "Your Name",
+        contactEmailPlaceholder: "Your Email",
+        contactMessagePlaceholder: "Your Message"
+      },
+      jp: {
+        navHome: "ホーム",
+        navServices: "サービス",
+        navAbout: "会社概要",
+        navContact: "お問い合わせ",
+        introTitle: "清華教育コンサルタンシーへようこそ",
+        introSubtitle: "日本での留学と仕事の信頼できるパートナー",
+        ctaButton: "始める",
+        ourServicesTitle: "サービス内容",
+        service1Title: "海外留学相談",
+        service1Desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。",
+        service2Title: "言語トレーニング",
+        service2Desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。",
+        service3Title: "試験準備",
+        service3Desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。",
+        service4Title: "面接準備",
+        service4Desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。",
+        service5Title: "書類サポート",
+        service5Desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。",
+        service6Title: "SSW言語トレーニング",
+        service6Desc: "特定技能労働者（SSW）プログラムを追求する申請者向けの専門的な日本語トレーニング。",
+        service7Title: "ビザ申請サポート",
+        service7Desc: "日本ビザ申請の準備と提出を包括的にサポート — ネパールからの訪問ビザも含む。",
+        service8Title: "エンジニア/人文学/国際業務ビザサポート",
+        service8Desc: "エンジニア/人文学/国際業務ビザで日本での雇用を求める申請者を支援 — 求人探しから在留資格認定証明書（COE）の申請まで。",
+        contactTitle: "詳細はご連絡ください",
+        contactButton: "メッセージを送信",
+        contactNamePlaceholder: "お名前",
+        contactEmailPlaceholder: "メールアドレス",
+        contactMessagePlaceholder: "メッセージ"
+      },
+    };
+
+    // --- Language Switcher 関数（DOMContentLoadedの外に移動） ---
+    function switchLanguage(lang) {
+      const currentLangData = translations[lang];
+
+      // data-keyを持つ要素を更新
+      document.querySelectorAll('[data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (currentLangData[key]) {
+          element.textContent = currentLangData[key];
+        }
+      });
+
+      // data-key-placeholderを持つ要素を更新
+      document.querySelectorAll('[data-key-placeholder]').forEach(element => {
+        const key = element.getAttribute('data-key-placeholder');
+        if (currentLangData[key] && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA')) {
+          element.setAttribute('placeholder', currentLangData[key]);
+        }
+      });
+
+      // アクティブクラスとaria-pressed属性を更新
+      const enBtn = document.getElementById("enBtn");
+      const jpBtn = document.getElementById("jpBtn");
+
+      if (enBtn) {
+        enBtn.classList.toggle("active", lang === "en");
+        enBtn.setAttribute("aria-pressed", lang === "en");
+      }
+      if (jpBtn) {
+        jpBtn.classList.toggle("active", lang === "jp");
+        jpBtn.setAttribute("aria-pressed", lang === "jp");
+      }
+
+      console.log(`Language switched to: ${lang}`);
+    }
+
+
+    // --- DOMContentLoaded イベントリスナー ---
     document.addEventListener("DOMContentLoaded", () => {
       console.log("DOM Content Loaded. Initializing scripts...");
 
@@ -602,91 +700,4 @@
             });
         });
 
-        console.log("Menu toggle listener attached.");
-      } else {
-        console.warn("Menu toggle or nav menu element not found.");
-      }
-
-      // --- Language Switcher ---
-      const translations = {
-        en: {
-          navHome: "Home",
-          navServices: "Services",
-          navAbout: "About",
-          navContact: "Contact",
-          introTitle: "Welcome to Seika Education Consultancy",
-          introSubtitle: "Your trusted partner for study & work in Japan",
-          ctaButton: "Get Started",
-          ourServicesTitle: "OUR SERVICES", // Added for 'Our Services' heading
-          service1Title: "Abroad Study Consultation",
-          service1Desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.",
-          service2Title: "Language Training",
-          service2Desc: "Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.",
-          service3Title: "Exam Preparation",
-          service3Desc: "Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.",
-          service4Title: "Interview Preparation",
-          service4Desc: "Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.",
-          service5Title: "Documentation Support",
-          service5Desc: "Assistance in preparing and organizing required documents for Japanese visa applications and school admission.",
-          service6Title: "SSW Language Training",
-          service6Desc: "Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.",
-          service7Title: "Visa Application Support",
-          service7Desc: "Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.",
-          service8Title: "Engineer / Specialist in Humanities / International Services Visa Support",
-          service8Desc: "We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).",
-          contactTitle: "Contact Us for More Information",
-          contactButton: "Send Message",
-          contactNamePlaceholder: "Your Name",
-          contactEmailPlaceholder: "Your Email",
-          contactMessagePlaceholder: "Your Message"
-        },
-        jp: {
-          navHome: "ホーム",
-          navServices: "サービス",
-          navAbout: "会社概要",
-          navContact: "お問い合わせ",
-          introTitle: "清華教育コンサルタンシーへようこそ",
-          introSubtitle: "日本での留学と仕事の信頼できるパートナー",
-          ctaButton: "始める",
-          ourServicesTitle: "サービス内容", // Added for 'Our Services' heading
-          service1Title: "海外留学相談",
-          service1Desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。",
-          service2Title: "言語トレーニング",
-          service2Desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。",
-          service3Title: "試験準備",
-          service3Desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。",
-          service4Title: "面接準備",
-          service4Desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。",
-          service5Title: "書類サポート",
-          service5Desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。",
-          service6Title: "SSW言語トレーニング",
-          service6Desc: "特定技能労働者（SSW）プログラムを追求する申請者向けの専門的な日本語トレーニング。",
-          service7Title: "ビザ申請サポート",
-          service7Desc: "日本ビザ申請の準備と提出を包括的にサポート — ネパールからの訪問ビザも含む。",
-          service8Title: "エンジニア/人文学/国際業務ビザサポート",
-          service8Desc: "エンジニア/人文学/国際業務ビザで日本での雇用を求める申請者を支援 — 求人探しから在留資格認定証明書（COE）の申請まで。",
-          contactTitle: "詳細はご連絡ください",
-          contactButton: "メッセージを送信",
-          contactNamePlaceholder: "お名前",
-          contactEmailPlaceholder: "メールアドレス",
-          contactMessagePlaceholder: "メッセージ"
-        },
-      };
-
-      const enBtn = document.getElementById("enBtn");
-      const jpBtn = document.getElementById("jpBtn");
-
-      if (enBtn && jpBtn) {
-        enBtn.addEventListener("click", () => switchLanguage("en"));
-        jpBtn.addEventListener("click", () => switchLanguage("jp"));
-
-        // Set default language on load
-        switchLanguage("en");
-        console.log("Language switch listeners attached.");
-      } else {
-        console.warn("Language switch buttons not found.");
-      }
-    });
-  </script>
-</body>
-</html>
+        console.log("Menu toggle
