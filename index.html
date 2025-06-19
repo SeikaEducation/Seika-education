@@ -8,10 +8,18 @@
   <meta name="author" content="Seika Education Consultancy" />
   <title>Seika Education Consultancy</title>
 
-  <!-- Swiper CSS -->
+  <link rel="preload" as="image" href="/Seika-education/banner-2.webp">
+  <link rel="preload" as="image" href="/Seika-education/banner-5.webp">
+  <link rel="preload" as="image" href="/Seika-education/banner-1.webp">
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
   <style>
+    /* Global Box Sizing for consistent layout */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -22,6 +30,7 @@
       padding: 0;
       background: #2A6BBF;
       color: white;
+      overflow-x: hidden; /* Prevent horizontal scroll on mobile */
     }
 
     header {
@@ -29,29 +38,33 @@
       color: white;
       padding: 15px 30px;
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow items to wrap on smaller screens */
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      position: relative; /* For mobile menu positioning */
+      z-index: 1000; /* Ensure header is on top of other content */
     }
 
     header .logo img {
       height: 150px;
       max-width: 100%;
+      display: block; /* Ensures no extra space below image */
     }
 
     nav {
       display: flex;
       align-items: center;
+      flex-grow: 1; /* Allows nav to take available space on desktop */
+      justify-content: flex-end; /* Pushes nav items to the right */
     }
 
     nav ul {
       list-style: none;
-      display: flex;
+      display: flex; /* Flex display for desktop nav */
       margin: 0;
       padding: 0;
       transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-      max-height: 300px;
+      max-height: 300px; /* Sensible max-height for desktop */
       opacity: 1;
     }
 
@@ -65,6 +78,7 @@
       font-weight: 700;
       font-size: 20px;
       transition: color 0.2s;
+      white-space: nowrap; /* Prevent menu items from wrapping */
     }
 
     nav ul li a:hover {
@@ -73,6 +87,9 @@
 
     .language-switch {
       margin-left: 15px;
+      display: flex; /* Align buttons horizontally */
+      align-items: center;
+      gap: 5px; /* Spacing between buttons */
     }
 
     .language-switch button {
@@ -82,17 +99,26 @@
       cursor: pointer;
       font-weight: 600;
       font-size: 16px;
-      margin-left: 5px;
+      padding: 5px 8px; /* Add padding for easier clicking */
+      border-radius: 4px; /* Slight roundness */
+      transition: background-color 0.2s;
+    }
+
+    .language-switch button:hover {
+        background-color: rgba(255, 255, 255, 0.1);
     }
 
     .language-switch button.active {
       text-decoration: underline;
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     .menu-toggle {
-      display: none;
+      display: none; /* Hidden by default on desktop */
       flex-direction: column;
       cursor: pointer;
+      padding: 10px; /* Easier to tap */
+      margin-left: 15px; /* Space from language switch */
     }
 
     .menu-toggle span {
@@ -105,18 +131,18 @@
 
     .hero {
       position: relative;
-      z-index: 0;
+      z-index: 0; /* Below header */
     }
 
     .swiper {
       width: 100%;
-      height: 600px;
-      z-index: 1;
+      height: 600px; /* Fixed height for desktop carousel */
+      z-index: 1; /* Above hero container, but below header */
     }
 
     .swiper-slide {
-      background: #2A6BBF;
-      min-height: 200px;
+      background: #2A6BBF; /* Fallback background color */
+      min-height: 200px; /* Ensures slide has height even without image */
     }
 
     .swiper-slide img {
@@ -124,8 +150,7 @@
       object-position: center;
       width: 100%;
       height: 100%;
-      display: block;
-      min-height: 1px;
+      display: block; /* Remove extra space below image */
     }
 
     .intro-section {
@@ -149,12 +174,14 @@
     .intro-section .cta-button {
       background: #0066cc;
       color: white;
-      padding: 10px 20px;
+      padding: 12px 25px; /* Increased padding for better tap target */
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
       text-decoration: none;
+      display: inline-block; /* Allows padding and margin */
+      transition: background 0.2s;
     }
 
     .intro-section .cta-button:hover {
@@ -177,12 +204,15 @@
     .service {
       background: white;
       color: #333;
-      flex: 1 1 280px;
+      flex: 1 1 280px; /* Allows flexibility but with a preferred base width */
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
-      min-width: 250px;
+      min-width: 250px; /* Ensures a minimum width before wrapping */
+      display: flex; /* Use flexbox for service content */
+      flex-direction: column;
+      justify-content: space-between; /* Pushes content and title apart if needed */
     }
 
     .service img {
@@ -190,11 +220,17 @@
       height: auto;
       border-radius: 6px;
       margin-bottom: 15px;
+      display: block;
     }
 
     .service h3 {
       margin-bottom: 15px;
       color: #2A6BBF;
+      font-size: 1.3rem; /* Slightly larger heading */
+    }
+
+    .service p {
+        font-size: 0.95rem; /* Slightly smaller text for descriptions */
     }
 
     .contact-cta {
@@ -203,7 +239,8 @@
       padding: 30px 20px;
       text-align: center;
       border-radius: 8px;
-      margin: 50px 0;
+      margin: 50px auto; /* Centered with auto margin */
+      max-width: 700px; /* Constrain width for better readability */
     }
 
     .contact-form {
@@ -211,93 +248,125 @@
       flex-direction: column;
       gap: 10px;
       max-width: 500px;
-      margin: 20px auto;
+      margin: 20px auto 0; /* Centered below title */
     }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 10px;
+      padding: 12px; /* Increased padding */
       border: none;
       border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      resize: vertical; /* Allow vertical resizing */
+      min-height: 100px;
     }
 
     .contact-form button {
       background: #0066cc;
       color: white;
-      padding: 10px;
+      padding: 12px; /* Increased padding */
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+
+    .contact-form button:hover {
+      background: #005bb5;
     }
 
     footer {
       background: #222;
       color: #ccc;
-      padding: 15px 30px;
+      padding: 20px 30px; /* Slightly more padding */
       text-align: center;
       font-size: 0.9rem;
+    }
+
+    .social-links {
+        margin-top: 10px;
     }
 
     .social-links a {
       color: #ccc;
       text-decoration: none;
       margin: 0 10px;
+      transition: color 0.2s;
     }
 
     .social-links a:hover {
       color: white;
     }
 
+    /* --- Media Queries for Mobile Responsiveness --- */
     @media (max-width: 768px) {
       header {
         padding: 10px 20px;
+        flex-wrap: nowrap; /* Prevent wrapping of logo/toggle/lang on very small screens */
+        justify-content: space-between;
       }
 
       header .logo img {
-        height: 120px;
+        height: 100px; /* Smaller logo on mobile */
+      }
+
+      nav {
+        order: 3; /* Push nav to a new line below logo/toggle on small screens */
+        flex-basis: 100%; /* Take full width */
+        justify-content: center; /* Center menu items when collapsed */
       }
 
       nav ul {
-        display: none;
+        display: none; /* Hide by default on mobile */
         flex-direction: column;
         position: absolute;
-        top: 100px;
+        top: 120px; /* Position below header content */
         left: 0;
         background: #2A6BBF;
         width: 100%;
         padding: 15px 0;
-        max-height: 0;
-        opacity: 0;
+        max-height: 0; /* Start hidden */
+        opacity: 0; /* Start invisible */
         overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
       }
 
       nav ul.show {
-        display: flex;
-        max-height: 300px;
-        opacity: 1;
+        display: flex; /* Show when toggled */
+        max-height: 300px; /* Animate height */
+        opacity: 1; /* Animate opacity */
       }
 
       nav ul li {
-        margin: 15px 0;
+        margin: 15px 0; /* Vertical spacing for mobile menu items */
         text-align: center;
       }
 
       nav ul li a {
         font-size: 18px;
+        padding: 10px 0; /* Make entire link area tappable */
+        display: block;
       }
 
       .menu-toggle {
-        display: flex;
+        display: flex; /* Show hamburger menu on mobile */
       }
 
-      .language-switch button {
-        font-size: 14px;
+      .language-switch {
+        margin-left: auto; /* Push language switch to the right, next to toggle */
+        margin-right: 0;
+        order: 2; /* Position language switcher after logo and before toggle visually */
       }
 
       .swiper {
-        height: 50vh;
-        min-height: 200px;
+        height: 50vh; /* Responsive height for mobile banner */
+        min-height: 200px; /* Minimum height for very short screens */
       }
 
       .intro-section h1 {
@@ -309,7 +378,11 @@
       }
 
       .service {
-        flex: 1 1 100%;
+        flex: 1 1 100%; /* Each service takes full width on small screens */
+      }
+
+      .contact-cta {
+          margin: 30px 10px; /* Smaller margins on mobile */
       }
     }
   </style>
@@ -318,7 +391,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="/Seika-education/Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="/Seika-education/Logo-Seika.jpeg 1x, /Seika-education/Logo-Seika-2x.jpeg 2x" />
+      <img src="/Seika-education/Logo-Seika.webp" alt="Seika Education Consultancy Logo" />
     </div>
 
     <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -329,15 +402,17 @@
 
     <nav>
       <ul id="nav-menu">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="/Seika-education/about.html">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" data-key="navHome">Home</a></li>
+        <li><a href="#services" data-key="navServices">Services</a></li>
+        <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
+        <li><a href="#contact" data-key="navContact">Contact</a></li>
       </ul>
     </nav>
 
-    <div class="language-switch">
-      <button id="enBtn" class="active">English</button> | <button id="jpBtn">日本語</button>
+    <div class="language-switch" aria-live="polite">
+      <button id="enBtn" class="active" aria-pressed="true">English</button>
+      <span style="color: white;">|</span>
+      <button id="jpBtn" aria-pressed="false">日本語</button>
     </div>
   </header>
 
@@ -345,22 +420,13 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="/Seika-education/banner-2.png" alt="Seika Education Consultancy Reception" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
-          </picture>
+          <img src="/Seika-education/banner-2.webp" alt="Seika Education Consultancy Reception Area" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
         <div class="swiper-slide">
-          <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="/Seika-education/banner-5.png" alt="Study & Work in Japan" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
-          </picture>
+          <img src="/Seika-education/banner-5.webp" alt="Study & Work in Japan Banner" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
         <div class="swiper-slide">
-          <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="/Seika-education/banner-1.png" alt="Seika Education Consultancy Class" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
-          </picture>
+          <img src="/Seika-education/banner-1.webp" alt="Seika Education Consultancy Classroom" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -371,61 +437,61 @@
 
   <main class="container">
     <section class="intro-section">
-      <h1>Welcome to Seika Education Consultancy</h1>
-      <p>Your trusted partner for study & work in Japan</p>
-      <a href="#contact" class="cta-button">Get Started</a>
+      <h1 data-key="introTitle">Welcome to Seika Education Consultancy</h1>
+      <p data-key="introSubtitle">Your trusted partner for study & work in Japan</p>
+      <a href="#contact" class="cta-button" data-key="ctaButton">Get Started</a>
     </section>
 
     <section class="services" id="services">
       <div class="service">
-        <img src="/Seika-education/service-1.jpg" alt="Abroad Study Consultation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Abroad Study Consultation</h3>
-        <p>We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
+        
+        <h3 data-key="service1Title">Abroad Study Consultation</h3>
+        <p data-key="service1Desc">We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-2.jpg" alt="Language Training" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Language Training</h3>
-        <p>Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
+        >
+        <h3 data-key="service2Title">Language Training</h3>
+        <p data-key="service2Desc">Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-3.jpg" alt="Exam Preparation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Exam Preparation</h3>
-        <p>Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
+        
+        <h3 data-key="service3Title">Exam Preparation</h3>
+        <p data-key="service3Desc">Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-4.jpg" alt="Interview Preparation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Interview Preparation</h3>
-        <p>Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
+        
+        <h3 data-key="service4Title">Interview Preparation</h3>
+        <p data-key="service4Desc">Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-5.jpg" alt="Documentation Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Documentation Support</h3>
-        <p>Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
+        
+        <h3 data-key="service5Title">Documentation Support</h3>
+        <p data-key="service5Desc">Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-6.jpg" alt="SSW Language Training" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>SSW Language Training</h3>
-        <p>Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
+        
+        <h3 data-key="service6Title">SSW Language Training</h3>
+        <p data-key="service6Desc">Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-7.jpg" alt="Visa Application Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Visa Application Support</h3>
-        <p>Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
+       
+        <h3 data-key="service7Title">Visa Application Support</h3>
+        <p data-key="service7Desc">Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
       </div>
       <div class="service">
-        <img src="/Seika-education/service-8.jpg" alt="Engineer Visa Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
-        <h3>Engineer / Specialist in Humanities / International Services Visa Support</h3>
-        <p>We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
+        
+        <h3 data-key="service8Title">Engineer / Specialist in Humanities / International Services Visa Support</h3>
+        <p data-key="service8Desc">We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
       </div>
     </section>
 
     <section class="contact-cta" id="contact">
-      <h2>Contact Us for More Information</h2>
+      <h2 data-key="contactTitle">Contact Us for More Information</h2>
       <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
+        <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required />
+        <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required />
+        <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required></textarea>
+        <button type="submit" data-key="contactButton">Send Message</button>
       </form>
     </section>
   </main>
@@ -433,125 +499,192 @@
   <footer>
     <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
     <div class="social-links">
-      <a href="https://www.facebook.com/isanabroad" target="_blank">Facebook</a> |
-      <a href="https://tiktok.com/seikaedu" target="_blank">TikTok</a> |
-      <a href="https://instagram.com/seikaedu" target="_blank">Instagram</a>
+      <a href="https://www.facebook.com/isanabroad" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://tiktok.com/seikaedu" target="_blank" rel="noopener noreferrer">TikTok</a> |
+      <a href="https://instagram.com/seikaedu" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
   </footer>
 
-  <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // Swiper Initialization with Error Handling
+    // Ensure all script runs after the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", () => {
-      try {
-        const swiper = new Swiper(".mySwiper", {
-          loop: true,
-          autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-          },
-          pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-          },
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          on: {
-            init: function () {
-              this.update();
-              console.log("Swiper initialized successfully");
-            },
-            resize: function () {
-              this.update();
-            },
-          },
-        });
-      } catch (error) {
-        console.error("Swiper initialization failed:", error);
-      }
-    });
+      console.log("DOM Content Loaded. Initializing scripts...");
 
-    // Hamburger Menu Toggle with Debugging
-    document.addEventListener("DOMContentLoaded", () => {
+      // --- Swiper Initialization ---
+      const swiperContainer = document.querySelector(".mySwiper");
+      if (swiperContainer) {
+        try {
+          const swiper = new Swiper(swiperContainer, {
+            loop: true,
+            // Try different speeds. 700ms is a good start, but 500ms or 1000ms might also work
+            speed: 700, 
+            autoplay: {
+              delay: 4000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            on: {
+              init: function () {
+                this.update();
+                console.log("Swiper initialized successfully.");
+              },
+              resize: function () {
+                this.update();
+                console.log("Swiper resized.");
+              },
+            },
+          });
+        } catch (error) {
+          console.error("Swiper initialization failed:", error);
+        }
+      } else {
+        console.warn("Swiper container '.mySwiper' not found.");
+      }
+
+      // --- Hamburger Menu Toggle ---
       const menuToggle = document.querySelector(".menu-toggle");
       const navMenu = document.getElementById("nav-menu");
 
       if (menuToggle && navMenu) {
         menuToggle.addEventListener("click", () => {
-          navMenu.classList.toggle("show");
-          menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
-          console.log("Menu toggled, show state:", navMenu.classList.contains("show"));
+          const isExpanded = navMenu.classList.toggle("show");
+          menuToggle.setAttribute("aria-expanded", isExpanded);
+          console.log("Menu toggled, show state:", isExpanded);
         });
-        console.log("Menu toggle listener attached");
+
+        // Close menu when a navigation link is clicked (for smooth scroll)
+        navMenu.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove("show");
+                menuToggle.setAttribute("aria-expanded", "false");
+                console.log("Nav link clicked, menu closed.");
+            });
+        });
+
+        console.log("Menu toggle listener attached.");
       } else {
-        console.error("Menu toggle or nav menu element not found");
+        console.warn("Menu toggle or nav menu element not found.");
+      }
+
+      // --- Language Switcher ---
+      const translations = {
+        en: {
+          navHome: "Home",
+          navServices: "Services",
+          navAbout: "About",
+          navContact: "Contact",
+          introTitle: "Welcome to Seika Education Consultancy",
+          introSubtitle: "Your trusted partner for study & work in Japan",
+          ctaButton: "Get Started",
+          service1Title: "Abroad Study Consultation",
+          service1Desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.",
+          service2Title: "Language Training",
+          service2Desc: "Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.",
+          service3Title: "Exam Preparation",
+          service3Desc: "Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.",
+          service4Title: "Interview Preparation",
+          service4Desc: "Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.",
+          service5Title: "Documentation Support",
+          service5Desc: "Assistance in preparing and organizing required documents for Japanese visa applications and school admission.",
+          service6Title: "SSW Language Training",
+          service6Desc: "Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.",
+          service7Title: "Visa Application Support",
+          service7Desc: "Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.",
+          service8Title: "Engineer / Specialist in Humanities / International Services Visa Support",
+          service8Desc: "We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).",
+          contactTitle: "Contact Us for More Information",
+          contactButton: "Send Message",
+          contactNamePlaceholder: "Your Name",
+          contactEmailPlaceholder: "Your Email",
+          contactMessagePlaceholder: "Your Message"
+        },
+        jp: {
+          navHome: "ホーム",
+          navServices: "サービス",
+          navAbout: "会社概要",
+          navContact: "お問い合わせ",
+          introTitle: "清華教育コンサルタンシーへようこそ",
+          introSubtitle: "日本での留学と仕事の信頼できるパートナー",
+          ctaButton: "始める",
+          service1Title: "海外留学相談",
+          service1Desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。",
+          service2Title: "言語トレーニング",
+          service2Desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。",
+          service3Title: "試験準備",
+          service3Desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。",
+          service4Title: "面接準備",
+          service4Desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。",
+          service5Title: "書類サポート",
+          service5Desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。",
+          service6Title: "SSW言語トレーニング",
+          service6Desc: "特定技能労働者（SSW）プログラムを追求する申請者向けの専門的な日本語トレーニング。",
+          service7Title: "ビザ申請サポート",
+          service7Desc: "日本ビザ申請の準備と提出を包括的にサポート — ネパールからの訪問ビザも含む。",
+          service8Title: "エンジニア/人文学/国際業務ビザサポート",
+          service8Desc: "エンジニア/人文学/国際業務ビザで日本での雇用を求める申請者を支援 — 求人探しから在留資格認定証明書（COE）の申請まで。",
+          contactTitle: "詳細はご連絡ください",
+          contactButton: "メッセージを送信",
+          contactNamePlaceholder: "お名前",
+          contactEmailPlaceholder: "メールアドレス",
+          contactMessagePlaceholder: "メッセージ"
+        },
+      };
+
+      const enBtn = document.getElementById("enBtn");
+      const jpBtn = document.getElementById("jpBtn");
+
+      function switchLanguage(lang) {
+        const currentLangData = translations[lang];
+
+        // Update elements with data-key
+        document.querySelectorAll('[data-key]').forEach(element => {
+          const key = element.getAttribute('data-key');
+          if (currentLangData[key]) {
+            element.textContent = currentLangData[key];
+          }
+        });
+
+        // Update elements with data-key-placeholder
+        document.querySelectorAll('[data-key-placeholder]').forEach(element => {
+          const key = element.getAttribute('data-key-placeholder');
+          if (currentLangData[key] && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA')) {
+            element.setAttribute('placeholder', currentLangData[key]);
+          }
+        });
+
+        // Update active class and aria-pressed for buttons
+        if (enBtn) {
+            enBtn.classList.toggle("active", lang === "en");
+            enBtn.setAttribute("aria-pressed", lang === "en");
+        }
+        if (jpBtn) {
+            jpBtn.classList.toggle("active", lang === "jp");
+            jpBtn.setAttribute("aria-pressed", lang === "jp");
+        }
+
+        console.log(`Language switched to: ${lang}`);
+      }
+
+      if (enBtn && jpBtn) {
+        enBtn.addEventListener("click", () => switchLanguage("en"));
+        jpBtn.addEventListener("click", () => switchLanguage("jp"));
+
+        // Set default language on load
+        switchLanguage("en");
+        console.log("Language switch listeners attached.");
+      } else {
+        console.warn("Language switch buttons not found.");
       }
     });
-
-    // Language Switcher
-    const translations = {
-      en: {
-        introTitle: "Welcome to Seika Education Consultancy",
-        introSubtitle: "Your trusted partner for study & work in Japan",
-        services: [
-          { title: "Abroad Study Consultation", desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan." },
-          { title: "Language Training", desc: "Japanese language courses to build the communication skills needed for daily life, education, and work in Japan." },
-          { title: "Exam Preparation", desc: "Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission." },
-          { title: "Interview Preparation", desc: "Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers." },
-          { title: "Documentation Support", desc: "Assistance in preparing and organizing required documents for Japanese visa applications and school admission." },
-          { title: "SSW Language Training", desc: "Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan." },
-          { title: "Visa Application Support", desc: "Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal." },
-          { title: "Engineer / Specialist in Humanities / International Services Visa Support", desc: "We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE)." },
-        ],
-        contactTitle: "Contact Us for More Information",
-        contactButton: "Send Message",
-        ctaButton: "Get Started",
-      },
-      jp: {
-        introTitle: "清華教育コンサルタンシーへようこそ",
-        introSubtitle: "日本での留学と仕事の信頼できるパートナー",
-        services: [
-          { title: "海外留学相談", desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。" },
-          { title: "言語トレーニング", desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。" },
-          { title: "試験準備", desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。" },
-          { title: "面接準備", desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。" },
-          { title: "書類サポート", desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。" },
-          { title: "SSW言語トレーニング", desc: "特定技能労働者（SSW）プログラムを追求する申請者向けの専門的な日本語トレーニング。" },
-          { title: "ビザ申請サポート", desc: "日本ビザ申請の準備と提出を包括的にサポート — ネパールからの訪問ビザも含む。" },
-          { title: "エンジニア/人文学/国際業務ビザサポート", desc: "エンジニア/人文学/国際業務ビザで日本での雇用を求める申請者を支援 — 求人探しから在留資格認定証明書（COE）の申請まで。" },
-        ],
-        contactTitle: "詳細はご連絡ください",
-        contactButton: "メッセージを送信",
-        ctaButton: "始める",
-      },
-    };
-
-    function switchLanguage(lang) {
-      document.querySelector(".intro-section h1").textContent = translations[lang].introTitle;
-      document.querySelector(".intro-section p").textContent = translations[lang].introSubtitle;
-      document.querySelector(".intro-section .cta-button").textContent = translations[lang].ctaButton;
-      document.querySelector(".contact-cta h2").textContent = translations[lang].contactTitle;
-      document.querySelector(".contact-form button").textContent = translations[lang].contactButton;
-
-      const services = document.querySelectorAll(".service");
-      services.forEach((service, index) => {
-        service.querySelector("h3").textContent = translations[lang].services[index].title;
-        service.querySelector("p").textContent = translations[lang].services[index].desc;
-      });
-
-      document.getElementById("enBtn").classList.toggle("active", lang === "en");
-      document.getElementById("jpBtn").classList.toggle("active", lang === "jp");
-    }
-
-    document.getElementById("enBtn").addEventListener("click", () => switchLanguage("en"));
-    document.getElementById("jpBtn").addEventListener("click", () => switchLanguage("jp"));
-
-    // Default language
-    switchLanguage("en");
   </script>
 </body>
 </html>
