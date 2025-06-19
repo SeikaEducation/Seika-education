@@ -69,7 +69,6 @@
 
     nav ul li a:hover {
       color: #e0e0e0;
-      text-decoration: none;
     }
 
     .language-switch {
@@ -117,7 +116,7 @@
 
     .swiper-slide {
       background: #2A6BBF;
-      min-height: 200px; /* Fallback height for mobile */
+      min-height: 200px;
     }
 
     .swiper-slide img {
@@ -252,8 +251,6 @@
 
     @media (max-width: 768px) {
       header {
-        flex-direction: row;
-        justify-content: space-between;
         padding: 10px 20px;
       }
 
@@ -265,7 +262,7 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 110px;
+        top: 100px;
         left: 0;
         background: #2A6BBF;
         width: 100%;
@@ -300,7 +297,7 @@
 
       .swiper {
         height: 50vh;
-        min-height: 200px; /* Ensure minimum height on mobile */
+        min-height: 200px;
       }
 
       .intro-section h1 {
@@ -321,7 +318,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="https://seikaeducation.github.io/Seika-education/logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="https://seikaeducation.github.io/Seika-education/Logo-Seika.jpeg 1x, https://seikaeducation.github.io/Seika-education/Logo-Seika-2x.jpeg 2x" />
+      <img src="/Seika-education/Logo-Seika.jpeg" alt="Seika Education Consultancy Logo" srcset="/Seika-education/Logo-Seika.jpeg 1x, /Seika-education/Logo-Seika-2x.jpeg 2x" />
     </div>
 
     <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -334,7 +331,7 @@
       <ul id="nav-menu">
         <li><a href="#home">Home</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="https://seikaeducation.github.io/Seika-education/about.html">About</a></li>
+        <li><a href="/Seika-education/about.html">About</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -350,19 +347,19 @@
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="https://seikaeducation.github.io/Seika-education/banner-2.png" alt="Seika Education Consultancy Reception" />
+            <img src="/Seika-education/banner-2.png" alt="Seika Education Consultancy Reception" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="https://seikaeducation.github.io/Seika-education/banner-5.png" alt="Study & Work in Japan" />
+            <img src="/Seika-education/banner-5.png" alt="Study & Work in Japan" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
             <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
-            <img src="https://seikaeducation.github.io/Seika-education/banner-1.png" alt="Seika Education Consultancy Class" />
+            <img src="/Seika-education/banner-1.png" alt="Seika Education Consultancy Class" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Not+Found';" />
           </picture>
         </div>
       </div>
@@ -381,34 +378,42 @@
 
     <section class="services" id="services">
       <div class="service">
+        <img src="/Seika-education/service-1.jpg" alt="Abroad Study Consultation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Abroad Study Consultation</h3>
         <p>We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-2.jpg" alt="Language Training" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Language Training</h3>
         <p>Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-3.jpg" alt="Exam Preparation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Exam Preparation</h3>
         <p>Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-4.jpg" alt="Interview Preparation" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Interview Preparation</h3>
         <p>Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-5.jpg" alt="Documentation Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Documentation Support</h3>
         <p>Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-6.jpg" alt="SSW Language Training" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>SSW Language Training</h3>
         <p>Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-7.jpg" alt="Visa Application Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Visa Application Support</h3>
         <p>Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
       </div>
       <div class="service">
+        <img src="/Seika-education/service-8.jpg" alt="Engineer Visa Support" onerror="this.src='https://via.placeholder.com/300x200?text=Image+Not+Found';" />
         <h3>Engineer / Specialist in Humanities / International Services Visa Support</h3>
         <p>We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
       </div>
@@ -470,16 +475,22 @@
       }
     });
 
-    // Hamburger Menu Toggle
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navMenu = document.getElementById("nav-menu");
+    // Hamburger Menu Toggle with Debugging
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
 
-    function toggleMenu() {
-      navMenu.classList.toggle("show");
-      menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
-    }
-
-    menuToggle.addEventListener("click", toggleMenu);
+      if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => {
+          navMenu.classList.toggle("show");
+          menuToggle.setAttribute("aria-expanded", navMenu.classList.contains("show"));
+          console.log("Menu toggled, show state:", navMenu.classList.contains("show"));
+        });
+        console.log("Menu toggle listener attached");
+      } else {
+        console.error("Menu toggle or nav menu element not found");
+      }
+    });
 
     // Language Switcher
     const translations = {
