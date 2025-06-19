@@ -564,8 +564,8 @@
       <div class="contact-item">
         <img src="phone-icon.png" alt="Phone icon" />
         <div class="title">Call us</div>
-        <p><a href="tel:+977010000000" aria-label="Call Seika Education Consultancy at 01-5918911">01-5918911</a></p>
-        <p><a href="tel:+977000000000" aria-label="Call Seika Education Consultancy at 9851183897">9851183897</a></p>
+        <p><a href="tel:+977017850000" aria-label="Call Seika Education Consultancy at 01-5918911">01-5918911</a></p>
+        <p><a href="tel:+9779857000000" aria-label="Call Seika Education Consultancy at 9851183897">9851183897</a></p>
       </div>
       <div class="contact-item">
         <img src="location-icon.png" alt="Location icon" />
@@ -602,13 +602,12 @@
       en: {
         aboutUsTitle: "About Us",
         aboutUsPara1: "Seika Education Consultancy is dedicated to helping students achieve their dreams of studying in Japan.",
-        aboutUsPara2: "Founded with a passion for education, we provide expert guidance on applications, visa processes, and language training.",
+        aboutUsPara2: "Founded with a passion for education, we provide expert guidance on university applications, visa processes, and language training.",
         basicInfoTitle: "Basic Information",
         companyName: "Seika Education Consultancy Pvt. Ltd",
         establishedDate: "2018",
         companyRegNum: "202148/075/076",
         vatPanNum: "606551472",
-        mdCeo: "Srishti Poudel",
         office: "Butwal-9, Milan Chowk (Near Dream International Hotel)",
         mdCeoMessageTitle: "Message From The MD/CEO Of<br><span class=\"underline\">Seika Education Consultancy</span>",
         mdCeoPara1: "It is with great pleasure that I announce the establishment of Seika Education Consultancy. I would like to express my heartfelt gratitude to all the students, instructors, and staff members for their dedication and unwavering support.",
@@ -632,7 +631,6 @@
         establishedDate: "2018年",
         companyRegNum: "202148/075/076",
         vatPanNum: "606551472",
-        mdCeo: "スリシュティ・ポウデル",
         office: "ブトワル-9、ミランチョーク（ドリームインターナショナルホテル近く）",
         mdCeoMessageTitle: "清華教育コンサルタンシー<br><span class=\"underline\">MD/CEOからのメッセージ</span>",
         mdCeoPara1: "清華教育コンサルタンシーの設立を発表できることを大変嬉しく思います。献身と揺るぎないサポートをしてくださったすべての学生、講師、スタッフに心からの感謝を表したいと思います。",
@@ -654,37 +652,11 @@
       document.querySelector(".about-section p:nth-of-type(1)").textContent = translations[lang].aboutUsPara1;
       document.querySelector(".about-section p:nth-of-type(2)").textContent = translations[lang].aboutUsPara2;
       document.querySelector(".basic-info-section h2").textContent = translations[lang].basicInfoTitle;
-      document.querySelector(".basic-info-section table td:nth-child(2)").textContent = translations[lang].companyName;
-      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(2)").textContent = translations[lang].establishedDate;
-      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(3)").textContent = translations[lang].companyRegNum;
-      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(4)").textContent = translations[lang].vatPanNum;
-      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(5)").textContent = translations[lang].mdCeo;
-      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(6)").textContent = translations[lang].office;
-      document.querySelector(".owner-message-section .main-title").innerHTML = translations[lang].mdCeoMessageTitle;
-      document.querySelector(".owner-message-section p:nth-of-type(1)").textContent = translations[lang].mdCeoPara1;
-      document.querySelector(".owner-message-section p:nth-of-type(2)").textContent = translations[lang].mdCeoPara2;
-      document.querySelector(".owner-message-section p:nth-of-type(3)").textContent = translations[lang].mdCeoPara3;
-      document.querySelector(".owner-message-section p:nth-of-type(4)").textContent = translations[lang].mdCeoPara4;
-      document.querySelector(".owner-name-below-photo").textContent = translations[lang].ownerName;
-      document.querySelector(".contact-item:nth-of-type(1) .title").textContent = translations[lang].mailTitle;
-      document.querySelector(".contact-item:nth-of-type(2) .title").textContent = translations[lang].callTitle;
-      document.querySelector(".contact-item:nth-of-type(3) .title").textContent = translations[lang].locationTitle;
-      document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(1)").textContent = translations[lang].locationAddress1;
-      document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(2)").textContent = translations[lang].locationAddress2;
-      document.querySelector("footer p").textContent = translations[lang].footerText;
-    }
 
-    function switchLanguage(lang) {
-      document.getElementById("enBtn").classList.toggle("active", lang === "en");
-      document.getElementById("jpBtn").classList.toggle("active", lang === "jp");
-      updatePageContent(lang);
-    }
-
-    document.getElementById("enBtn").addEventListener("click", () => switchLanguage("en"));
-    document.getElementById("jpBtn").addEventListener("click", () => switchLanguage("jp"));
-
-    // Set default language on load
-    switchLanguage("en");
-  </script>
-</body>
-</html>
+      // テーブルの各行を動的に更新
+      const rows = document.querySelectorAll(".basic-info-section table tr");
+      rows[1].querySelector("td:nth-child(2)").textContent = translations[lang].companyName; // Company Name
+      rows[2].querySelector("td:nth-child(2)").textContent = translations[lang].establishedDate; // Established Date
+      rows[3].querySelector("td:nth-child(2)").textContent = translations[lang].companyRegNum; // Company Registration Number
+      rows[4].querySelector("td:nth-child(2)").textContent = translations[lang].vatPanNum; // VAT/PAN Number
+      rows[5].querySelector("td:nth-child(2)").textContent = translations[lang].mdCeo; //
