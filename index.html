@@ -27,7 +27,7 @@
     header {
       background: #2A6BBF;
       color: white;
-      padding: 15px 30px; /* Increased padding for larger elements */
+      padding: 15px 30px;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
@@ -36,7 +36,7 @@
     }
 
     header .logo img {
-      height: 150px; /* Increased from 120px */
+      height: 150px;
       max-width: 100%;
     }
 
@@ -56,19 +56,19 @@
     }
 
     nav ul li {
-      margin-left: 30px; /* Increased spacing for larger text */
+      margin-left: 30px;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
-      font-weight: 700; /* Bolder text */
-      font-size: 20px; /* Increased from ~16px */
+      font-weight: 700;
+      font-size: 20px;
       transition: color 0.2s;
     }
 
     nav ul li a:hover {
-      color: #e0e0e0; /* Subtle color change on hover */
+      color: #e0e0e0;
       text-decoration: none;
     }
 
@@ -98,7 +98,7 @@
       color: white;
       cursor: pointer;
       font-weight: 600;
-      font-size: 16px; /* Slightly larger for visibility */
+      font-size: 16px;
       margin-left: 5px;
     }
 
@@ -132,7 +132,7 @@
     }
 
     .swiper-slide {
-      background: #2A6BBF; /* Fallback background */
+      background: #2A6BBF;
     }
 
     .swiper-slide img {
@@ -141,6 +141,7 @@
       width: 100%;
       height: 100%;
       display: block;
+      min-height: 1px; /* Ensure visibility on mobile */
     }
 
     .intro-section {
@@ -197,6 +198,7 @@
       padding: 20px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
+      min-width: 250px;
     }
 
     .service img {
@@ -271,14 +273,14 @@
       }
 
       header .logo img {
-        height: 120px; /* Increased from 96px */
+        height: 120px;
       }
 
       nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 110px; /* Adjusted for larger logo */
+        top: 110px;
         left: 0;
         background: #2A6BBF;
         width: 100%;
@@ -300,7 +302,7 @@
       }
 
       nav ul li a {
-        font-size: 18px; /* Larger for mobile readability */
+        font-size: 18px;
       }
 
       .menu-toggle {
@@ -327,6 +329,10 @@
 
       .intro-section p {
         font-size: 1rem;
+      }
+
+      .service {
+        flex: 1 1 100%;
       }
     }
   </style>
@@ -362,20 +368,20 @@
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-           <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Japanese+Culture" />
+          <picture>
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
             <img src="banner-2.png" alt="Seika Education Consultancy Reception" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=University+Campus" />
-            <img src="banner-5.png" alt="Study & Work in JAPAN" />
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
+            <img src="banner-5.png" alt="Study & Work in Japan" />
           </picture>
         </div>
         <div class="swiper-slide">
           <picture>
-            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Students+Studying" />
+            <source media="(max-width: 768px)" srcset="https://via.placeholder.com/600x300?text=Mobile+Banner" />
             <img src="banner-1.png" alt="Seika Education Consultancy Class" />
           </picture>
         </div>
@@ -389,25 +395,50 @@
   <main class="container">
     <section class="intro-section">
       <h1>Welcome to Seika Education Consultancy</h1>
-      <p>Your trusted partner for studying in Japan</p>
+      <p>Your trusted partner for study & work in Japan</p>
       <a href="#contact" class="cta-button">Get Started</a>
     </section>
 
     <section class="services" id="services">
       <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Study+Consultation" alt="Consultant guiding a student" />
-        <h3>Study Consultation</h3>
-        <p>Personalized guidance for your study plans in Japan.</p>
+        <img src="service-1.jpg" alt="Abroad Study Consultation" />
+        <h3>Abroad Study Consultation</h3>
+        <p>We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
       <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Visa+Support" alt="Visa application process" />
-        <h3>Visa Support</h3>
-        <p>Assistance with visa application and documentation.</p>
-      </div>
-      <div class="service">
-        <img src="https://via.placeholder.com/300x200?text=Language+Training" alt="Japanese language class" />
+        <img src="service-2.jpg" alt="Language Training" />
         <h3>Language Training</h3>
-        <p>Japanese language courses to prepare you for your studies.</p>
+        <p>Japanese language courses to build the communication skills needed for daily life, education, and work in Japan.</p>
+      </div>
+      <div class="service">
+        <img src="service-3.jpg" alt="Exam Preparation" />
+        <h3>Exam Preparation</h3>
+        <p>Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
+      </div>
+      <div class="service">
+        <img src="service-4.jpg" alt="Interview Preparation" />
+        <h3>Interview Preparation</h3>
+        <p>Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
+      </div>
+      <div class="service">
+        <img src="service-5.jpg" alt="Documentation Support" />
+        <h3>Documentation Support</h3>
+        <p>Assistance in preparing and organizing required documents for Japanese visa applications and school admission.</p>
+      </div>
+      <div class="service">
+        <img src="service-6.jpg" alt="SSW Language Training" />
+        <h3>SSW Language Training</h3>
+        <p>Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan.</p>
+      </div>
+      <div class="service">
+        <img src="service-7.jpg" alt="Visa Application Support" />
+        <h3>Visa Application Support</h3>
+        <p>Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal.</p>
+      </div>
+      <div class="service">
+        <img src="service-8.jpg" alt="Engineer Visa Support" />
+        <h3>Engineer / Specialist in Humanities / International Services Visa Support</h3>
+        <p>We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE).</p>
       </div>
     </section>
 
@@ -475,11 +506,16 @@
     const translations = {
       en: {
         introTitle: "Welcome to Seika Education Consultancy",
-        introSubtitle: "Your trusted partner for studying in Japan",
+        introSubtitle: "Your trusted partner for study & work in Japan",
         services: [
-          { title: "Study Consultation", desc: "Personalized guidance for your study plans in Japan." },
-          { title: "Visa Support", desc: "Assistance with visa application and documentation." },
-          { title: "Language Training", desc: "Japanese language courses to prepare you for your studies." },
+          { title: "Abroad Study Consultation", desc: "We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan." },
+          { title: "Language Training", desc: "Japanese language courses to build the communication skills needed for daily life, education, and work in Japan." },
+          { title: "Exam Preparation", desc: "Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission." },
+          { title: "Interview Preparation", desc: "Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers." },
+          { title: "Documentation Support", desc: "Assistance in preparing and organizing required documents for Japanese visa applications and school admission." },
+          { title: "SSW Language Training", desc: "Specialized Japanese language training for applicants pursuing the Specified Skilled Worker (SSW) program in Japan." },
+          { title: "Visa Application Support", desc: "Comprehensive support for preparing and submitting Japanese visa applications — including visiting visas from Nepal." },
+          { title: "Engineer / Specialist in Humanities / International Services Visa Support", desc: "We assist applicants seeking employment in Japan under the Engineer / Specialist in Humanities / International Services visa — from job search guidance to applying for the Certificate of Eligibility (COE)." },
         ],
         contactTitle: "Contact Us for More Information",
         contactButton: "Send Message",
@@ -487,11 +523,16 @@
       },
       jp: {
         introTitle: "清華教育コンサルタンシーへようこそ",
-        introSubtitle: "日本留学の信頼できるパートナー",
+        introSubtitle: "日本での留学と仕事の信頼できるパートナー",
         services: [
-          { title: "留学相談", desc: "日本での留学計画のための個別指導。" },
-          { title: "ビザサポート", desc: "ビザ申請と書類の手続き支援。" },
-          { title: "言語トレーニング", desc: "留学準備のための日本語コース。" },
+          { title: "海外留学相談", desc: "日本での留学を計画する学生向けに、専門的な相談を提供 — 学校選びから成功する学習計画の作成まで。" },
+          { title: "言語トレーニング", desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。" },
+          { title: "試験準備", desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。" },
+          { title: "面接準備", desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。" },
+          { title: "書類サポート", desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。" },
+          { title: "SSW言語トレーニング", desc: "特定技能労働者（SSW）プログラムを追求する申請者向けの専門的な日本語トレーニング。" },
+          { title: "ビザ申請サポート", desc: "日本ビザ申請の準備と提出を包括的にサポート — ネパールからの訪問ビザも含む。" },
+          { title: "エンジニア/人文学/国際業務ビザサポート", desc: "エンジニア/人文学/国際業務ビザで日本での雇用を求める申請者を支援 — 求人探しから在留資格認定証明書（COE）の申請まで。" },
         ],
         contactTitle: "詳細はご連絡ください",
         contactButton: "メッセージを送信",
