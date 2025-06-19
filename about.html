@@ -185,13 +185,55 @@
       color: #333;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .about-section h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
       color: #2A6BBF;
+    }
+
+    .basic-info-section {
+      margin-bottom: 40px;
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .basic-info-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #2A6BBF;
+      text-align: center;
+    }
+
+    .basic-info-section table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .basic-info-section th,
+    .basic-info-section td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .basic-info-section th {
+      background-color: #2A6BBF;
+      color: white;
+      font-weight: bold;
+    }
+
+    .basic-info-section tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .basic-info-section tr:hover {
+      background-color: #f1f1f1;
     }
 
     .owner-message-section {
@@ -283,7 +325,7 @@
       color: #333;
       padding: 20px;
       border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     }
 
     .contact-item {
@@ -391,6 +433,19 @@
         font-size: 1.8rem;
       }
 
+      .basic-info-section h2 {
+        font-size: 1.6rem;
+      }
+
+      .basic-info-section table {
+        font-size: 0.9rem;
+      }
+
+      .basic-info-section th,
+      .basic-info-section td {
+        padding: 8px;
+      }
+
       .contact-item img {
         width: 50px;
         height: 50px;
@@ -436,8 +491,42 @@
         Seika Education Consultancy is dedicated to helping students achieve their dreams of studying in Japan.
       </p>
       <p>
-        Founded with a passion for education, we provide expert guidance on university applications, visa processes, and language training.
+        Founded with a passion for education, we provide expert guidance on applications, visa processes, and language training.
       </p>
+    </section>
+
+    <section class="basic-info-section">
+      <h2>Basic Information</h2>
+      <table>
+        <tr>
+          <th>Particular</th>
+          <th>Details</th>
+        </tr>
+        <tr>
+          <td>Company Name</td>
+          <td>Seika Education Consultancy Pvt. Ltd</td>
+        </tr>
+        <tr>
+          <td>Established Date</td>
+          <td>2018</td>
+        </tr>
+        <tr>
+          <td>Company Registration Number</td>
+          <td>202148/075/076</td>
+        </tr>
+        <tr>
+          <td>VAT/PAN Number</td>
+          <td>606551472</td>
+        </tr>
+        <tr>
+          <td>MD/CEO</td>
+          <td>Srishti Poudel</td>
+        </tr>
+        <tr>
+          <td>Office</td>
+          <td>Butwal-9, Milan Chowk (Near Dream International Hotel)</td>
+        </tr>
+      </table>
     </section>
 
     <section class="owner-message-section">
@@ -475,9 +564,8 @@
       <div class="contact-item">
         <img src="phone-icon.png" alt="Phone icon" />
         <div class="title">Call us</div>
-        <p><a href="tel:+977015918911" aria-label="Call Seika Education Consultancy at 01-5918911">01-5918911</a></p>
-        <p><a href="tel:+9779851183897" aria-label="Call Seika Education Consultancy at 9851183897">9851183897</a></p>
-        <p><a href="tel:+9779851356890" aria-label="Call Seika Education Consultancy at 9851356890">9851356890</a></p>
+        <p><a href="tel:+977010000000" aria-label="Call Seika Education Consultancy at 01-5918911">01-5918911</a></p>
+        <p><a href="tel:+977000000000" aria-label="Call Seika Education Consultancy at 9851183897">9851183897</a></p>
       </div>
       <div class="contact-item">
         <img src="location-icon.png" alt="Location icon" />
@@ -514,7 +602,14 @@
       en: {
         aboutUsTitle: "About Us",
         aboutUsPara1: "Seika Education Consultancy is dedicated to helping students achieve their dreams of studying in Japan.",
-        aboutUsPara2: "Founded with a passion for education, we provide expert guidance on university applications, visa processes, and language training.",
+        aboutUsPara2: "Founded with a passion for education, we provide expert guidance on applications, visa processes, and language training.",
+        basicInfoTitle: "Basic Information",
+        companyName: "Seika Education Consultancy Pvt. Ltd",
+        establishedDate: "2018",
+        companyRegNum: "202148/075/076",
+        vatPanNum: "606551472",
+        mdCeo: "Srishti Poudel",
+        office: "Butwal-9, Milan Chowk (Near Dream International Hotel)",
         mdCeoMessageTitle: "Message From The MD/CEO Of<br><span class=\"underline\">Seika Education Consultancy</span>",
         mdCeoPara1: "It is with great pleasure that I announce the establishment of Seika Education Consultancy. I would like to express my heartfelt gratitude to all the students, instructors, and staff members for their dedication and unwavering support.",
         mdCeoPara2: "In today’s globalized world, Seika Education Consultancy, located in Butwal-9, Milan Chowk, is committed to promoting the Japanese language and fostering an educational environment rooted in peace and cross-cultural understanding of Japan. Since its inception, Seika Education Consultancy has strived to be a high-quality and progressive Japanese language school, guided by an innovative teaching philosophy.",
@@ -532,6 +627,13 @@
         aboutUsTitle: "私たちについて",
         aboutUsPara1: "清華教育コンサルタンシーは、学生が日本留学の夢を実現できるよう支援することに専念しています。",
         aboutUsPara2: "教育への情熱をもって設立され、私たちは大学出願、ビザ手続き、語学研修に関する専門的な指導を提供しています。",
+        basicInfoTitle: "基本情報",
+        companyName: "清華教育コンサルタンシー株式会社",
+        establishedDate: "2018年",
+        companyRegNum: "202148/075/076",
+        vatPanNum: "606551472",
+        mdCeo: "スリシュティ・ポウデル",
+        office: "ブトワル-9、ミランチョーク（ドリームインターナショナルホテル近く）",
         mdCeoMessageTitle: "清華教育コンサルタンシー<br><span class=\"underline\">MD/CEOからのメッセージ</span>",
         mdCeoPara1: "清華教育コンサルタンシーの設立を発表できることを大変嬉しく思います。献身と揺るぎないサポートをしてくださったすべての学生、講師、スタッフに心からの感謝を表したいと思います。",
         mdCeoPara2: "今日のグローバル化された世界において、ブトワル-9、ミランチョークに位置する清華教育コンサルタンシーは、日本語を促進し、平和と日本文化への異文化理解に基づいた教育環境を育むことに尽力しています。設立以来、清華教育コンサルタンシーは革新的な教育理念に基づき、質の高い進歩的な日本語学校であることを目指してきました。",
@@ -551,6 +653,13 @@
       document.querySelector(".about-section h1").textContent = translations[lang].aboutUsTitle;
       document.querySelector(".about-section p:nth-of-type(1)").textContent = translations[lang].aboutUsPara1;
       document.querySelector(".about-section p:nth-of-type(2)").textContent = translations[lang].aboutUsPara2;
+      document.querySelector(".basic-info-section h2").textContent = translations[lang].basicInfoTitle;
+      document.querySelector(".basic-info-section table td:nth-child(2)").textContent = translations[lang].companyName;
+      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(2)").textContent = translations[lang].establishedDate;
+      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(3)").textContent = translations[lang].companyRegNum;
+      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(4)").textContent = translations[lang].vatPanNum;
+      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(5)").textContent = translations[lang].mdCeo;
+      document.querySelector(".basic-info-section table td:nth-child(2):nth-of-type(6)").textContent = translations[lang].office;
       document.querySelector(".owner-message-section .main-title").innerHTML = translations[lang].mdCeoMessageTitle;
       document.querySelector(".owner-message-section p:nth-of-type(1)").textContent = translations[lang].mdCeoPara1;
       document.querySelector(".owner-message-section p:nth-of-type(2)").textContent = translations[lang].mdCeoPara2;
