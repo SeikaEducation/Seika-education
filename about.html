@@ -180,7 +180,6 @@
     }
 
     .about-section {
-      style= "margin: 0;"
       margin-bottom: 40px;
       background: #fff;
       color: #333;
@@ -196,7 +195,6 @@
     }
 
     .basic-info-section {
-      style= "margin: 0;"
       margin-bottom: 40px;
       background: #fff;
       color: #333;
@@ -237,7 +235,7 @@
     .basic-info-section tr:hover {
       background-color: #f1f1f1;
     }
-     
+
     .workforce-section {
       margin-bottom: 40px;
       background: #fff;
@@ -251,12 +249,6 @@
       font-size: 2.5rem;
       margin-bottom: 20px;
       color: #2A6BBF;
-    }
-
-    .workforce-section h3 {
-      font-size: 1.5rem;
-      color: #d81b60;
-      margin-bottom: 10px;
     }
 
     .team-members {
@@ -287,7 +279,6 @@
       font-size: 1rem;
       color: #666;
     }
-
 
     .owner-message-section {
       margin-bottom: 40px;
@@ -499,6 +490,15 @@
         padding: 8px;
       }
 
+      .workforce-section h2 {
+        font-size: 2rem;
+      }
+
+      .team-member img {
+        width: 150px;
+        height: 150px;
+      }
+
       .contact-item img {
         width: 50px;
         height: 50px;
@@ -542,7 +542,7 @@
       <h1>About Us</h1>
       <p>
         Since 2018, Seika Education Consultancy has been offering professional support for students pursuing education abroad.<br>
-        In addition to our experience assisting with studies in countries like Australia,we are actively providing expert services<br> for students aiming to study & work in Japan.
+        In addition to our experience assisting with studies in countries like Australia, we are actively providing expert services<br> for students aiming to study & work in Japan.
       </p>
     </section>
 
@@ -575,39 +575,38 @@
         </tr>
       </table>
     </section>
-    
-   <section class="workforce-section">
+
+    <section class="workforce-section">
       <h2>Our Team</h2>
       <div class="team-members">
         <div class="team-member">
-          <img src="srishti.jpg" alt="POUDEL SRISHTI, CEO" />
+          <img src="srishti.jpg" alt="Poudel Srishti, CEO" />
           <div class="name">Poudel Srishti</div>
           <div class="role">CEO/MD</div>
         </div>
         <div class="team-member">
-          <img src="srishti.jpg" alt="Chaulagain Sanjeeb, Co-CHAIRMAN" />
+          <img src="sanjeeb.jpg" alt="Chaulagain Sanjeeb, Co-CHAIRMAN" />
           <div class="name">Chaulagain Sanjeeb</div>
           <div class="role">Co-CHAIRMAN/Japan Representative</div>
         </div>
         <div class="team-member">
-          <img src="srishti.jpg" alt="Poudel Subhas,Co-CHAIRMAN " />
+          <img src="subhas.jpg" alt="Poudel Subhas, Co-CHAIRMAN" />
           <div class="name">Poudel Subhas</div>
           <div class="role">Co-CHAIRMAN/Japan Representative</div>
         </div>
-         <div class="team-member">
-          <img src="srishti.jpg" alt="Paudel Suman, Manager" />
+        <div class="team-member">
+          <img src="suman.jpg" alt="Paudel Suman, Manager" />
           <div class="name">Paudel Suman</div>
           <div class="role">Manager/Japan Representative/Language Teacher</div>
         </div>
-      </div>
-           <div class="team-member">
-          <img src="srishti.jpg" alt="Ghimire YubRaj, Teacher" />
+        <div class="team-member">
+          <img src="yubraj.jpg" alt="Ghimire YubRaj, Teacher" />
           <div class="name">Ghimire YubRaj</div>
           <div class="role">Language Teacher</div>
         </div>
       </div>
     </section>
-  
+
     <section class="owner-message-section">
       <div class="main-title">
         Message From The MD/CEO Of<br><span class="underline">Seika Education Consultancy</span>
@@ -680,14 +679,24 @@
     const translations = {
       en: {
         aboutUsTitle: "About Us",
-        aboutUsPara1: "Seika Education Consultancy is dedicated to helping students achieve their dreams of studying in Japan.",
-        aboutUsPara2: "Founded with a passion for education, we provide expert guidance on university applications, visa processes, and language training.",
+        aboutUsPara1: "Since 2018, Seika Education Consultancy has been offering professional support for students pursuing education abroad. In addition to our experience assisting with studies in countries like Australia, we are actively providing expert services for students aiming to study & work in Japan.",
         basicInfoTitle: "Basic Information",
         companyName: "Seika Education Consultancy Pvt. Ltd",
         establishedDate: "2018",
         companyRegNum: "202148/075/076",
         vatPanNum: "606551472",
         office: "Butwal-9, Milan Chowk (Near Dream International Hotel)",
+        teamTitle: "Our Team",
+        teamSrishti: "Poudel Srishti",
+        teamSrishtiRole: "CEO/MD",
+        teamSanjeeb: "Chaulagain Sanjeeb",
+        teamSanjeebRole: "Co-CHAIRMAN/Japan Representative",
+        teamSubhas: "Poudel Subhas",
+        teamSubhasRole: "Co-CHAIRMAN/Japan Representative",
+        teamSuman: "Paudel Suman",
+        teamSumanRole: "Manager/Japan Representative/Language Teacher",
+        teamYubRaj: "Ghimire YubRaj",
+        teamYubRajRole: "Language Teacher",
         mdCeoMessageTitle: "Message From The MD/CEO Of<br><span class=\"underline\">Seika Education Consultancy</span>",
         mdCeoPara1: "It is with great pleasure that I announce the establishment of Seika Education Consultancy. I would like to express my heartfelt gratitude to all the students, instructors, and staff members for their dedication and unwavering support.",
         mdCeoPara2: "In today’s globalized world, Seika Education Consultancy, located in Butwal-9, Milan Chowk, is committed to promoting the Japanese language and fostering an educational environment rooted in peace and cross-cultural understanding of Japan. Since its inception, Seika Education Consultancy has strived to be a high-quality and progressive Japanese language school, guided by an innovative teaching philosophy.",
@@ -703,14 +712,24 @@
       },
       jp: {
         aboutUsTitle: "私たちについて",
-        aboutUsPara1: "清華教育コンサルタンシーは、学生が日本留学の夢を実現できるよう支援することに専念しています。",
-        aboutUsPara2: "教育への情熱をもって設立され、私たちは大学出願、ビザ手続き、語学研修に関する専門的な指導を提供しています。",
+        aboutUsPara1: "2018年以来、清華教育コンサルタンシーは海外での教育を追求する学生に専門的なサポートを提供してきました。オーストラリアなどの国での学習支援の経験に加え、日本で学ぶ・働くことを目指す学生に積極的に専門サービスを提供しています。",
         basicInfoTitle: "基本情報",
         companyName: "清華教育コンサルタンシー株式会社",
         establishedDate: "2018年",
         companyRegNum: "202148/075/076",
         vatPanNum: "606551472",
         office: "ブトワル-9、ミランチョーク（ドリームインターナショナルホテル近く）",
+        teamTitle: "私たちのチーム",
+        teamSrishti: "ポウデル・スリシュティ",
+        teamSrishtiRole: "CEO/MD",
+        teamSanjeeb: "チャウラガイン・サンジーブ",
+        teamSanjeebRole: "共同会長/日本代表",
+        teamSubhas: "ポウデル・スバシュ",
+        teamSubhasRole: "共同会長/日本代表",
+        teamSuman: "パウデル・スマン",
+        teamSumanRole: "マネージャー/日本代表/語学教師",
+        teamYubRaj: "ギミレ・ユーブラジ",
+        teamYubRajRole: "語学教師",
         mdCeoMessageTitle: "清華教育コンサルタンシー<br><span class=\"underline\">MD/CEOからのメッセージ</span>",
         mdCeoPara1: "清華教育コンサルタンシーの設立を発表できることを大変嬉しく思います。献身と揺るぎないサポートをしてくださったすべての学生、講師、スタッフに心からの感謝を表したいと思います。",
         mdCeoPara2: "今日のグローバル化された世界において、ブトワル-9、ミランチョークに位置する清華教育コンサルタンシーは、日本語を促進し、平和と日本文化への異文化理解に基づいた教育環境を育むことに尽力しています。設立以来、清華教育コンサルタンシーは革新的な教育理念に基づき、質の高い進歩的な日本語学校であることを目指してきました。",
@@ -728,8 +747,7 @@
 
     function updatePageContent(lang) {
       document.querySelector(".about-section h1").textContent = translations[lang].aboutUsTitle;
-      document.querySelector(".about-section p:nth-of-type(1)").textContent = translations[lang].aboutUsPara1;
-      document.querySelector(".about-section p:nth-of-type(2)").textContent = translations[lang].aboutUsPara2;
+      document.querySelector(".about-section p").textContent = translations[lang].aboutUsPara1;
       document.querySelector(".basic-info-section h2").textContent = translations[lang].basicInfoTitle;
 
       // テーブルの各行を動的に更新
@@ -738,4 +756,46 @@
       rows[2].querySelector("td:nth-child(2)").textContent = translations[lang].establishedDate; // Established Date
       rows[3].querySelector("td:nth-child(2)").textContent = translations[lang].companyRegNum; // Company Registration Number
       rows[4].querySelector("td:nth-child(2)").textContent = translations[lang].vatPanNum; // VAT/PAN Number
-      rows[5].querySelector("td:nth-child(2)").textContent = translations[lang].mdCeo; //
+      rows[5].querySelector("td:nth-child(2)").textContent = translations[lang].office; // Office (MD/CEOを削除し、Officeに調整)
+
+      // チームメンバーの更新
+      document.querySelector(".workforce-section h2").textContent = translations[lang].teamTitle;
+      document.querySelector(".team-member:nth-child(1) .name").textContent = translations[lang].teamSrishti;
+      document.querySelector(".team-member:nth-child(1) .role").textContent = translations[lang].teamSrishtiRole;
+      document.querySelector(".team-member:nth-child(2) .name").textContent = translations[lang].teamSanjeeb;
+      document.querySelector(".team-member:nth-child(2) .role").textContent = translations[lang].teamSanjeebRole;
+      document.querySelector(".team-member:nth-child(3) .name").textContent = translations[lang].teamSubhas;
+      document.querySelector(".team-member:nth-child(3) .role").textContent = translations[lang].teamSubhasRole;
+      document.querySelector(".team-member:nth-child(4) .name").textContent = translations[lang].teamSuman;
+      document.querySelector(".team-member:nth-child(4) .role").textContent = translations[lang].teamSumanRole;
+      document.querySelector(".team-member:nth-child(5) .name").textContent = translations[lang].teamYubRaj;
+      document.querySelector(".team-member:nth-child(5) .role").textContent = translations[lang].teamYubRajRole;
+
+      document.querySelector(".owner-message-section .main-title").innerHTML = translations[lang].mdCeoMessageTitle;
+      document.querySelector(".owner-message-section p:nth-of-type(1)").textContent = translations[lang].mdCeoPara1;
+      document.querySelector(".owner-message-section p:nth-of-type(2)").textContent = translations[lang].mdCeoPara2;
+      document.querySelector(".owner-message-section p:nth-of-type(3)").textContent = translations[lang].mdCeoPara3;
+      document.querySelector(".owner-message-section p:nth-of-type(4)").textContent = translations[lang].mdCeoPara4;
+      document.querySelector(".owner-name-below-photo").textContent = translations[lang].ownerName;
+      document.querySelector(".contact-item:nth-of-type(1) .title").textContent = translations[lang].mailTitle;
+      document.querySelector(".contact-item:nth-of-type(2) .title").textContent = translations[lang].callTitle;
+      document.querySelector(".contact-item:nth-of-type(3) .title").textContent = translations[lang].locationTitle;
+      document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(1)").textContent = translations[lang].locationAddress1;
+      document.querySelector(".contact-item:nth-of-type(3) p:nth-of-type(2)").textContent = translations[lang].locationAddress2;
+      document.querySelector("footer p").textContent = translations[lang].footerText;
+    }
+
+    function switchLanguage(lang) {
+      document.getElementById("enBtn").classList.toggle("active", lang === "en");
+      document.getElementById("jpBtn").classList.toggle("active", lang === "jp");
+      updatePageContent(lang);
+    }
+
+    document.getElementById("enBtn").addEventListener("click", () => switchLanguage("en"));
+    document.getElementById("jpBtn").addEventListener("click", () => switchLanguage("jp"));
+
+    // Set default language on load
+    switchLanguage("en");
+  </script>
+</body>
+</html>
