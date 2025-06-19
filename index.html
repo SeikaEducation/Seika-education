@@ -125,7 +125,6 @@
       flex-direction: column;
       cursor: pointer;
       padding: 10px; /* Easier to tap */
-      /* margin-left: 15px; This will be adjusted in mobile media query */
     }
 
     .menu-toggle span {
@@ -321,9 +320,9 @@
       color: white;
     }
 
-    /* Mobile Menu Logo */
+    /* Mobile Menu Logo (Removed from mobile view) */
     .mobile-menu-logo-container {
-      display: none; /* Hidden by default on desktop */
+      display: none; /* Always hidden now as per request */
     }
 
 
@@ -332,10 +331,11 @@
       header {
         padding: 10px 20px;
         flex-wrap: nowrap;
-        justify-content: space-between; /* Ensures space between hamburger and lang switcher */
+        /* モバイルではハンバーガーと言語選択のみを両端に寄せる */
+        justify-content: space-between; 
       }
 
-      /* モバイルで元のヘッダーロゴを非表示 */
+      /* モバイルで元のヘッダーロゴを非表示にする */
       header .logo {
         display: none;
       }
@@ -348,10 +348,10 @@
         margin-left: 0; /* 左寄せを確実にする */
       }
 
-      /* 言語切り替えボタンの配置を調整 */
+      /* 言語切り替えボタンを右端に寄せる */
       .language-switch {
         order: 2; /* ハンバーガーの次に配置 */
-        margin-left: 0; /* ハンバーガーが右マージンを持つため、自動マージンをリセット */
+        margin-left: 0; /* 自動マージンは不要になるか調整 */
         margin-right: 0; /* 右端に配置 */
         padding-right: 5px; /* 必要に応じて右パディングを調整 */
         gap: 3px; /* ボタン間のスペースを微調整 */
@@ -393,21 +393,6 @@
         font-size: 18px;
         padding: 10px 0;
         display: block;
-      }
-
-      /* モバイルメニュー内のロゴをモバイルで表示 */
-      .mobile-menu-logo-container {
-        display: block; /* li要素を表示 */
-        text-align: center; /* ロゴを中央寄せ */
-        padding: 10px 0 20px; /* 上下のパディングで間隔を調整 */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 下線で区切り */
-        margin-bottom: 20px; /* 下のメニュー項目との間隔 */
-      }
-
-      .mobile-menu-logo-container .mobile-menu-logo {
-        height: 80px; /* メニュー内のロゴの高さ */
-        width: auto;
-        max-width: 90%; /* はみ出さないように最大幅を設定 */
       }
 
       .swiper {
@@ -459,9 +444,6 @@
 
     <nav>
       <ul id="nav-menu">
-        <li class="mobile-menu-logo-container">
-          <img src="/Seika-education/Logo-Seika.webp" alt="Seika Education Consultancy Logo" class="mobile-menu-logo">
-        </li>
         <li><a href="#home" data-key="navHome">Home</a></li>
         <li><a href="#services" data-key="navServices">Services</a></li>
         <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
@@ -497,7 +479,8 @@
     </section>
 
     <section class="services" id="services">
-      <h2 data-key="ourServicesTitle">OUR SERVICES</h2> <div class="service">
+      <h2 data-key="ourServicesTitle">OUR SERVICES</h2>
+      <div class="service">
         <h3 data-key="service1Title">Abroad Study Consultation</h3>
         <p data-key="service1Desc">We provide expert consultation for students planning to study in Japan — from selecting schools to creating a successful study plan.</p>
       </div>
@@ -509,7 +492,8 @@
         <h3 data-key="service3Title">Exam Preparation</h3>
         <p data-key="service3Desc">Preparation for Japanese language exams (JLPT, JFT-Basic, Nat-Test) required for visa applications or school admission.</p>
       </div>
-      <div class="service">        <h3 data-key="service4Title">Interview Preparation</h3>
+      <div class="service">
+        <h3 data-key="service4Title">Interview Preparation</h3>
         <p data-key="service4Desc">Coaching for visa interviews at the Japanese embassy and interviews with Japanese schools or employers.</p>
       </div>
       <div class="service">
