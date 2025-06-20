@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Seika Education Consultancy</title>
   <style>
     /* Global Box Sizing */
@@ -136,12 +136,13 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo">
       <img src="./Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" />
     </div>
-    
+
     <nav>
       <ul id="nav-menu">
         <li><a href="./index.html" data-key="navHome">Home</a></li>
@@ -150,11 +151,11 @@
         <li><a href="./index.html#contact" data-key="navContact">Contact</a></li>
       </ul>
     </nav>
-    
+
     <div class="language-switch" aria-live="polite">
-      <button id="enBtn" class="active" aria-pressed="true">English</button>
+      <button id="enBtn">English</button>
       <span>|</span>
-      <button id="jpBtn" aria-pressed="false">日本語</button>
+      <button id="jpBtn">日本語</button>
     </div>
   </header>
 
@@ -175,14 +176,14 @@
     };
 
     function updateLanguage(lang) {
-      // update nav text
+      // Update nav text
       const navItems = document.querySelectorAll('#nav-menu [data-key]');
       navItems.forEach(item => {
         const key = item.getAttribute('data-key');
         item.textContent = translations[lang][key];
       });
 
-      // update button states
+      // Update button states
       const enBtn = document.getElementById("enBtn");
       const jpBtn = document.getElementById("jpBtn");
 
@@ -198,15 +199,15 @@
         enBtn.setAttribute("aria-pressed", "false");
       }
 
-      // save selection
+      // Save selection
       localStorage.setItem('selectedLanguage', lang);
     }
 
-    // load saved language
+    // Load saved language on page load
     const savedLang = localStorage.getItem('selectedLanguage') || 'en';
     updateLanguage(savedLang);
 
-    // event listeners
+    // Event listeners
     document.getElementById("enBtn").addEventListener("click", () => updateLanguage('en'));
     document.getElementById("jpBtn").addEventListener("click", () => updateLanguage('jp'));
   </script>
