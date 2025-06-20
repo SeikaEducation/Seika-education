@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Seika Education Consultancy</title>
+    <!-- Link to Google Material Icons for icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Link to Google Fonts for 'Inter' typeface -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS Configuration (using Inter font) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Arial', 'sans-serif'], // Set Inter as the default sans-serif font
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* All CSS from style.css integrated here */
+
+        /* Global Box Sizing - Tailwind handles this with preflight */
+        /* You might want to include custom fonts here if not loaded via a CDN */
+
+        /* Base body styles, adjusted for fixed header */
+        body {
+            font-family: 'Inter', Arial, sans-serif; /* Using Inter for modern look */
+            margin: 0;
+            padding: 0;
+            background-color: #f5f7fa; /* Light background */
+            color: #333; /* Dark text for readability */
+            /* Ensure content is not hidden behind the fixed header */
+            padding-top: 130px; /* Adjust this based on your header's actual height */
+        }
+
+        /* Container for main content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px; /* Responsive padding */
+            padding-bottom: 60px; /* Space for footer */
+        }
+
+        /* Section headings */
+        h1 {
+            color: #2A6BBF; /* Primary blue color */
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2rem; /* Responsive font size */
+            font-weight: 700;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            flex: 1 1 300px; /* Flex basis for responsiveness */
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px); /* Subtle hover effect */
+        }
+
+        .contact-item .material-icons {
+            font-size: 36px;
+            color: #2A6BBF;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        /* Map Section */
+        .map {
+            margin-bottom: 40px;
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Contact Form */
+        form {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        form .form-group {
+            margin-bottom: 18px;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            outline: none;
+            border-color: #2A6BBF; /* Highlight on focus */
+            box-shadow: 0 0 0 2px rgba(42, 107, 191, 0.2);
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        form button {
+            background: #2A6BBF;
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.25s ease-in-out, transform 0.1s ease-in-out;
+        }
+
+        form button:hover {
+            background: #1f56a1;
+            transform: translateY(-2px); /* Lift button on hover */
+        }
+
+        form button:active {
+            transform: translateY(0); /* Press button on click */
+        }
+
+        /* Footer Styles */
+        .footer {
+            background: #000;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #e0e0e0;
+            text-decoration: underline;
+        }
+
+        /* Media Queries */
+        @media (max-width: 600px) {
+            body {
+                padding-top: 100px; /* Adjust for smaller header on mobile */
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-item {
+                flex: 1 1 100%; /* Stack items on small screens */
+            }
+
+            .footer p {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans">
+    <!-- Header HTML from fixed-header.html integrated directly -->
+    <header class="bg-[#2A6BBF] text-white p-4 sm:p-6 flex flex-wrap justify-between items-center fixed top-0 w-full z-1000 overflow-visible rounded-b-lg shadow-lg">
+      <div class="logo hidden sm:block">
+        <!-- Replace with your actual logo path -->
+        <img src="/Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" class="h-20 sm:h-24 max-w-full block rounded-full border-2 border-white" />
+      </div>
+
+      <nav class="flex-grow flex justify-end items-center">
+        <ul id="nav-menu" class="list-none flex space-x-4 sm:space-x-6 m-0 p-0">
+          <li><a href="./index.html" data-key="navHome" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Home</a></li>
+          <li><a href="./index.html#services" data-key="navServices" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Services</a></li>
+          <li><a href="./about.html" data-key="navAbout" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">About</a></li>
+          <li><a href="./contact.html" data-key="navContact" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="language-switch ml-4 sm:ml-6 flex items-center gap-1 sm:gap-2 z-1100 flex-shrink-0" aria-live="polite">
+        <button id="enBtn" type="button" class="bg-transparent border-none text-white cursor-pointer font-semibold text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-10 whitespace-nowrap min-w-max flex-shrink-0">English</button>
+        <span class="text-white text-xs sm:text-sm flex-shrink-0">|</span>
+        <button id="jpBtn" type="button" class="bg-transparent border-none text-white cursor-pointer font-semibold text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-10 whitespace-nowrap min-w-max flex-shrink-0">日本語</button>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-5 py-8 sm:py-10 lg:py-12 mt-32"> <!-- Added responsive padding and margin-top for fixed header -->
+        <h1 class="text-[#2A6BBF] mb-8 text-center text-3xl sm:text-4xl font-bold">Contact Us</h1>
+
+        <div class="contact-info flex flex-wrap justify-center gap-5 mb-10">
+            <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
+                <span class="material-icons text-4xl text-[#2A6BBF]">place</span>
+                <p class="text-base leading-relaxed"><strong>Address:</strong><br> Butwal-9, Milan Chowk, Nepal</p>
+            </div>
+
+            <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
+                <span class="material-icons text-4xl text-[#2A6BBF]">phone</span>
+                <p class="text-base leading-relaxed"><strong>Phone:</strong><br> +977-9876543210</p>
+            </div>
+
+            <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
+                <span class="material-icons text-4xl text-[#2A6BBF]">email</span>
+                <p class="text-base leading-relaxed"><strong>Email:</strong><br> info@seikaeducation.com</p>
+            </div>
+        </div>
+
+        <div class="map mb-10">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.114797895938!2d83.45772841506218!3d27.68575993217954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399684b168b0a6e3%3A0x52f5c473cc86f27d!2sMilan%20Chowk%2C%20Butwal!5e0!3m2!1sen!2snp!4v1718800000000" class="w-full h-[350px] sm:h-[400px] border-0 rounded-xl shadow-md" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+        <form class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
+            <div class="form-group mb-5">
+                <label for="name" class="block mb-2 font-bold text-gray-700">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="email" class="block mb-2 font-bold text-gray-700">Your Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="subject" class="block mb-2 font-bold text-gray-700">Subject</label>
+                <input type="text" id="subject" placeholder="Enter subject" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+            </div>
+
+            <div class="form-group mb-6">
+                <label for="message" class="block mb-2 font-bold text-gray-700">Message</label>
+                <textarea id="message" placeholder="Write your message here..." required class="w-full p-3 border border-gray-300 rounded-lg resize-y min-h-[140px] focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200"></textarea>
+            </div>
+
+            <button type="submit" class="bg-[#2A6BBF] text-white py-3 px-6 rounded-lg text-base cursor-pointer hover:bg-[#1f56a1] transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 shadow-md hover:shadow-lg">Send Message</button>
+        </form>
+    </div>
+
+    <footer class="footer bg-black text-white text-center py-4 px-5 relative bottom-0 w-full rounded-t-lg shadow-inner">
+        <p class="mb-0 text-sm">© 2025 Seika Education Consultancy. All rights reserved. |
+            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">Facebook</a> |
+            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">TikTok</a> |
+            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">Instagram</a>
+        </p>
+    </footer>
+
+    <script>
+        // All JavaScript from script.js integrated here
+
+        // Translation data for the navigation menu
+        const translations = {
+            en: {
+                navHome: "Home",
+                navServices: "Services",
+                navAbout: "About",
+                navContact: "Contact"
+            },
+            jp: {
+                navHome: "ホーム",
+                navServices: "サービス",
+                navAbout: "会社概要",
+                navContact: "お問い合わせ"
+            }
+        };
+
+        /**
+         * Updates the language of navigation items and language switch buttons.
+         * @param {string} lang - The language code ('en' or 'jp').
+         */
+        function updateLanguage(lang) {
+            // Update navigation menu items based on data-key attribute
+            document.querySelectorAll('#nav-menu [data-key]').forEach(item => {
+                const key = item.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    item.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language switch button styles
+            const enBtn = document.getElementById("enBtn");
+            const jpBtn = document.getElementById("jpBtn");
+
+            if (enBtn) {
+                enBtn.classList.toggle('active', lang === 'en');
+                enBtn.setAttribute('aria-pressed', lang === 'en');
+            }
+            if (jpBtn) {
+                jpBtn.classList.toggle('active', lang === 'jp');
+                jpBtn.setAttribute('aria-pressed', lang === 'jp');
+            }
+
+            // Save the selected language to local storage
+            localStorage.setItem('selectedLanguage', lang);
+        }
+
+        /**
+         * Initializes the language switch functionality.
+         * This function should be called AFTER the header is loaded into the DOM.
+         */
+        function initializeLanguageSwitch() {
+            const enBtn = document.getElementById("enBtn");
+            const jpBtn = document.getElementById("jpBtn");
+
+            if (enBtn && jpBtn) { // Ensure buttons exist before adding event listeners
+                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                updateLanguage(savedLang); // Apply saved language or default to English
+
+                // Add event listeners for language buttons
+                enBtn.addEventListener("click", () => updateLanguage('en'));
+                jpBtn.addEventListener("click", () => updateLanguage('jp'));
+            } else {
+                console.warn("Language switch buttons not found. Ensure header is loaded.");
+            }
+        }
+
+        // Event listener to initialize language switch when the DOM is fully loaded.
+        // The header is now directly in the HTML, so no dynamic loading is needed.
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeLanguageSwitch();
+        });
+    </script>
+</body>
+</html>
