@@ -23,40 +23,40 @@
         }
     </script>
     <style>
-        /* All CSS from style.css integrated here */
+        /* ここにすべてのCSSを統合 */
 
         /* Global Box Sizing - Tailwind handles this with preflight */
-        /* You might want to include custom fonts here if not loaded via a CDN */
+        /* Tailwind CDNからロードされない場合、ここにカスタムフォントを含めることができます */
 
-        /* Base body styles, adjusted for fixed header */
+        /* 固定ヘッダーに合わせて調整された基本ボディスタイル */
         body {
-            font-family: 'Inter', Arial, sans-serif; /* Using Inter for modern look */
+            font-family: 'Inter', Arial, sans-serif; /* モダンな外観のためにInterを使用 */
             margin: 0;
             padding: 0;
-            background-color: #f5f7fa; /* Light background */
-            color: #333; /* Dark text for readability */
-            /* Ensure content is not hidden behind the fixed header */
-            padding-top: 130px; /* Adjust this based on your header's actual height */
+            background-color: #f5f7fa; /* 明るい背景 */
+            color: #333; /* 読みやすい濃いテキスト */
+            /* 固定ヘッダーの背後にコンテンツが隠れないようにする */
+            padding-top: 130px; /* ヘッダーの実際の高さに基づいて調整してください */
         }
 
-        /* Container for main content */
+        /* メインコンテンツのコンテナ */
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 20px; /* Responsive padding */
-            padding-bottom: 60px; /* Space for footer */
+            padding: 20px; /* レスポンシブなパディング */
+            padding-bottom: 60px; /* フッター用のスペース */
         }
 
-        /* Section headings */
+        /* セクションの見出し */
         h1 {
-            color: #2A6BBF; /* Primary blue color */
+            color: #2A6BBF; /* プライマリーブルーカラー */
             margin-bottom: 30px;
             text-align: center;
-            font-size: 2rem; /* Responsive font size */
+            font-size: 2rem; /* レスポンシブなフォントサイズ */
             font-weight: 700;
         }
 
-        /* Contact Info Section */
+        /* お問い合わせ情報セクション */
         .contact-info {
             display: flex;
             flex-wrap: wrap;
@@ -66,7 +66,7 @@
         }
 
         .contact-item {
-            flex: 1 1 300px; /* Flex basis for responsiveness */
+            flex: 1 1 300px; /* レスポンシブ性のためのフレックスベース */
             background: white;
             padding: 20px;
             border-radius: 8px;
@@ -78,7 +78,7 @@
         }
 
         .contact-item:hover {
-            transform: translateY(-5px); /* Subtle hover effect */
+            transform: translateY(-5px); /* 微妙なホバー効果 */
         }
 
         .contact-item .material-icons {
@@ -92,7 +92,7 @@
             line-height: 1.5;
         }
 
-        /* Map Section */
+        /* マップセクション */
         .map {
             margin-bottom: 40px;
         }
@@ -105,7 +105,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
 
-        /* Contact Form */
+        /* お問い合わせフォーム */
         form {
             background: white;
             padding: 25px;
@@ -137,7 +137,7 @@
         form input:focus,
         form textarea:focus {
             outline: none;
-            border-color: #2A6BBF; /* Highlight on focus */
+            border-color: #2A6BBF; /* フォーカス時のハイライト */
             box-shadow: 0 0 0 2px rgba(42, 107, 191, 0.2);
         }
 
@@ -159,14 +159,14 @@
 
         form button:hover {
             background: #1f56a1;
-            transform: translateY(-2px); /* Lift button on hover */
+            transform: translateY(-2px); /* ホバー時にボタンを持ち上げる */
         }
 
         form button:active {
-            transform: translateY(0); /* Press button on click */
+            transform: translateY(0); /* クリック時にボタンを押す */
         }
 
-        /* Footer Styles */
+        /* フッターのスタイル */
         .footer {
             background: #000;
             color: white;
@@ -197,10 +197,10 @@
             text-decoration: underline;
         }
 
-        /* Media Queries */
+        /* メディアクエリ */
         @media (max-width: 600px) {
             body {
-                padding-top: 100px; /* Adjust for smaller header on mobile */
+                padding-top: 100px; /* モバイルの小さいヘッダーに合わせて調整 */
             }
 
             h1 {
@@ -208,7 +208,7 @@
             }
 
             .contact-item {
-                flex: 1 1 100%; /* Stack items on small screens */
+                flex: 1 1 100%; /* 小さい画面でアイテムを縦に並べる */
             }
 
             .footer p {
@@ -219,30 +219,10 @@
 </head>
 
 <body class="font-sans">
-    <!-- Header HTML from fixed-header.html integrated directly -->
-    <header class="bg-[#2A6BBF] text-white p-4 sm:p-6 flex flex-wrap justify-between items-center fixed top-0 w-full z-1000 overflow-visible rounded-b-lg shadow-lg">
-      <div class="logo hidden sm:block">
-        <!-- Replace with your actual logo path -->
-        <img src="/Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" class="h-20 sm:h-24 max-w-full block rounded-full border-2 border-white" />
-      </div>
+    <!-- JavaScriptによってheader.htmlのコンテンツが読み込まれるプレースホルダーdiv -->
+    <div id="header-placeholder"></div>
 
-      <nav class="flex-grow flex justify-end items-center">
-        <ul id="nav-menu" class="list-none flex space-x-4 sm:space-x-6 m-0 p-0">
-          <li><a href="./index.html" data-key="navHome" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Home</a></li>
-          <li><a href="./index.html#services" data-key="navServices" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Services</a></li>
-          <li><a href="./about.html" data-key="navAbout" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">About</a></li>
-          <li><a href="./contact.html" data-key="navContact" class="text-white no-underline font-bold text-sm sm:text-base transition-colors duration-200 hover:text-gray-200 whitespace-nowrap rounded-md px-3 py-2">Contact</a></li>
-        </ul>
-      </nav>
-
-      <div class="language-switch ml-4 sm:ml-6 flex items-center gap-1 sm:gap-2 z-1100 flex-shrink-0" aria-live="polite">
-        <button id="enBtn" type="button" class="bg-transparent border-none text-white cursor-pointer font-semibold text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-10 whitespace-nowrap min-w-max flex-shrink-0">English</button>
-        <span class="text-white text-xs sm:text-sm flex-shrink-0">|</span>
-        <button id="jpBtn" type="button" class="bg-transparent border-none text-white cursor-pointer font-semibold text-xs sm:text-sm px-2 py-1 sm:px-3 sm:py-2 rounded-md transition-colors duration-200 hover:bg-white hover:bg-opacity-10 whitespace-nowrap min-w-max flex-shrink-0">日本語</button>
-      </div>
-    </header>
-
-    <div class="container mx-auto px-5 py-8 sm:py-10 lg:py-12 mt-32"> <!-- Added responsive padding and margin-top for fixed header -->
+    <div class="container mx-auto px-5 py-8 sm:py-10 lg:py-12 mt-32"> <!-- 固定ヘッダーのためのレスポンシブなパディングと上マージンを追加 -->
         <h1 class="text-[#2A6BBF] mb-8 text-center text-3xl sm:text-4xl font-bold">Contact Us</h1>
 
         <div class="contact-info flex flex-wrap justify-center gap-5 mb-10">
@@ -300,9 +280,29 @@
     </footer>
 
     <script>
-        // All JavaScript from script.js integrated here
+        // ここにすべてのJavaScriptを統合
 
-        // Translation data for the navigation menu
+        /**
+         * 外部HTMLコンテンツを、指定されたDOM要素に読み込みます。
+         * @param {string} elementId - コンテンツがロードされるHTML要素のID。
+         * @param {string} filePath - 外部HTMLファイルへのパス。
+         */
+        async function loadHTML(elementId, filePath) {
+            try {
+                const response = await fetch(filePath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+                // ヘッダーがロードされた後、ボタンがDOMに存在するため、言語切り替えを初期化します。
+                initializeLanguageSwitch();
+            } catch (error) {
+                console.error("HTMLコンテンツをロードできませんでした:", error);
+            }
+        }
+
+        // ナビゲーションメニューの翻訳データ
         const translations = {
             en: {
                 navHome: "Home",
@@ -319,11 +319,11 @@
         };
 
         /**
-         * Updates the language of navigation items and language switch buttons.
-         * @param {string} lang - The language code ('en' or 'jp').
+         * ナビゲーションアイテムと言語切り替えボタンの言語を更新します。
+         * @param {string} lang - 言語コード（'en'または'jp'）。
          */
         function updateLanguage(lang) {
-            // Update navigation menu items based on data-key attribute
+            // data-key属性に基づいてナビゲーションメニューアイテムを更新
             document.querySelectorAll('#nav-menu [data-key]').forEach(item => {
                 const key = item.getAttribute('data-key');
                 if (translations[lang] && translations[lang][key]) {
@@ -331,7 +331,7 @@
                 }
             });
 
-            // Update language switch button styles
+            // 言語切り替えボタンのスタイルを更新
             const enBtn = document.getElementById("enBtn");
             const jpBtn = document.getElementById("jpBtn");
 
@@ -344,34 +344,35 @@
                 jpBtn.setAttribute('aria-pressed', lang === 'jp');
             }
 
-            // Save the selected language to local storage
+            // 選択された言語をローカルストレージに保存
             localStorage.setItem('selectedLanguage', lang);
         }
 
         /**
-         * Initializes the language switch functionality.
-         * This function should be called AFTER the header is loaded into the DOM.
+         * 言語切り替え機能を初期化します。
+         * この関数は、ヘッダーがDOMにロードされた後に呼び出す必要があります。
          */
         function initializeLanguageSwitch() {
             const enBtn = document.getElementById("enBtn");
             const jpBtn = document.getElementById("jpBtn");
 
-            if (enBtn && jpBtn) { // Ensure buttons exist before adding event listeners
+            if (enBtn && jpBtn) { // イベントリスナーを追加する前にボタンが存在することを確認
                 const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-                updateLanguage(savedLang); // Apply saved language or default to English
+                updateLanguage(savedLang); // 保存された言語を適用するか、デフォルトで英語にする
 
-                // Add event listeners for language buttons
+                // 言語ボタンのイベントリスナーを追加
                 enBtn.addEventListener("click", () => updateLanguage('en'));
                 jpBtn.addEventListener("click", () => updateLanguage('jp'));
             } else {
-                console.warn("Language switch buttons not found. Ensure header is loaded.");
+                console.warn("言語切り替えボタンが見つかりません。ヘッダーがロードされていることを確認してください。");
             }
         }
 
-        // Event listener to initialize language switch when the DOM is fully loaded.
-        // The header is now directly in the HTML, so no dynamic loading is needed.
+        // DOMが完全にロードされたときにヘッダーをロードするイベントリスナー。
         document.addEventListener('DOMContentLoaded', function() {
-            initializeLanguageSwitch();
+            // 'header-placeholder' divに固定ヘッダーをロードします。
+            // 'header.html'が同じディレクトリにあることを確認するか、正しいパスを指定してください。
+            loadHTML('header-placeholder', 'header.html');
         });
     </script>
 </body>
