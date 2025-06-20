@@ -39,6 +39,22 @@
             padding-top: 130px; /* ヘッダーの実際の高さに基づいて調整してください */
         }
 
+        /* Header Styles - FIXED に修正 */
+        header {
+            background: #2A6BBF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed; /* ここを fixed に変更しました */
+            top: 0; /* 画面上部に固定 */
+            width: 100%; /* 幅を100%に設定 */
+            z-index: 1000;
+            overflow: visible;
+        }
+
         /* メインコンテンツのコンテナ */
         .container {
             max-width: 1100px;
