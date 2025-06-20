@@ -153,9 +153,9 @@
     </nav>
 
     <div class="language-switch" aria-live="polite">
-      <button id="enBtn">English</button>
+      <button id="enBtn" type="button">English</button>
       <span>|</span>
-      <button id="jpBtn">日本語</button>
+      <button id="jpBtn" type="button">日本語</button>
     </div>
   </header>
 
@@ -176,40 +176,33 @@
     };
 
     function updateLanguage(lang) {
-      // Update nav text
-      const navItems = document.querySelectorAll('#nav-menu [data-key]');
-      navItems.forEach(item => {
+      // Update nav menu text
+      document.querySelectorAll('#nav-menu [data-key]').forEach(item => {
         const key = item.getAttribute('data-key');
         item.textContent = translations[lang][key];
       });
 
-      // Update button states
+      // Update button active state
       const enBtn = document.getElementById("enBtn");
       const jpBtn = document.getElementById("jpBtn");
 
-      if (lang === 'en') {
-        enBtn.classList.add("active");
-        enBtn.setAttribute("aria-pressed", "true");
-        jpBtn.classList.remove("active");
-        jpBtn.setAttribute("aria-pressed", "false");
-      } else {
-        jpBtn.classList.add("active");
-        jpBtn.setAttribute("aria-pressed", "true");
-        enBtn.classList.remove("active");
-        enBtn.setAttribute("aria-pressed", "false");
-      }
+      enBtn.classList.toggle('active', lang === 'en');
+      enBtn.setAttribute('aria-pressed', lang === 'en');
+
+      jpBtn.classList.toggle('active', lang === 'jp');
+      jpBtn.setAttribute('aria-pressed', lang === 'jp');
 
       // Save selection
       localStorage.setItem('selectedLanguage', lang);
     }
 
-    // Load saved language on page load
-    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-    updateLanguage(savedLang);
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+      updateLanguage(savedLang);
 
-    // Event listeners
-    document.getElementById("enBtn").addEventListener("click", () => updateLanguage('en'));
-    document.getElementById("jpBtn").addEventListener("click", () => updateLanguage('jp'));
+      document.getElementById("enBtn").addEventListener("click", () => updateLanguage('en'));
+      document.getElementById("jpBtn").addEventListener("click", () => updateLanguage('jp'));
+    });
   </script>
 </body>
 </html>
