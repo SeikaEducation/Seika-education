@@ -1,365 +1,291 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Header</title>
-    <style>
-        /* Global Box Sizing for consistent layout */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+<style>
+  /* Global Box Sizing for consistent layout */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-        /* Define CSS variable for header height (useful for mobile menu positioning) */
-        :root {
-            /* Adjust these values based on your actual header height and logo size */
-            --header-height-desktop: 180px; /* Example: 150px (logo) + 30px (padding top/bottom) */
-            --header-height-mobile: 80px;  /* Example: Based on compact mobile design */
-        }
+  /* Header Styles */
+  header {
+    background: #2A6BBF;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping elements in header, handle with media queries */
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* For mobile menu positioning */
+    z-index: 1000; /* Ensure header is on top of other content */
+  }
 
-        /* Header Styles */
-        header {
-            background: #2A6BBF;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            flex-wrap: nowrap; /* Prevent elements in header from wrapping onto a new line */
-            justify-content: space-between;
-            align-items: center;
-            position: relative; /* Essential for positioning the mobile menu */
-            z-index: 1000; /* Ensures header is above other content */
-            height: var(--header-height-desktop); /* Set fixed height for desktop */
-        }
+  header .logo img {
+    height: 150px;
+    max-width: 100%;
+    display: block; /* Ensures no extra space below image */
+  }
 
-        header .logo img {
-            height: 150px; /* Fixed height for desktop logo */
-            max-width: 100%; /* Allows image to shrink within its container */
-            display: block; /* Removes any extra space below the image */
-        }
+  nav {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Allows nav to take available space on desktop */
+    justify-content: flex-end; /* Pushes nav items to the right */
+  }
 
-        nav {
-            display: flex;
-            align-items: center;
-            flex-grow: 1; /* Allows nav to take available space on desktop */
-            justify-content: flex-end; /* Pushes nav items to the right on desktop */
-        }
+  nav ul {
+    list-style: none;
+    display: flex; /* Flex display for desktop nav */
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    max-height: 300px; /* Sensible max-height for desktop */
+    opacity: 1;
+  }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
+  nav ul li {
+    margin-left: 30px;
+  }
 
-            /* Desktop-specific properties (defaults for larger screens) */
-            display: flex;          /* Ensure it's a flex container on desktop */
-            flex-direction: row;    /* Arrange items horizontally on desktop */
-            position: static;       /* Revert to normal document flow on desktop */
-            max-height: 300px;      /* Allow full height for menu items on desktop */
-            opacity: 1;             /* Ensure visibility on desktop */
-            overflow: visible;      /* Prevent hiding of content on desktop */
-            background: transparent; /* Ensure no background from mobile menu */
-            border-top: none;       /* Remove mobile border */
-            box-shadow: none;       /* Remove mobile shadow */
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    transition: color 0.2s;
+    white-space: nowrap; /* Prevent menu items from wrapping */
+  }
 
-            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Still apply transition for mobile toggle */
-        }
+  nav ul li a:hover {
+    color: #e0e0e0;
+  }
 
-        nav ul li {
-            margin-left: 30px;
-            margin-bottom: 0; /* Reset any mobile-specific vertical margin */
-            text-align: left; /* Reset any mobile-specific text alignment */
-        }
+  .language-switch {
+    margin-left: 15px;
+    display: flex; /* Align buttons horizontally */
+    align-items: center;
+    gap: 5px; /* Spacing between buttons */
+  }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 20px;
-            transition: color 0.2s;
-            white-space: nowrap; /* Prevent menu items from wrapping */
-            display: inline-block; /* Ensure it behaves like a regular desktop link */
-            padding: 0; /* Remove any mobile-specific padding */
-        }
+  .language-switch button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px 8px; /* Add padding for easier clicking */
+    border-radius: 4px; /* Slight roundness */
+    transition: background-color 0.2s;
+    white-space: nowrap; /* Prevents text from wrapping */
+    min-width: fit-content; /* Ensures button is wide enough for text */
+    flex-shrink: 0; /* Prevents buttons from shrinking if space is tight */
+  }
 
-        nav ul li a:hover {
-            color: #e0e0e0;
-        }
+  .language-switch button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+  }
 
-        .language-switch {
-            margin-left: 15px;
-            display: flex; /* Align buttons horizontally */
-            align-items: center;
-            gap: 5px; /* Spacing between buttons */
-        }
+  .language-switch button.active {
+    text-decoration: underline;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .language-switch span { /* For the '|' separator */
+      color: white;
+  }
 
-        .language-switch button {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 16px;
-            padding: 5px 8px; /* Add padding for easier clicking */
-            border-radius: 4px; /* Slight roundness */
-            transition: background-color 0.2s;
-            white-space: nowrap; /* Prevents text from wrapping */
-            min-width: fit-content; /* Ensures button is wide enough for text */
-            flex-shrink: 0; /* Prevents buttons from shrinking if space is tight */
-        }
+  .menu-toggle {
+    display: none; /* Hidden by default on desktop */
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px; /* Easier to tap */
+  }
 
-        .language-switch button:hover {
-              background-color: rgba(255, 255, 255, 0.1);
-        }
+  .menu-toggle span {
+    background: white;
+    height: 3px;
+    width: 25px;
+    margin: 4px 0;
+    transition: 0.4s;
+  }
 
-        .language-switch button.active {
-            text-decoration: underline;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-        
-        .language-switch span { /* For the '|' separator */
-              color: white;
-        }
+  /* Mobile Menu Logo (Removed from mobile view) */
+  .mobile-menu-logo-container {
+    display: none; /* Always hidden now as per request */
+  }
 
-        .menu-toggle {
-            display: none; /* Hidden by default on desktop */
-            flex-direction: column; /* Stack hamburger lines vertically */
-            cursor: pointer;
-            padding: 10px; /* Easier to tap */
-        }
+  /* --- Media Queries for Mobile Responsiveness (Header only) --- */
+  @media (max-width: 768px) {
+    header {
+      padding: 10px 20px;
+      flex-wrap: nowrap;
+      justify-content: space-between; 
+    }
 
-        .menu-toggle span {
-            background: white;
-            height: 3px;
-            width: 25px;
-            margin: 4px 0;
-            transition: 0.4s;
-        }
+    /* モバイルで元のヘッダーロゴを非表示にする */
+    header .logo {
+      display: none;
+    }
 
-        /* --- Media Queries for Mobile Responsiveness (Header only) --- */
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 20px;
-                height: var(--header-height-mobile); /* Set mobile header height */
-                /* flex-wrap: nowrap; - inherited from global header styles */
-                justify-content: space-between; /* Already defined, but can be explicit for clarity */
-            }
+    /* ハンバーガーメニューを左端に移動し、ロゴの代わりにする */
+    .menu-toggle {
+      display: flex; /* ハンバーガーメニューを表示 */
+      order: 1; /* flexアイテムの並び順を一番最初に設定 */
+      margin-right: auto; /* 右側の要素（言語切り替え）を右に押し出す */
+      margin-left: 0; /* 左寄せを確実にする */
+    }
 
-            /* Hide the main logo on mobile */
-            header .logo {
-                display: none;
-            }
+    /* 言語切り替えボタンを右端に寄せる */
+    .language-switch {
+      order: 2; /* ハンバーガーの次に配置 */
+      margin-left: 0; 
+      margin-right: 0; /* 右端に配置 */
+      padding-right: 5px; 
+      gap: 3px; 
+    }
+    
+    nav {
+      order: 3; /* ナビゲーションメニューは一番最後に */
+      flex-basis: 100%; /* 全幅を使用 */
+      justify-content: center; /* メニュー項目を中央寄せ */
+    }
 
-            /* Hamburger menu becomes the primary left element */
-            .menu-toggle {
-                display: flex; /* Show hamburger menu on mobile */
-                order: 1; /* Move to the beginning of flex items */
-                margin-right: auto; /* Push other elements to the right */
-                margin-left: 0; /* Ensure it's flush left */
-            }
+    nav ul {
+      display: flex; /* メニューが 'show' クラスで表示される際にflexboxとして機能 */
+      flex-direction: column; /* これがメニュー項目を縦に並べる重要なプロパティ */
+      position: absolute;
+      top: 80px; /* ヘッダーの高さに合わせて調整 */
+      left: 0;
+      width: 100%;
+      background: #2A6BBF;
+      padding: 15px 0;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
 
-            /* Language switch buttons moved to the right, next to hamburger */
-            .language-switch {
-                order: 2; /* Position after hamburger */
-                margin-left: 0; 
-                margin-right: 0; /* Align to the right edge */
-                padding-right: 5px; 
-                gap: 3px; 
-            }
-            
-            nav {
-                order: 3; /* Navigation menu comes last */
-                flex-basis: 100%; /* Take full width for the dropdown effect */
-                justify-content: center; /* Center menu items when open (if desired) */
-            }
+    nav ul.show {
+      max-height: 300px; /* アニメーションで開くための最大高さ */
+      opacity: 1; /* 透明度を上げて表示 */
+    }
 
-            nav ul {
-                flex-direction: column; /* Stack menu items vertically */
-                position: absolute; /* Take out of normal flow for overlay effect */
-                top: var(--header-height-mobile); /* Position right below the mobile header */
-                left: 0;
-                width: 100%;
-                background: #2A6BBF; /* Mobile menu background color */
-                padding: 15px 0;
-                max-height: 0; /* Initial hidden state for animation */
-                opacity: 0; /* Initial hidden state for animation */
-                overflow: hidden; /* Hide content that exceeds max-height during transition */
-                border-top: 1px solid rgba(255, 255, 255, 0.2);
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            }
+    nav ul li {
+      margin: 15px 0; /* 縦方向の間隔 */
+      text-align: center;
+    }
 
-            nav ul.show {
-                max-height: 300px; /* Expanded height for animation (adjust as needed) */
-                opacity: 1; /* Fully visible when expanded */
-            }
+    nav ul li a {
+      font-size: 18px;
+      padding: 10px 0;
+      display: block; /* リンク全体をタップ可能にする */
+    }
+  }
+</style>
 
-            nav ul li {
-                margin: 15px 0; /* Vertical spacing between menu items */
-                text-align: center; /* Center align menu items */
-            }
+<header>
+  <div class="logo">
+    <img src="/Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" />
+  </div>
 
-            nav ul li a {
-                font-size: 18px; /* Adjust font size for mobile */
-                padding: 10px 0; /* Add padding to make the entire link area tappable */
-                display: block; /* Make the entire <li> area act as a clickable link */
-            }
-        }
-    </style>
-</head>
-<body>
+  <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-    <header>
-        <div class="logo">
-            <img src="https://via.placeholder.com/150x100?text=Seika+Logo" alt="Seika Education Consultancy Logo" />
-        </div>
+  <div class="language-switch" aria-live="polite">
+    <button id="enBtn" class="active" aria-pressed="true">English</button>
+    <span>|</span>
+    <button id="jpBtn" aria-pressed="false">日本語</button>
+  </div>
 
-        <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+  <nav>
+    <ul id="nav-menu">
+      <li><a href="/Seika-education/index.html" data-key="navHome">Home</a></li>
+      <li><a href="/Seika-education/index.html#services" data-key="navServices">Services</a></li>
+      <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
+      <li><a href="/Seika-education/index.html#contact" data-key="navContact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-        <div class="language-switch" aria-live="polite">
-            <button id="enBtn" class="active" aria-pressed="true">English</button>
-            <span>|</span>
-            <button id="jpBtn" aria-pressed="false">日本語</button>
-        </div>
+<script>
+  // Language Switcher の翻訳データ (header.html内にも必要)
+  // ナビゲーション項目のみここで定義
+  const headerTranslations = {
+    en: {
+      navHome: "Home",
+      navServices: "Services",
+      navAbout: "About",
+      navContact: "Contact",
+    },
+    jp: {
+      navHome: "ホーム",
+      navServices: "サービス",
+      navAbout: "会社概要",
+      navContact: "お問い合わせ",
+    },
+  };
 
-        <nav>
-            <ul id="nav-menu">
-                <li><a href="/Seika-education/index.html" data-key="navHome">Home</a></li>
-                <li><a href="/Seika-education/index.html#services" data-key="navServices">Services</a></li>
-                <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
-                <li><a href="/Seika-education/index.html#contact" data-key="navContact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  function switchHeaderLanguage(lang) {
+    const currentLangData = headerTranslations[lang];
 
-    <main style="padding: 20px; min-height: 80vh;">
-        <h1>Welcome to Seika Education Consultancy</h1>
-        <p>This is example content to demonstrate the header responsiveness.</p>
-        <section id="services" style="height: 400px; background-color: #f0f0f0; margin-top: 50px; padding: 20px;">
-            <h2>Our Services</h2>
-            <p>Details about our educational services.</p>
-        </section>
-        <section id="about" style="height: 300px; margin-top: 50px; padding: 20px;">
-            <h2>About Us</h2>
-            <p>Information about Seika Education.</p>
-        </section>
-        <section id="contact" style="height: 200px; background-color: #f0f0f0; margin-top: 50px; padding: 20px;">
-            <h2>Contact Us</h2>
-            <p>Get in touch with us.</p>
-        </section>
-    </main>
-    <footer style="background-color: #333; color: white; text-align: center; padding: 20px;">
-        <p>&copy; 2025 Seika Education Consultancy</p>
-    </footer>
+    // data-keyを持つナビゲーション要素を更新
+    document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
+      const key = element.getAttribute('data-key');
+      if (currentLangData[key]) {
+        element.textContent = currentLangData[key];
+      }
+    });
 
-    <script>
-        // Language Switcher の翻訳データ
-        const headerTranslations = {
-            en: {
-                navHome: "Home",
-                navServices: "Services",
-                navAbout: "About",
-                navContact: "Contact",
-            },
-            jp: {
-                navHome: "ホーム",
-                navServices: "サービス",
-                navAbout: "会社概要",
-                navContact: "お問い合わせ",
-            },
-        };
+    // アクティブクラスとaria-pressed属性を更新
+    const enBtn = document.getElementById("enBtn");
+    const jpBtn = document.getElementById("jpBtn");
 
-        function switchHeaderLanguage(lang) {
-            const currentLangData = headerTranslations[lang];
+    if (enBtn) {
+      enBtn.classList.toggle("active", lang === "en");
+      enBtn.setAttribute("aria-pressed", lang === "en");
+    }
+    if (jpBtn) {
+      jpBtn.classList.toggle("active", lang === "jp");
+      jpBtn.setAttribute("aria-pressed", lang === "jp");
+    }
 
-            // data-keyを持つナビゲーション要素を更新
-            document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
-                const key = element.getAttribute('data-key');
-                if (currentLangData[key]) {
-                    element.textContent = currentLangData[key];
-                }
-            });
+    // localStorageに言語設定を保存
+    localStorage.setItem('selectedLanguage', lang);
+  }
 
-            // アクティブクラスとaria-pressed属性を更新
-            const enBtn = document.getElementById("enBtn");
-            const jpBtn = document.getElementById("jpBtn");
+  // DOMContentLoaded は各ページで処理するため、ここでは直接呼び出し
+  // header.html が読み込まれた時点で言語を設定
+  const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+  switchHeaderLanguage(savedLang);
 
-            if (enBtn) {
-                enBtn.classList.toggle("active", lang === "en");
-                enBtn.setAttribute("aria-pressed", lang === "en");
-            }
-            if (jpBtn) {
-                jpBtn.classList.toggle("active", lang === "jp");
-                jpBtn.setAttribute("aria-pressed", lang === "jp");
-            }
 
-            // localStorageに言語設定を保存
-            localStorage.setItem('selectedLanguage', lang);
-        }
+  // ハンバーガーメニューのトグル
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.getElementById("nav-menu");
 
-        // --- All DOM-dependent JavaScript wrapped in DOMContentLoaded ---
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialize language settings on page load
-            const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-            switchHeaderLanguage(savedLang);
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", () => {
+      const isExpanded = navMenu.classList.toggle("show");
+      menuToggle.setAttribute("aria-expanded", isExpanded);
+    });
 
-            // ハンバーガーメニューのトグル
-            const menuToggle = document.querySelector(".menu-toggle");
-            const navMenu = document.getElementById("nav-menu");
+    // メニューリンククリック時にメニューを閉じる
+    navMenu.querySelectorAll('a[href]').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove("show");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
 
-            // 言語切り替えボタンのイベントリスナー
-            const enBtn = document.getElementById("enBtn");
-            const jpBtn = document.getElementById("jpBtn");
+  // 言語切り替えボタンのイベントリスナー
+  const enBtn = document.getElementById("enBtn");
+  const jpBtn = document.getElementById("jpBtn");
 
-            if (enBtn && jpBtn) {
-                enBtn.addEventListener("click", () => switchHeaderLanguage("en"));
-                jpBtn.addEventListener("click", () => switchHeaderLanguage("jp"));
-            }
-
-            if (menuToggle && navMenu) { // Ensure elements exist before adding listeners
-                // Initial state check for menuToggle visibility
-                if (window.innerWidth <= 768) {
-                    menuToggle.style.display = 'flex';
-                } else {
-                    menuToggle.style.display = 'none';
-                }
-
-                menuToggle.addEventListener("click", () => {
-                    const isExpanded = navMenu.classList.toggle("show");
-                    menuToggle.setAttribute("aria-expanded", isExpanded);
-                });
-
-                // Close menu on link click (only for mobile view)
-                navMenu.querySelectorAll('a[href]').forEach(link => {
-                    link.addEventListener('click', () => {
-                        // Only close if it's currently in mobile view and expanded
-                        if (window.innerWidth <= 768 && navMenu.classList.contains("show")) {
-                            navMenu.classList.remove("show");
-                            menuToggle.setAttribute("aria-expanded", "false");
-                        }
-                    });
-                });
-
-                // Handle resize events to adjust menu display for responsiveness
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth > 768) {
-                        // Desktop view: ensure menu is visible and hamburger is hidden
-                        navMenu.classList.remove("show"); // Remove mobile 'show' class
-                        // Explicitly set desktop display properties (CSS rules should handle this but JS reinforces)
-                        navMenu.style.cssText = ''; // Clear inline styles that might interfere
-                        menuToggle.style.display = 'none';
-                        menuToggle.setAttribute("aria-expanded", "false"); // Reset aria state
-                    } else {
-                        // Mobile view: ensure hamburger is visible, menu handled by CSS/JS 'show' class
-                        menuToggle.style.display = 'flex';
-                        // Important: When resizing from desktop to mobile, ensure mobile menu is closed initially
-                        navMenu.classList.remove("show");
-                        menuToggle.setAttribute("aria-expanded", "false");
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+  if (enBtn && jpBtn) {
+    enBtn.addEventListener("click", () => switchHeaderLanguage("en"));
+    jpBtn.addEventListener("click", () => switchHeaderLanguage("jp"));
+  }
+</script>
