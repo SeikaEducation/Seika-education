@@ -23,10 +23,11 @@
       align-items: center;
       position: relative;
       z-index: 1000;
+      overflow: visible; /* Ensure no clipping */
     }
 
     header .logo img {
-      height: 150px;
+      height: 100px;
       max-width: 100%;
       display: block;
     }
@@ -43,20 +44,17 @@
       display: flex;
       margin: 0;
       padding: 0;
-      max-height: 300px;
-      opacity: 1;
-      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
     nav ul li {
-      margin-left: 30px;
+      margin-left: 20px;
     }
 
     nav ul li a {
       color: white;
       text-decoration: none;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 16px;
       transition: color 0.2s;
       white-space: nowrap;
     }
@@ -71,6 +69,7 @@
       align-items: center;
       gap: 5px;
       z-index: 1100;
+      flex-shrink: 0; /* Prevent shrinking */
     }
 
     .language-switch button {
@@ -79,7 +78,7 @@
       color: white;
       cursor: pointer;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 14px;
       padding: 5px 8px;
       border-radius: 4px;
       transition: background-color 0.2s;
@@ -99,96 +98,41 @@
 
     .language-switch span {
       color: white;
+      flex-shrink: 0;
     }
 
-    .menu-toggle {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      padding: 10px;
-      z-index: 1200;
-      touch-action: manipulation;
-      user-select: none;
-    }
-
-    .menu-toggle span {
-      background: white;
-      height: 3px;
-      width: 25px;
-      margin: 4px 0;
-      transition: transform 0.4s, opacity 0.4s;
-    }
-
-    /* Mobile Menu Logo (Removed) */
-    .mobile-menu-logo-container {
-      display: none;
-    }
-
-    /* Media Queries for Mobile */
+    /* Mobile Styles */
     @media (max-width: 600px) {
       header {
-        padding: 10px 20px;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        padding: 10px 15px; /* Reduced padding for space */
+        flex-wrap: wrap; /* Allow wrapping if needed */
+        justify-content: flex-end; /* Align content to right */
       }
 
       header .logo {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: flex;
-        order: 1;
-        margin-right: auto;
-        margin-left: 0;
-      }
-
-      .language-switch {
-        order: 2;
-        margin-left: 10px;
-        margin-right: 0;
-        padding-right: 5px;
-        gap: 3px;
+        display: none; /* Hide logo on mobile */
       }
 
       nav {
-        order: 3;
-        flex-basis: 100%;
-        justify-content: center;
-      }
-
-      nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100%;
-        background: #2A6BBF;
-        padding: 15px 0;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-      }
-
-      nav ul.show {
-        display: flex;
-        max-height: 300px;
-        opacity: 1;
+        flex-grow: 0; /* Prevent nav from taking too much space */
       }
 
       nav ul li {
-        margin: 15px 0;
-        text-align: center;
+        margin-left: 10px; /* Tighter spacing */
       }
 
       nav ul li a {
-        font-size: 18px;
-        padding: 10px 0;
-        display: block;
+        font-size: 12px; /* Smaller font */
+      }
+
+      .language-switch {
+        margin-left: 10px; /* Gap from navigation */
+        gap: 3px; /* Tighter gap between buttons */
+      }
+
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 6px;
       }
     }
   </style>
@@ -198,19 +142,7 @@
     <div class="logo">
       <img src="./Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" />
     </div>
-
-    <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
     
-    <div class="language-switch" aria-live="polite">
-      <button id="enBtn" class="active" aria-pressed="true">English</button>
-      <span>|</leer de nuevo</span>
-      <button id="jpBtn" aria-pressed="false">日本語</button>
-    </div>
-
     <nav>
       <ul id="nav-menu">
         <li><a href="./index.html" data-key="navHome">Home</a></li>
@@ -219,6 +151,12 @@
         <li><a href="./index.html#contact" data-key="navContact">Contact</a></li>
       </ul>
     </nav>
+    
+    <div class="language-switch" aria-live="polite">
+      <button id="enBtn" class="active" aria-pressed="true">English</button>
+      <span>|</span>
+      <button id="jpBtn" aria-pressed="false">日本語</button>
+    </div>
   </header>
 
   <script>
@@ -275,52 +213,6 @@
       console.error("Initial language load error:", error.message, error.stack);
     }
 
-    // Hamburger Menu Toggle
-    document.addEventListener('DOMContentLoaded', () => {
-      try {
-        console.log("DOM loaded at", new Date().toISOString());
-        const menuToggle = document.querySelector(".menu-toggle");
-        const navMenu = document.getElementById("nav-menu");
-
-        if (!menuToggle || !navMenu) {
-          console.error("Menu toggle or nav menu not found", { menuToggle: !!menuToggle, navMenu: !!navMenu });
-          return;
-        }
-
-        const toggleMenu = (eventType) => {
-          try {
-            const isExpanded = navMenu.classList.toggle("show");
-            menuToggle.setAttribute("aria-expanded", isExpanded);
-            console.log(`Menu toggled, show class: ${isExpanded}, Event: ${eventType}`);
-          } catch (error) {
-            console.error("Menu toggle error:", error.message, error.stack);
-          }
-        };
-
-        menuToggle.addEventListener("click", () => toggleMenu("click"), { passive: true });
-        menuToggle.addEventListener("touchstart", (e) => {
-          e.preventDefault();
-          toggleMenu("touchstart");
-        }, { passive: false });
-
-        navMenu.querySelectorAll('a[href]').forEach(link => {
-          link.addEventListener('click', () => {
-            try {
-              navMenu.classList.remove("show");
-              menuToggle.setAttribute("aria-expanded", "false");
-              console.log("Menu closed via link click");
-            } catch (error) {
-              console.error("Menu close error:", error.message, error.stack);
-            }
-          }, { passive: true });
-        });
-
-        console.log("Hamburger menu initialized successfully");
-      } catch (error) {
-        console.error("DOMContentLoaded error:", error.message, error.stack);
-      }
-    });
-
     // Language switcher buttons
     try {
       const enBtn = document.getElementById("enBtn");
@@ -337,7 +229,7 @@
           e.preventDefault();
           switchLang("jp")();
         }, { passive: false });
-        console.log("Language switcher buttons initialized");
+        console.log("Language switcher buttons initialized at", new Date().toISOString());
       } else {
         console.error("Language buttons not found", { enBtn: !!enBtn, jpBtn: !!jpBtn });
       }
