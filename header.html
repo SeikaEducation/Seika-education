@@ -1,291 +1,300 @@
-<style>
-  /* Global Box Sizing for consistent layout */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seika Education Consultancy</title>
+  <style>
+    /* Global Box Sizing for consistent layout */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
 
-  /* Header Styles */
-  header {
-    background: #2A6BBF;
-    color: white;
-    padding: 15px 30px;
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping elements in header, handle with media queries */
-    justify-content: space-between;
-    align-items: center;
-    position: relative; /* For mobile menu positioning */
-    z-index: 1000; /* Ensure header is on top of other content */
-  }
-
-  header .logo img {
-    height: 150px;
-    max-width: 100%;
-    display: block; /* Ensures no extra space below image */
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; /* Allows nav to take available space on desktop */
-    justify-content: flex-end; /* Pushes nav items to the right */
-  }
-
-  nav ul {
-    list-style: none;
-    display: flex; /* Flex display for desktop nav */
-    margin: 0;
-    padding: 0;
-    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
-    max-height: 300px; /* Sensible max-height for desktop */
-    opacity: 1;
-  }
-
-  nav ul li {
-    margin-left: 30px;
-  }
-
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 20px;
-    transition: color 0.2s;
-    white-space: nowrap; /* Prevent menu items from wrapping */
-  }
-
-  nav ul li a:hover {
-    color: #e0e0e0;
-  }
-
-  .language-switch {
-    margin-left: 15px;
-    display: flex; /* Align buttons horizontally */
-    align-items: center;
-    gap: 5px; /* Spacing between buttons */
-  }
-
-  .language-switch button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 5px 8px; /* Add padding for easier clicking */
-    border-radius: 4px; /* Slight roundness */
-    transition: background-color 0.2s;
-    white-space: nowrap; /* Prevents text from wrapping */
-    min-width: fit-content; /* Ensures button is wide enough for text */
-    flex-shrink: 0; /* Prevents buttons from shrinking if space is tight */
-  }
-
-  .language-switch button:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .language-switch button.active {
-    text-decoration: underline;
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .language-switch span { /* For the '|' separator */
-      color: white;
-  }
-
-  .menu-toggle {
-    display: none; /* Hidden by default on desktop */
-    flex-direction: column;
-    cursor: pointer;
-    padding: 10px; /* Easier to tap */
-  }
-
-  .menu-toggle span {
-    background: white;
-    height: 3px;
-    width: 25px;
-    margin: 4px 0;
-    transition: 0.4s;
-  }
-
-  /* Mobile Menu Logo (Removed from mobile view) */
-  .mobile-menu-logo-container {
-    display: none; /* Always hidden now as per request */
-  }
-
-  /* --- Media Queries for Mobile Responsiveness (Header only) --- */
-  @media (max-width: 768px) {
+    /* Header Styles */
     header {
-      padding: 10px 20px;
+      background: #2A6BBF;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
       flex-wrap: nowrap;
-      justify-content: space-between; 
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1000;
     }
 
-    /* モバイルで元のヘッダーロゴを非表示にする */
-    header .logo {
-      display: none;
+    header .logo img {
+      height: 150px;
+      max-width: 100%;
+      display: block;
     }
 
-    /* ハンバーガーメニューを左端に移動し、ロゴの代わりにする */
-    .menu-toggle {
-      display: flex; /* ハンバーガーメニューを表示 */
-      order: 1; /* flexアイテムの並び順を一番最初に設定 */
-      margin-right: auto; /* 右側の要素（言語切り替え）を右に押し出す */
-      margin-left: 0; /* 左寄せを確実にする */
-    }
-
-    /* 言語切り替えボタンを右端に寄せる */
-    .language-switch {
-      order: 2; /* ハンバーガーの次に配置 */
-      margin-left: 0; 
-      margin-right: 0; /* 右端に配置 */
-      padding-right: 5px; 
-      gap: 3px; 
-    }
-    
     nav {
-      order: 3; /* ナビゲーションメニューは一番最後に */
-      flex-basis: 100%; /* 全幅を使用 */
-      justify-content: center; /* メニュー項目を中央寄せ */
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: flex-end;
     }
 
     nav ul {
-      display: flex; /* メニューが 'show' クラスで表示される際にflexboxとして機能 */
-      flex-direction: column; /* これがメニュー項目を縦に並べる重要なプロパティ */
-      position: absolute;
-      top: 80px; /* ヘッダーの高さに合わせて調整 */
-      left: 0;
-      width: 100%;
-      background: #2A6BBF;
-      padding: 15px 0;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      border-top: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    nav ul.show {
-      max-height: 300px; /* アニメーションで開くための最大高さ */
-      opacity: 1; /* 透明度を上げて表示 */
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      max-height: 300px;
+      opacity: 1;
     }
 
     nav ul li {
-      margin: 15px 0; /* 縦方向の間隔 */
-      text-align: center;
+      margin-left: 30px;
     }
 
     nav ul li a {
-      font-size: 18px;
-      padding: 10px 0;
-      display: block; /* リンク全体をタップ可能にする */
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+      transition: color 0.2s;
+      white-space: nowrap;
     }
-  }
-</style>
 
-<header>
-  <div class="logo">
-    <img src="/Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" />
-  </div>
+    nav ul li a:hover {
+      color: #e0e0e0;
+    }
 
-  <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
- &nbsp;&nbsp
-  <div class="language-switch" aria-live="polite">
-    <button id="enBtn" class="active" aria-pressed="true">English</button>
-    <span>|</span>
-    <button id="jpBtn" aria-pressed="false">日本語</button>
-  </div>
+    .language-switch {
+      margin-left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-  <nav>
-    <ul id="nav-menu">
-      <li><a href="/Seika-education/index.html" data-key="navHome">Home</a></li>
-      <li><a href="/Seika-education/index.html#services" data-key="navServices">Services</a></li>
-      <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
-      <li><a href="/Seika-education/index.html#contact" data-key="navContact">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+    .language-switch button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 5px 8px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+      white-space: nowrap;
+      min-width: fit-content;
+      flex-shrink: 0;
+    }
 
-<script>
-  // Language Switcher の翻訳データ (header.html内にも必要)
-  // ナビゲーション項目のみここで定義
-  const headerTranslations = {
-    en: {
-      navHome: "Home",
-      navServices: "Services",
-      navAbout: "About",
-      navContact: "Contact",
-    },
-    jp: {
-      navHome: "ホーム",
-      navServices: "サービス",
-      navAbout: "会社概要",
-      navContact: "お問い合わせ",
-    },
-  };
+    .language-switch button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
 
-  function switchHeaderLanguage(lang) {
-    const currentLangData = headerTranslations[lang];
+    .language-switch button.active {
+      text-decoration: underline;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
 
-    // data-keyを持つナビゲーション要素を更新
-    document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
-      const key = element.getAttribute('data-key');
-      if (currentLangData[key]) {
-        element.textContent = currentLangData[key];
+    .language-switch span {
+      color: white;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .menu-toggle span {
+      background: white;
+      height: 3px;
+      width: 25px;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    /* Mobile Menu Logo (Removed from mobile view) */
+    .mobile-menu-logo-container {
+      display: none;
+    }
+
+    /* Media Queries for Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 10px 20px;
+        flex-wrap: nowrap;
+        justify-content: space-between;
       }
+
+      header .logo {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+        order: 1;
+        margin-right: auto;
+        margin-left: 0;
+      }
+
+      .language-switch {
+        order: 2;
+        margin-left: 0;
+        margin-right: 0;
+        padding-right: 5px;
+        gap: 3px;
+      }
+
+      nav {
+        order: 3;
+        flex-basis: 100%;
+        justify-content: center;
+      }
+
+      nav ul {
+        display: none; /* Explicitly hide by default */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #2A6BBF;
+        padding: 15px 0;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out, display 0s;
+      }
+
+      nav ul.show {
+        display: flex; /* Show as flex when active */
+        max-height: 300px;
+        opacity: 1;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      nav ul li a {
+        font-size: 18px;
+        padding: 10px 0;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="/Seika-education/Logo-Seika.png" alt="Seika Education Consultancy Logo" />
+    </div>
+
+    <div class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <div class="language-switch" aria-live="polite">
+      <button id="enBtn" class="active" aria-pressed="true">English</button>
+      <span>|</span>
+      <button id="jpBtn" aria-pressed="false">日本語</button>
+    </div>
+
+    <nav>
+      <ul id="nav-menu">
+        <li><a href="/Seika-education/index.html" data-key="navHome">Home</a></li>
+        <li><a href="/Seika-education/index.html#services" data-key="navServices">Services</a></li>
+        <li><a href="/Seika-education/about.html" data-key="navAbout">About</a></li>
+        <li><a href="/Seika-education/index.html#contact" data-key="navContact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <script>
+    // Language Switcher Translations
+    const headerTranslations = {
+      en: {
+        navHome: "Home",
+        navServices: "Services",
+        navAbout: "About",
+        navContact: "Contact",
+      },
+      jp: {
+        navHome: "ホーム",
+        navServices: "サービス",
+        navAbout: "会社概要",
+        navContact: "お問い合わせ",
+      },
+    };
+
+    function switchHeaderLanguage(lang) {
+      const currentLangData = headerTranslations[lang];
+
+      document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (currentLangData[key]) {
+          element.textContent = currentLangData[key];
+        }
+      });
+
+      const enBtn = document.getElementById("enBtn");
+      const jpBtn = document.getElementById("jpBtn");
+
+      if (enBtn) {
+        enBtn.classList.toggle("active", lang === "en");
+        enBtn.setAttribute("aria-pressed", lang === "en");
+      }
+      if (jpBtn) {
+        jpBtn.classList.toggle("active", lang === "jp");
+        jpBtn.setAttribute("aria-pressed", lang === "jp");
+      }
+
+      localStorage.setItem('selectedLanguage', lang);
+    }
+
+    // Apply saved language on load
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    switchHeaderLanguage(savedLang);
+
+    // Hamburger Menu Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navMenu = document.getElementById("nav-menu");
+
+      if (!menuToggle || !navMenu) {
+        console.error("Menu toggle or nav menu not found in DOM");
+        return;
+      }
+
+      menuToggle.addEventListener("click", () => {
+        const isExpanded = navMenu.classList.toggle("show");
+        menuToggle.setAttribute("aria-expanded", isExpanded.toString());
+        console.log("Menu toggled, show class:", isExpanded); // Debugging
+      });
+
+      // Close menu when a link is clicked
+      navMenu.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove("show");
+          menuToggle.setAttribute("aria-expanded", "false");
+          console.log("Menu closed via link click"); // Debugging
+        });
+      });
     });
 
-    // アクティブクラスとaria-pressed属性を更新
+    // Language switcher buttons
     const enBtn = document.getElementById("enBtn");
     const jpBtn = document.getElementById("jpBtn");
 
-    if (enBtn) {
-      enBtn.classList.toggle("active", lang === "en");
-      enBtn.setAttribute("aria-pressed", lang === "en");
+    if (enBtn && jpBtn) {
+      enBtn.addEventListener("click", () => switchHeaderLanguage("en"));
+      jpBtn.addEventListener("click", () => switchHeaderLanguage("jp"));
     }
-    if (jpBtn) {
-      jpBtn.classList.toggle("active", lang === "jp");
-      jpBtn.setAttribute("aria-pressed", lang === "jp");
-    }
-
-    // localStorageに言語設定を保存
-    localStorage.setItem('selectedLanguage', lang);
-  }
-
-  // DOMContentLoaded は各ページで処理するため、ここでは直接呼び出し
-  // header.html が読み込まれた時点で言語を設定
-  const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-  switchHeaderLanguage(savedLang);
-
-
-  // ハンバーガーメニューのトグル
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.getElementById("nav-menu");
-
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      const isExpanded = navMenu.classList.toggle("show");
-      menuToggle.setAttribute("aria-expanded", isExpanded);
-    });
-
-    // メニューリンククリック時にメニューを閉じる
-    navMenu.querySelectorAll('a[href]').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove("show");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
-  // 言語切り替えボタンのイベントリスナー
-  const enBtn = document.getElementById("enBtn");
-  const jpBtn = document.getElementById("jpBtn");
-
-  if (enBtn && jpBtn) {
-    enBtn.addEventListener("click", () => switchHeaderLanguage("en"));
-    jpBtn.addEventListener("click", () => switchHeaderLanguage("jp"));
-  }
-</script>
+  </script>
+</body>
+</html>
