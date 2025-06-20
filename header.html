@@ -23,7 +23,7 @@
       align-items: center;
       position: relative;
       z-index: 1000;
-      overflow: visible; /* Ensure no clipping */
+      overflow: visible;
     }
 
     header .logo img {
@@ -69,7 +69,7 @@
       align-items: center;
       gap: 5px;
       z-index: 1100;
-      flex-shrink: 0; /* Prevent shrinking */
+      flex-shrink: 0;
     }
 
     .language-switch button {
@@ -101,33 +101,32 @@
       flex-shrink: 0;
     }
 
-    /* Mobile Styles */
     @media (max-width: 600px) {
       header {
-        padding: 10px 15px; /* Reduced padding for space */
-        flex-wrap: wrap; /* Allow wrapping if needed */
-        justify-content: flex-end; /* Align content to right */
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
       }
 
       header .logo {
-        display: none; /* Hide logo on mobile */
+        display: none;
       }
 
       nav {
-        flex-grow: 0; /* Prevent nav from taking too much space */
+        flex-grow: 0;
       }
 
       nav ul li {
-        margin-left: 10px; /* Tighter spacing */
+        margin-left: 10px;
       }
 
       nav ul li a {
-        font-size: 12px; /* Smaller font */
+        font-size: 12px;
       }
 
       .language-switch {
-        margin-left: 10px; /* Gap from navigation */
-        gap: 3px; /* Tighter gap between buttons */
+        margin-left: 10px;
+        gap: 3px;
       }
 
       .language-switch button {
@@ -160,82 +159,56 @@
   </header>
 
   <script>
-    console.log("Script started at", new Date().toISOString());
-
-    // Language Switcher Translations
-    const headerTranslations = {
+    const translations = {
       en: {
         navHome: "Home",
         navServices: "Services",
         navAbout: "About",
-        navContact: "Contact",
+        navContact: "Contact"
       },
       jp: {
         navHome: "ホーム",
         navServices: "サービス",
         navAbout: "会社概要",
-        navContact: "お問い合わせ",
-      },
+        navContact: "お問い合わせ"
+      }
     };
 
-    function switchHeaderLanguage(lang) {
-      try {
-        console.log("Switching language to:", lang);
-        const currentLangData = headerTranslations[lang];
-        document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
-          const key = element.getAttribute('data-key');
-          if (currentLangData[key]) {
-            element.textContent = currentLangData[key];
-          }
-        });
+    function updateLanguage(lang) {
+      // update nav text
+      const navItems = document.querySelectorAll('#nav-menu [data-key]');
+      navItems.forEach(item => {
+        const key = item.getAttribute('data-key');
+        item.textContent = translations[lang][key];
+      });
 
-        const enBtn = document.getElementById("enBtn");
-        const jpBtn = document.getElementById("jpBtn");
-        if (enBtn && jpBtn) {
-          enBtn.classList.toggle("active", lang === "en");
-          enBtn.setAttribute("aria-pressed", lang === "en");
-          jpBtn.classList.toggle("active", lang === "jp");
-          jpBtn.setAttribute("aria-pressed", lang === "jp");
-        }
-        localStorage.setItem('selectedLanguage', lang);
-        console.log("Language switch completed:", lang);
-      } catch (error) {
-        console.error("Language switch error:", error.message, error.stack);
-      }
-    }
-
-    // Apply saved language
-    try {
-      const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-      console.log("Applying saved language:", savedLang);
-      switchHeaderLanguage(savedLang);
-    } catch (error) {
-      console.error("Initial language load error:", error.message, error.stack);
-    }
-
-    // Language switcher buttons
-    try {
+      // update button states
       const enBtn = document.getElementById("enBtn");
       const jpBtn = document.getElementById("jpBtn");
-      if (enBtn && jpBtn) {
-        const switchLang = (lang) => () => switchHeaderLanguage(lang);
-        enBtn.addEventListener("click", switchLang("en"), { passive: true });
-        enBtn.addEventListener("touchstart", (e) => {
-          e.preventDefault();
-          switchLang("en")();
-        }, { passive: false });
-        jpBtn.addEventListener("click", switchLang("jp"), { passive: true });
-        jpBtn.addEventListener("touchstart", (e) => {
-          e.preventDefault();
-          switchLang("jp")();
-        }, { passive: false });
-        console.log("Language switcher buttons initialized at", new Date().toISOString());
+
+      if (lang === 'en') {
+        enBtn.classList.add("active");
+        enBtn.setAttribute("aria-pressed", "true");
+        jpBtn.classList.remove("active");
+        jpBtn.setAttribute("aria-pressed", "false");
       } else {
-        console.error("Language buttons not found", { enBtn: !!enBtn, jpBtn: !!jpBtn });
+        jpBtn.classList.add("active");
+        jpBtn.setAttribute("aria-pressed", "true");
+        enBtn.classList.remove("active");
+        enBtn.setAttribute("aria-pressed", "false");
       }
-    } catch (error) {
-      console.error("Language button setup error:", error.message, error.stack);
+
+      // save selection
+      localStorage.setItem('selectedLanguage', lang);
     }
+
+    // load saved language
+    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+    updateLanguage(savedLang);
+
+    // event listeners
+    document.getElementById("enBtn").addEventListener("click", () => updateLanguage('en'));
+    document.getElementById("jpBtn").addEventListener("click", () => updateLanguage('jp'));
   </script>
 </body>
 </html>
