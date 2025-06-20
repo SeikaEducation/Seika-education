@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Seika Education Consultancy</title>
   <style>
-    /* Global Box Sizing for consistent layout */
+    /* Global Box Sizing */
     *, *::before, *::after {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     /* Header Styles */
@@ -41,9 +43,9 @@
       display: flex;
       margin: 0;
       padding: 0;
-      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
       max-height: 300px;
       opacity: 1;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
     }
 
     nav ul li {
@@ -68,6 +70,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      z-index: 1100;
     }
 
     .language-switch button {
@@ -103,9 +106,9 @@
       flex-direction: column;
       cursor: pointer;
       padding: 10px;
-      z-index: 1200; /* High z-index to ensure tappability */
-      touch-action: manipulation; /* Improve touch handling */
-      user-select: none; /* Prevent text selection on tap */
+      z-index: 1200;
+      touch-action: manipulation;
+      user-select: none;
     }
 
     .menu-toggle span {
@@ -113,15 +116,15 @@
       height: 3px;
       width: 25px;
       margin: 4px 0;
-      transition: 0.4s;
+      transition: transform 0.4s, opacity 0.4s;
     }
 
-    /* Mobile Menu Logo (Removed from mobile view) */
+    /* Mobile Menu Logo (Removed) */
     .mobile-menu-logo-container {
       display: none;
     }
 
-    /* Media Queries for Mobile Responsiveness */
+    /* Media Queries for Mobile */
     @media (max-width: 600px) {
       header {
         padding: 10px 20px;
@@ -142,7 +145,7 @@
 
       .language-switch {
         order: 2;
-        margin-left: 10px; /* Gap between hamburger menu and language switcher */
+        margin-left: 10px;
         margin-right: 0;
         padding-right: 5px;
         gap: 3px;
@@ -158,7 +161,7 @@
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 60px;
         left: 0;
         width: 100%;
         background: #2A6BBF;
@@ -204,7 +207,7 @@
     
     <div class="language-switch" aria-live="polite">
       <button id="enBtn" class="active" aria-pressed="true">English</button>
-      <span>|</span>
+      <span>|</leer de nuevo</span>
       <button id="jpBtn" aria-pressed="false">日本語</button>
     </div>
 
@@ -241,7 +244,6 @@
       try {
         console.log("Switching language to:", lang);
         const currentLangData = headerTranslations[lang];
-
         document.querySelectorAll('#nav-menu [data-key]').forEach(element => {
           const key = element.getAttribute('data-key');
           if (currentLangData[key]) {
@@ -251,61 +253,56 @@
 
         const enBtn = document.getElementById("enBtn");
         const jpBtn = document.getElementById("jpBtn");
-
-        if (enBtn) {
+        if (enBtn && jpBtn) {
           enBtn.classList.toggle("active", lang === "en");
           enBtn.setAttribute("aria-pressed", lang === "en");
-        }
-        if (jpBtn) {
           jpBtn.classList.toggle("active", lang === "jp");
           jpBtn.setAttribute("aria-pressed", lang === "jp");
         }
-
         localStorage.setItem('selectedLanguage', lang);
+        console.log("Language switch completed:", lang);
       } catch (error) {
-        console.error("Language switch error:", error);
+        console.error("Language switch error:", error.message, error.stack);
       }
     }
 
-    // Apply saved language on load
+    // Apply saved language
     try {
       const savedLang = localStorage.getItem('selectedLanguage') || 'en';
       console.log("Applying saved language:", savedLang);
       switchHeaderLanguage(savedLang);
     } catch (error) {
-      console.error("Initial language load error:", error);
+      console.error("Initial language load error:", error.message, error.stack);
     }
 
     // Hamburger Menu Toggle
     document.addEventListener('DOMContentLoaded', () => {
       try {
-        console.log("DOM fully loaded at", new Date().toISOString());
+        console.log("DOM loaded at", new Date().toISOString());
         const menuToggle = document.querySelector(".menu-toggle");
         const navMenu = document.getElementById("nav-menu");
 
         if (!menuToggle || !navMenu) {
-          console.error("Menu toggle or nav menu not found in DOM", { menuToggle, navMenu });
+          console.error("Menu toggle or nav menu not found", { menuToggle: !!menuToggle, navMenu: !!navMenu });
           return;
         }
 
-        // Handle both click and touchstart
         const toggleMenu = (eventType) => {
           try {
             const isExpanded = navMenu.classList.toggle("show");
-            menuToggle.setAttribute("aria-expanded", isExpanded.toString());
+            menuToggle.setAttribute("aria-expanded", isExpanded);
             console.log(`Menu toggled, show class: ${isExpanded}, Event: ${eventType}`);
           } catch (error) {
-            console.error("Menu toggle error:", error);
+            console.error("Menu toggle error:", error.message, error.stack);
           }
         };
 
-        menuToggle.addEventListener("click", () => toggleMenu("click"));
+        menuToggle.addEventListener("click", () => toggleMenu("click"), { passive: true });
         menuToggle.addEventListener("touchstart", (e) => {
           e.preventDefault();
           toggleMenu("touchstart");
-        });
+        }, { passive: false });
 
-        // Close menu when a link is clicked
         navMenu.querySelectorAll('a[href]').forEach(link => {
           link.addEventListener('click', () => {
             try {
@@ -313,15 +310,14 @@
               menuToggle.setAttribute("aria-expanded", "false");
               console.log("Menu closed via link click");
             } catch (error) {
-              console.error("Menu close error:", error);
+              console.error("Menu close error:", error.message, error.stack);
             }
-          });
+          }, { passive: true });
         });
 
-        // Log initialization success
         console.log("Hamburger menu initialized successfully");
       } catch (error) {
-        console.error("DOMContentLoaded error:", error);
+        console.error("DOMContentLoaded error:", error.message, error.stack);
       }
     });
 
@@ -329,25 +325,24 @@
     try {
       const enBtn = document.getElementById("enBtn");
       const jpBtn = document.getElementById("jpBtn");
-
       if (enBtn && jpBtn) {
         const switchLang = (lang) => () => switchHeaderLanguage(lang);
-        enBtn.addEventListener("click", switchLang("en"));
+        enBtn.addEventListener("click", switchLang("en"), { passive: true });
         enBtn.addEventListener("touchstart", (e) => {
           e.preventDefault();
           switchLang("en")();
-        });
-        jpBtn.addEventListener("click", switchLang("jp"));
+        }, { passive: false });
+        jpBtn.addEventListener("click", switchLang("jp"), { passive: true });
         jpBtn.addEventListener("touchstart", (e) => {
           e.preventDefault();
           switchLang("jp")();
-        });
+        }, { passive: false });
         console.log("Language switcher buttons initialized");
       } else {
-        console.error("Language buttons not found", { enBtn, jpBtn });
+        console.error("Language buttons not found", { enBtn: !!enBtn, jpBtn: !!jpBtn });
       }
     } catch (error) {
-      console.error("Language button setup error:", error);
+      console.error("Language button setup error:", error.message, error.stack);
     }
   </script>
 </body>
