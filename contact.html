@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="ja"> <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | Seika Education Consultancy</title>
-    <!-- Link to Google Material Icons for icons -->
+    <title data-key="pageTitleContact">Contact | Seika Education Consultancy</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <!-- Link to Google Fonts for 'Inter' typeface -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tailwind CSS Configuration (using Inter font) -->
     <script>
         tailwind.config = {
             theme: {
@@ -22,45 +17,19 @@
             }
         }
     </script>
+    <link rel="stylesheet" href="/Seika-education/css/style.css">
+    
     <style>
-        /* ここにすべてのCSSを統合 */
-
-        /* Global Box Sizing - Tailwind handles this with preflight */
-        /* Tailwind CDNからロードされない場合、ここにカスタムフォントを含めることができます */
-
-        /* 固定ヘッダーに合わせて調整された基本ボディスタイル */
-        body {
-            font-family: 'Inter', Arial, sans-serif; /* モダンな外観のためにInterを使用 */
-            margin: 0;
-            padding: 0;
-            background-color: #f5f7fa; /* 明るい背景 */
-            color: #333; /* 読みやすい濃いテキスト */
-            /* 固定ヘッダーの背後にコンテンツが隠れないようにする */
-            padding-top: 130px; /* ヘッダーの実際の高さに基づいて調整してください */
-        }
-
-        /* Header Styles - FIXED に修正 */
-        header {
-            background: #2A6BBF;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed; /* ここを fixed に変更しました */
-            top: 0; /* 画面上部に固定 */
-            width: 100%; /* 幅を100%に設定 */
-            z-index: 1000;
-            overflow: visible;
-        }
+        /* contact.html 固有のスタイル (style.cssと競合しないように注意) */
+        /* Tailwind CSSを使用しているため、ここで多くのスタイルを定義する必要はなくなります */
 
         /* メインコンテンツのコンテナ */
-        .container {
+        .contact-container { /* クラス名を変更して他のコンテナと区別 */
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px; /* レスポンシブなパディング */
             padding-bottom: 60px; /* フッター用のスペース */
+            box-sizing: border-box; /* パディングを幅に含める */
         }
 
         /* セクションの見出し */
@@ -182,43 +151,8 @@
             transform: translateY(0); /* クリック時にボタンを押す */
         }
 
-        /* フッターのスタイル */
-        .footer {
-            background: #000;
-            color: white;
-            text-align: center;
-            padding: 10px 20px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-            box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
-        }
-
-        .footer p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        .footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 5px;
-            transition: color 0.2s;
-        }
-
-        .footer a:hover {
-            color: #e0e0e0;
-            text-decoration: underline;
-        }
-
         /* メディアクエリ */
         @media (max-width: 600px) {
-            body {
-                padding-top: 100px; /* モバイルの小さいヘッダーに合わせて調整 */
-            }
-
             h1 {
                 font-size: 1.8rem;
             }
@@ -226,83 +160,109 @@
             .contact-item {
                 flex: 1 1 100%; /* 小さい画面でアイテムを縦に並べる */
             }
-
-            .footer p {
-                font-size: 12px;
-            }
         }
     </style>
 </head>
 
 <body class="font-sans">
-    <!-- JavaScriptによってheader.htmlのコンテンツが読み込まれるプレースホルダーdiv -->
     <div id="header-placeholder"></div>
 
-    <div class="container mx-auto px-5 py-8 sm:py-10 lg:py-12 mt-32"> <!-- 固定ヘッダーのためのレスポンシブなパディングと上マージンを追加 -->
-        <h1 class="text-[#2A6BBF] mb-8 text-center text-3xl sm:text-4xl font-bold">Contact Us</h1>
+    <main class="contact-container"> <h1 class="text-[#2A6BBF] mb-8 text-center text-3xl sm:text-4xl font-bold" data-key="contactHeading">Contact Us</h1>
 
         <div class="contact-info flex flex-wrap justify-center gap-5 mb-10">
             <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
                 <span class="material-icons text-4xl text-[#2A6BBF]">place</span>
-                <p class="text-base leading-relaxed"><strong>Address:</strong><br> Butwal-9, Milan Chowk, Nepal</p>
+                <p class="text-base leading-relaxed" data-key="contactAddress"><strong>Address:</strong><br> Butwal-9, Milan Chowk, Nepal</p>
             </div>
 
             <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
                 <span class="material-icons text-4xl text-[#2A6BBF]">phone</span>
-                <p class="text-base leading-relaxed"><strong>Phone:</strong><br> +977-9876543210</p>
+                <p class="text-base leading-relaxed" data-key="contactPhone"><strong>Phone:</strong><br> +977-9876543210</p>
             </div>
 
             <div class="contact-item flex-1 min-w-[280px] max-w-sm bg-white p-6 rounded-xl shadow-md flex items-center gap-4 transition-transform transform hover:scale-105 hover:shadow-lg">
                 <span class="material-icons text-4xl text-[#2A6BBF]">email</span>
-                <p class="text-base leading-relaxed"><strong>Email:</strong><br> info@seikaeducation.com</p>
+                <p class="text-base leading-relaxed" data-key="contactEmail"><strong>Email:</strong><br> info@seikaeducation.com</p>
             </div>
         </div>
 
         <div class="map mb-10">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.114797895938!2d83.45772841506218!3d27.68575993217954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399684b168b0a6e3%3A0x52f5c473cc86f27d!2sMilan%20Chowk%2C%20Butwal!5e0!3m2!1sen!2snp!4v1718800000000" class="w-full h-[350px] sm:h-[400px] border-0 rounded-xl shadow-md" allowfullscreen="" loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789!2d83.447447!3d27.697475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQxJzUxLjAiTiA4M8KwMjYnNTUuMCJF!5e0!3m2!1sen!2snp!4v1678901234567!5m2!1sen!2snp" class="w-full h-[350px] sm:h-[400px] border-0 rounded-xl shadow-md" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <form class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
             <div class="form-group mb-5">
-                <label for="name" class="block mb-2 font-bold text-gray-700">Your Name</label>
-                <input type="text" id="name" placeholder="Enter your name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+                <label for="name" class="block mb-2 font-bold text-gray-700" data-key="formNameLabel">Your Name</label>
+                <input type="text" id="name" data-key-placeholder="formNamePlaceholder" placeholder="Enter your name" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
             </div>
 
             <div class="form-group mb-5">
-                <label for="email" class="block mb-2 font-bold text-gray-700">Your Email</label>
-                <input type="email" id="email" placeholder="Enter your email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+                <label for="email" class="block mb-2 font-bold text-gray-700" data-key="formEmailLabel">Your Email</label>
+                <input type="email" id="email" data-key-placeholder="formEmailPlaceholder" placeholder="Enter your email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
             </div>
 
             <div class="form-group mb-5">
-                <label for="subject" class="block mb-2 font-bold text-gray-700">Subject</label>
-                <input type="text" id="subject" placeholder="Enter subject" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
+                <label for="subject" class="block mb-2 font-bold text-gray-700" data-key="formSubjectLabel">Subject</label>
+                <input type="text" id="subject" data-key-placeholder="formSubjectPlaceholder" placeholder="Enter subject" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200">
             </div>
 
             <div class="form-group mb-6">
-                <label for="message" class="block mb-2 font-bold text-gray-700">Message</label>
-                <textarea id="message" placeholder="Write your message here..." required class="w-full p-3 border border-gray-300 rounded-lg resize-y min-h-[140px] focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200"></textarea>
+                <label for="message" class="block mb-2 font-bold text-gray-700" data-key="formMessageLabel">Message</label>
+                <textarea id="message" data-key-placeholder="formMessagePlaceholder" placeholder="Write your message here..." required class="w-full p-3 border border-gray-300 rounded-lg resize-y min-h-[140px] focus:outline-none focus:border-[#2A6BBF] focus:ring-2 focus:ring-[#2A6BBF]/20 transition-all duration-200"></textarea>
             </div>
 
-            <button type="submit" class="bg-[#2A6BBF] text-white py-3 px-6 rounded-lg text-base cursor-pointer hover:bg-[#1f56a1] transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 shadow-md hover:shadow-lg">Send Message</button>
+            <button type="submit" class="bg-[#2A6BBF] text-white py-3 px-6 rounded-lg text-base cursor-pointer hover:bg-[#1f56a1] transition-all duration-300 ease-in-out transform hover:-translate-y-1 active:translate-y-0 shadow-md hover:shadow-lg" data-key="formSubmitButton">Send Message</button>
         </form>
-    </div>
+    </main>
 
-    <footer class="footer bg-black text-white text-center py-4 px-5 relative bottom-0 w-full rounded-t-lg shadow-inner">
-        <p class="mb-0 text-sm">© 2025 Seika Education Consultancy. All rights reserved. |
-            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">Facebook</a> |
-            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">TikTok</a> |
-            <a href="#" class="text-white no-underline mx-1 hover:underline transition-colors duration-200">Instagram</a>
-        </p>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script>
-        // ここにすべてのJavaScriptを統合
+        // メインコンテンツの翻訳データ (contact.html用)
+        const translations = {
+            en: {
+                pageTitleContact: "Contact | Seika Education Consultancy",
+                contactHeading: "Contact Us",
+                contactAddress: "<strong>Address:</strong><br> Butwal-9, Milan Chowk, Nepal",
+                contactPhone: "<strong>Phone:</strong><br> +977-9876543210",
+                contactEmail: "<strong>Email:</strong><br> info@seikaeducation.com",
+                formNameLabel: "Your Name",
+                formNamePlaceholder: "Enter your name",
+                formEmailLabel: "Your Email",
+                formEmailPlaceholder: "Enter your email",
+                formSubjectLabel: "Subject",
+                formSubjectPlaceholder: "Enter subject",
+                formMessageLabel: "Message",
+                formMessagePlaceholder: "Write your message here...",
+                formSubmitButton: "Send Message",
+                footerCopyright: "© 2025 Seika Education Consultancy. All rights reserved.",
+                footerFacebook: "Facebook",
+                footerTikTok: "TikTok",
+                footerInstagram: "Instagram"
+            },
+            jp: {
+                pageTitleContact: "お問い合わせ | 清華教育コンサルタンシー",
+                contactHeading: "お問い合わせ",
+                contactAddress: "<strong>住所:</strong><br> ブトワル-9, ミランチョーク, ネパール",
+                contactPhone: "<strong>電話:</strong><br> +977-9876543210",
+                contactEmail: "<strong>メール:</strong><br> info@seikaeducation.com",
+                formNameLabel: "お名前",
+                formNamePlaceholder: "お名前を入力してください",
+                formEmailLabel: "メールアドレス",
+                formEmailPlaceholder: "メールアドレスを入力してください",
+                formSubjectLabel: "件名",
+                formSubjectPlaceholder: "件名を入力してください",
+                formMessageLabel: "メッセージ",
+                formMessagePlaceholder: "ここにメッセージを入力してください...",
+                formSubmitButton: "メッセージを送信",
+                footerCopyright: "© 2025 清華教育コンサルタンシー. 無断転載を禁じます。",
+                footerFacebook: "フェイスブック",
+                footerTikTok: "ティックトック",
+                footerInstagram: "インスタグラム"
+            }
+        };
 
-        /**
-         * 外部HTMLコンテンツを、指定されたDOM要素に読み込みます。
-         * @param {string} elementId - コンテンツがロードされるHTML要素のID。
-         * @param {string} filePath - 外部HTMLファイルへのパス。
-         */
+        // --- 外部HTMLコンテンツの読み込み関数 ---
         async function loadHTML(elementId, filePath) {
             try {
                 const response = await fetch(filePath);
@@ -311,84 +271,80 @@
                 }
                 const html = await response.text();
                 document.getElementById(elementId).innerHTML = html;
-                // ヘッダーがロードされた後、ボタンがDOMに存在するため、言語切り替えを初期化します。
-                initializeLanguageSwitch();
+
+                // ヘッダーがロードされた場合のみ、ヘッダーのスクリプトを初期化
+                if (elementId === 'header-placeholder') {
+                    if (window.initializeHeaderScripts) {
+                        window.initializeHeaderScripts();
+                        console.log("Header scripts initialized after load.");
+                    } else {
+                        console.error("initializeHeaderScripts function not found after header load.");
+                    }
+                    // ヘッダーロード後にコンテンツの言語を初期設定
+                    const savedLang = localStorage.getItem('selectedLanguage') || 'en';
+                    switchContentLanguage(savedLang);
+                }
             } catch (error) {
-                console.error("HTMLコンテンツをロードできませんでした:", error);
+                console.error(`Error loading HTML content for ${elementId} from ${filePath}:`, error);
             }
         }
 
-        // ナビゲーションメニューの翻訳データ
-        const translations = {
-            en: {
-                navHome: "Home",
-                navServices: "Services",
-                navAbout: "About",
-                navContact: "Contact"
-            },
-            jp: {
-                navHome: "ホーム",
-                navServices: "サービス",
-                navAbout: "会社概要",
-                navContact: "お問い合わせ"
-            }
-        };
+        // --- メインコンテンツの言語切り替え関数 ---
+        function switchContentLanguage(lang) {
+            const currentLangData = translations[lang];
 
-        /**
-         * ナビゲーションアイテムと言語切り替えボタンの言語を更新します。
-         * @param {string} lang - 言語コード（'en'または'jp'）。
-         */
-        function updateLanguage(lang) {
-            // data-key属性に基づいてナビゲーションメニューアイテムを更新
-            document.querySelectorAll('#nav-menu [data-key]').forEach(item => {
-                const key = item.getAttribute('data-key');
-                if (translations[lang] && translations[lang][key]) {
-                    item.textContent = translations[lang][key];
+            // ページタイトルを更新
+            const pageTitleElement = document.querySelector('title[data-key="pageTitleContact"]');
+            if (pageTitleElement && currentLangData.pageTitleContact) {
+                pageTitleElement.textContent = currentLangData.pageTitleContact;
+            }
+
+            // data-keyを持つ要素のテキストコンテンツを更新
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (currentLangData[key]) {
+                    // HTMLコンテンツを含む可能性のある要素には innerHTML を使用
+                    element.innerHTML = currentLangData[key];
                 }
             });
 
-            // 言語切り替えボタンのスタイルを更新
-            const enBtn = document.getElementById("enBtn");
-            const jpBtn = document.getElementById("jpBtn");
-
-            if (enBtn) {
-                enBtn.classList.toggle('active', lang === 'en');
-                enBtn.setAttribute('aria-pressed', lang === 'en');
-            }
-            if (jpBtn) {
-                jpBtn.classList.toggle('active', lang === 'jp');
-                jpBtn.setAttribute('aria-pressed', lang === 'jp');
-            }
-
-            // 選択された言語をローカルストレージに保存
-            localStorage.setItem('selectedLanguage', lang);
+            // data-key-placeholderを持つ要素のプレースホルダーを更新
+            document.querySelectorAll('[data-key-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-key-placeholder');
+                if (currentLangData[key] && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA')) {
+                    element.setAttribute('placeholder', currentLangData[key]);
+                }
+            });
+            console.log(`Main content language switched to: ${lang}`);
         }
 
-        /**
-         * 言語切り替え機能を初期化します。
-         * この関数は、ヘッダーがDOMにロードされた後に呼び出す必要があります。
-         */
-        function initializeLanguageSwitch() {
-            const enBtn = document.getElementById("enBtn");
-            const jpBtn = document.getElementById("jpBtn");
-
-            if (enBtn && jpBtn) { // イベントリスナーを追加する前にボタンが存在することを確認
-                const savedLang = localStorage.getItem('selectedLanguage') || 'en';
-                updateLanguage(savedLang); // 保存された言語を適用するか、デフォルトで英語にする
-
-                // 言語ボタンのイベントリスナーを追加
-                enBtn.addEventListener("click", () => updateLanguage('en'));
-                jpBtn.addEventListener("click", () => updateLanguage('jp'));
-            } else {
-                console.warn("言語切り替えボタンが見つかりません。ヘッダーがロードされていることを確認してください。");
-            }
-        }
-
-        // DOMが完全にロードされたときにヘッダーをロードするイベントリスナー。
+        // --- イベントリスナー ---
         document.addEventListener('DOMContentLoaded', function() {
-            // 'header-placeholder' divに固定ヘッダーをロードします。
-            // 'header.html'が同じディレクトリにあることを確認するか、正しいパスを指定してください。
-            loadHTML('header-placeholder', 'header.html');
+            console.log("DOM Content Loaded. Initializing contact page...");
+
+            // ヘッダーのロード
+            loadHTML('header-placeholder', '/Seika-education/header.html');
+
+            // フッターのロード
+            loadHTML('footer-placeholder', '/Seika-education/footer.html');
+
+            // ヘッダーからの言語変更イベントをリッスンしてメインコンテンツを更新
+            document.addEventListener('languageChanged', (event) => {
+                const newLang = event.detail;
+                switchContentLanguage(newLang);
+            });
+        });
+
+        // --- その他の固有のスクリプト ---
+        // マップのiframe srcを修正
+        // このスクリプトは、マップのiframeがDOMに存在することを確認してから実行されます。
+        document.addEventListener('DOMContentLoaded', () => {
+            const mapIframe = document.querySelector('.map iframe');
+            if (mapIframe && mapIframe.src === "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.114797895938!2d83.45772841506218!3d27.68575993217954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399684b168b0a6e3%3A0x52f5c473cc86f27d!2sMilan%20Chowk%2C%20Butwal!5e0!3m2!1sen!2snp!4v1718800000000") {
+                // これはダミーの場所です。実際の場所のGoogle Maps埋め込みURLに置き換えてください。
+                mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789!2d83.447447!3d27.697475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQxJzUxLjAiTiA4M8KwMjYnNTUuMCJF!5e0!3m2!1sen!2snp!4v1678901234567!5m2!1sen!2snp";
+                console.log("Map iframe source updated.");
+            }
         });
     </script>
 </body>
