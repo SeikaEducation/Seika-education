@@ -254,8 +254,6 @@
 
 <body>
   <div id="header-placeholder"></div>
-  <script>
-fetch('/Seika-education/header.html')</script)
 
   <section class="hero" id="home">
     <div class="swiper mySwiper">
@@ -343,7 +341,7 @@ fetch('/Seika-education/header.html')</script)
 
   <script>
     // ヘッダーを動的に読み込む
-    fetch('/Seika-education/header.html') // header.htmlの正しいパスを指定
+    fetch('/header.html') // header.htmlの正しいパスを指定
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
