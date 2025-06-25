@@ -207,31 +207,40 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12345.6789!2d83.447447!3d27.697475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDQxJzUxLjAiTiA4M8KwMjYnNTUuMCJF!5e0!3m2!1sen!2snp!4v1678901234567!5m2!1sen!2snp" class="w-full h-[350px] sm:h-[400px] border-0 rounded-xl shadow-md" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
-<form id="contact-form" class="bg-white p-6 sm:p-8 rounded-xl shadow-md">
-    <div class="form-group mb-5">
-        <label for="name" class="block mb-2 font-bold text-gray-700">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your name" required class="w-full p-3 border border-gray-300 rounded-lg">
-    </div>
+<form id="contact-form" class="bg-white p-6 sm:p-8 rounded-xl shadow-md" onsubmit="return validateForm()">
+  <!-- Name -->
+  <div class="form-group mb-5">
+    <label for="name" class="block mb-2 font-bold text-gray-700">Your Name</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required class="w-full p-3 border border-gray-300 rounded-lg">
+  </div>
 
-    <div class="form-group mb-5">
-        <label for="email" class="block mb-2 font-bold text-gray-700">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" required class="w-full p-3 border border-gray-300 rounded-lg">
-    </div>
-    <div class="form-group mb-5">
-        <label for="phone" class="block mb-2 font-bold text-gray-700">Your Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required class="w-full p-3 border border-gray-300 rounded-lg">
-    </div>
-    <div class="form-group mb-5">
-        <label for="subject" class="block mb-2 font-bold text-gray-700">Subject</label>
-        <input type="text" id="subject" name="subject" placeholder="Enter subject" required class="w-full p-3 border border-gray-300 rounded-lg">
-    </div>
+  <!-- Email -->
+  <div class="form-group mb-5">
+    <label for="email" class="block mb-2 font-bold text-gray-700">Your Email</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required class="w-full p-3 border border-gray-300 rounded-lg">
+  </div>
 
-    <div class="form-group mb-6">
-        <label for="message" class="block mb-2 font-bold text-gray-700">Message</label>
-        <textarea id="message" name="message" placeholder="Write your message here..." required class="w-full p-3 border border-gray-300 rounded-lg"></textarea>
-    </div>
+  <!-- Phone -->
+  <div class="form-group mb-5">
+    <label for="phone" class="block mb-2 font-bold text-gray-700">Your Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required pattern="[0-9]{7,15}" class="w-full p-3 border border-gray-300 rounded-lg">
+  </div>
 
-    <button type="submit" class="bg-[#2A6BBF] text-white py-3 px-6 rounded-lg cursor-pointer hover:bg-[#1f56a1]">Send Message</button>
+  <!-- Subject -->
+  <div class="form-group mb-5">
+    <label for="subject" class="block mb-2 font-bold text-gray-700">Subject</label>
+    <input type="text" id="subject" name="subject" placeholder="Enter subject" required class="w-full p-3 border border-gray-300 rounded-lg">
+  </div>
+
+  <!-- Message -->
+  <div class="form-group mb-6">
+    <label for="message" class="block mb-2 font-bold text-gray-700">Message</label>
+    <textarea id="message" name="message" placeholder="Write your message here..." required class="w-full p-3 border border-gray-300 rounded-lg"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="bg-[#2A6BBF] text-white py-3 px-6 rounded-lg cursor-pointer hover:bg-[#1f56a1]">Send Message</button>
+</form>
 
     <!-- Area to show status messages -->
     <p id="form-status" style="margin-top:1rem; font-weight:bold;"></p>
