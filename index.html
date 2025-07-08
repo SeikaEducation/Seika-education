@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Seika Education Consultancy provides expert guidance for studying in Japan, including visa support and language training.">
-  <meta name="keywords" content="study in Japan, education consultancy, visa support, Japanese language training">
-  <meta name="author" content="Seika Education Consultancy">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Seika Education Consultancy provides expert guidance for studying in Japan, including visa support and language training." />
+  <meta name="keywords" content="study in Japan, education consultancy, visa support, Japanese language training" />
+  <meta name="author" content="Seika Education Consultancy" />
   <title>Seika Education Consultancy</title>
-
-  <!-- Structured Data for Organization -->
+  <!-- Structured Data for Organization Logo -->
   <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Seika Education Consultancy Pvt. Ltd",
-      "url": "https://seikaeducation.com/",
-      "logo": "https://seikaeducation.com/images/Logo-Seika.png",
-      "sameAs": [
-        "https://www.facebook.com/SeikaEducation",
-        "https://www.instagram.com/seika.education"
-      ]
-    }
+  {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Seika Education Consultancy Pvt. Ltd",
+  "url": "https://seikaeducation.com/",
+  "logo": "https://seikaeducation.com/images/Logo-Seika.png",
+  "sameAs": [
+      "https://www.facebook.com/SeikaEducation",
+      "https://www.instagram.com/seika.education"
+    ]  
+}
   </script>
-
   <link rel="canonical" href="https://seikaeducation.com/">
   <link rel="preload" as="image" href="./images/banner-2.webp">
   <link rel="preload" as="image" href="./images/banner-5.webp">
   <link rel="preload" as="image" href="./images/banner-1.webp">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <style>
-    /* === Global Styles === */
+    /* Global Box Sizing for consistent layout */
     *, *::before, *::after {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     html {
@@ -43,26 +38,30 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
       background: #2A6BBF;
       color: white;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Prevent horizontal scroll on mobile */
     }
 
-    /* === Hero Section === */
+    /* ヘッダーのスタイルはheader.htmlに移動したため、このファイルから削除 */
+    /* header.htmlのCSSを読み込むため、重複を避ける */
+    
     .hero {
       position: relative;
-      z-index: 0;
+      z-index: 0; /* Below header */
     }
 
     .swiper {
       width: 100%;
-      height: 600px;
-      z-index: 1;
+      height: 600px; /* Fixed height for desktop carousel */
+      z-index: 1; /* Above hero container, but below header */
     }
 
     .swiper-slide {
-      background: #2A6BBF;
-      min-height: 200px;
+      background: #2A6BBF; /* Fallback background color */
+      min-height: 200px; /* Ensures slide has height even without image */
     }
 
     .swiper-slide img {
@@ -70,14 +69,14 @@
       object-position: center;
       width: 100%;
       height: 100%;
-      display: block;
+      display: block; /* Remove extra space below image */
     }
 
-    /* === Intro Section === */
     .intro-section {
       text-align: center;
       padding: 40px 20px;
       background: #2A6BBF;
+      color: white;
     }
 
     .intro-section h1 {
@@ -94,13 +93,13 @@
     .intro-section .cta-button {
       background: #0066cc;
       color: white;
-      padding: 12px 25px;
+      padding: 12px 25px; /* Increased padding for better tap target */
       border: none;
       border-radius: 4px;
       cursor: pointer;
       font-weight: 600;
       text-decoration: none;
-      display: inline-block;
+      display: inline-block; /* Allows padding and margin */
       transition: background 0.2s;
     }
 
@@ -108,96 +107,97 @@
       background: #005bb5;
     }
 
-    /* === Container === */
     .container {
       max-width: 1100px;
       margin: 40px auto;
       padding: 0 20px;
     }
 
-    /* === Services Section === */
     .services {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      padding-top: 20px;
+      padding-top: 20px; /* Add padding to the top of the section */
     }
 
-    .services > h2 {
-      width: 100%;
+    /* OUR SERVICES heading style */
+    .services > h2 { /* Direct child of services class */
+      width: 100%; /* Take full width */
       text-align: center;
       margin-bottom: 40px;
+      color: white; /* Ensure it's visible on the blue background */
       font-size: 2.5rem;
+      padding: 0 10px; /* Add some horizontal padding */
     }
 
     .service {
       background: white;
       color: #333;
-      flex: 1 1 280px;
+      flex: 1 1 280px; /* Allows flexibility but with a preferred base width */
       border-radius: 8px;
       padding: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       text-align: center;
-      min-width: 250px;
-      display: flex;
+      min-width: 250px; /* Ensures a minimum width before wrapping */
+      display: flex; /* Use flexbox for service content */
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: space-between; /* Pushes content and title apart if needed */
+    }
+
+    .service img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      display: block;
     }
 
     .service h3 {
       margin-bottom: 15px;
       color: #2A6BBF;
-      font-size: 1.3rem;
+      font-size: 1.3rem; /* Slightly larger heading */
     }
 
     .service p {
-      font-size: 0.95rem;
+        font-size: 0.95rem; /* Slightly smaller text for descriptions */
     }
 
-    /* === Contact Section === */
     .contact-cta {
       background: #2A6BBF;
       color: white;
       padding: 30px 20px;
       text-align: center;
       border-radius: 8px;
-      margin: 50px auto;
-      max-width: 1100px;
-    }
-
-    .contact-content {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+      margin: 50px auto; /* Centered with auto margin */
+      max-width: 700px; /* Constrain width for better readability */
     }
 
     .contact-form {
-      flex: 1;
-      max-width: 500px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      max-width: 500px;
+      margin: 20px auto 0; /* Centered below title */
     }
 
     .contact-form input,
     .contact-form textarea {
-      padding: 12px;
+      padding: 12px; /* Increased padding */
       border: none;
       border-radius: 4px;
       font-size: 1rem;
     }
 
     .contact-form textarea {
-      resize: vertical;
+      resize: vertical; /* Allow vertical resizing */
       min-height: 100px;
     }
 
     .contact-form button {
       background: #0066cc;
       color: white;
-      padding: 12px;
+      padding: 12px; /* Increased padding */
       border: none;
       border-radius: 4px;
       cursor: pointer;
@@ -210,41 +210,16 @@
       background: #005bb5;
     }
 
-    .qr-box {
-      flex: 1;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .qr-box h3 {
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .qr-images {
-      display: flex;
-      flex-direction: row;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .qr-box img {
-      width: 100px;
-      height: 100px;
-      border-radius: 4px;
-    }
-
-    /* === Footer === */
     footer {
       background: #222;
       color: #ccc;
-      padding: 20px 30px;
+      padding: 20px 30px; /* Slightly more padding */
       text-align: center;
       font-size: 0.9rem;
     }
 
     .social-links {
-      margin-top: 10px;
+        margin-top: 10px;
     }
 
     .social-links a {
@@ -258,11 +233,11 @@
       color: white;
     }
 
-    /* === Media Queries === */
+    /* --- Media Queries for Mobile Responsiveness (Main Content and Footer) --- */
     @media (max-width: 768px) {
       .swiper {
-        height: 50vh;
-        min-height: 200px;
+        height: 50vh; /* Responsive height for mobile banner */
+        min-height: 200px; /* Minimum height for very short screens */
       }
 
       .intro-section h1 {
@@ -273,26 +248,17 @@
         font-size: 1rem;
       }
 
-      .services > h2 {
+      .services > h2 { /* Mobile specific style for OUR SERVICES heading */
         font-size: 2rem;
         margin-bottom: 30px;
       }
 
       .service {
-        flex: 1 1 100%;
+        flex: 1 1 100%; /* Each service takes full width on small screens */
       }
 
       .contact-cta {
-        margin: 30px 10px;
-      }
-
-      .contact-content {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .contact-form, .qr-box {
-        max-width: 100%;
+          margin: 30px 10px; /* Smaller margins on mobile */
       }
     }
   </style>
@@ -301,18 +267,17 @@
 <body>
   <div id="header-placeholder"></div>
 
-  <!-- Hero Section with Swiper Carousel -->
   <section class="hero" id="home">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="./images/banner-2.webp" alt="Seika Education Consultancy Reception Area" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';">
+          <img src="./images/banner-2.webp" alt="Seika Education Consultancy Reception Area" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
         <div class="swiper-slide">
-          <img src="./images/banner-5.webp" alt="Study & Work in Japan Banner" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';">
+          <img src="./images/banner-5.webp" alt="Study & Work in Japan Banner" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
         <div class="swiper-slide">
-          <img src="./images/banner-1.webp" alt="Seika Education Consultancy Classroom" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';">
+          <img src="./images/banner-1.webp" alt="Seika Education Consultancy Classroom" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Load+Error';" />
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -322,14 +287,12 @@
   </section>
 
   <main class="container">
-    <!-- Intro Section -->
     <section class="intro-section">
       <h1 data-key="introTitle">Welcome to Seika Education Consultancy</h1>
       <p data-key="introSubtitle">Your trusted partner for study & work in Japan</p>
       <a href="#contact" class="cta-button" data-key="ctaButton">Get Started</a>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
       <h2 data-key="ourServicesTitle">OUR SERVICES</h2>
       <div class="service">
@@ -366,66 +329,48 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section class="contact-cta" id="contact">
-      <h2 data-key="contactTitle">Contact & Follow Us for More Information </h2>
-      <div class="contact-content">
-        <form class="contact-form" action="/submit-form" method="POST">
-          <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required aria-label="Your Name">
-          <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required aria-label="Your Email">
-          <input type="tel" name="phone" placeholder="Your Phone Number" data-key-placeholder="contactPhonePlaceholder" required aria-label="Your Phone Number">
-          <input type="text" name="subject" placeholder="Subject" data-key-placeholder="contactSubjectPlaceholder" required aria-label="Subject">
-          <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required aria-label="Your Message"></textarea>
-          <button type="submit" data-key="contactButton">Send Message</button>
-        </form>
-        <div class="qr-box">
-<div class="qr-images">
-  <a href="https://www.tiktok.com/@seika.education" target="_blank" rel="noopener noreferrer">
-    <img src="./images/TiktokQR.png" alt="TikTok QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
-  </a>
-  <a href="https://www.instagram.com/seika.education" target="_blank" rel="noopener noreferrer">
-    <img src="/images/InstaQR.png" alt="Instagram QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
-  </a>
-  <a href="https://www.facebook.com/SeikaEducation" target="_blank" rel="noopener noreferrer">
-    <img src="./images/FacebookQR.png" alt="Facebook QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
-  </a>
-</div>
-        </div>
-      </div>
+      <h2 data-key="contactTitle">Contact Us for More Information</h2>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
+        <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required />
+        <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required />
+        <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required></textarea>
+        <button type="submit" data-key="contactButton">Send Message</button>
+      </form>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 Seika Education Consultancy. All rights reserved.</p>
     <div class="social-links">
-      <a href="https://www.facebook.com/SeikaEducation" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a> |
-      <a href="https://tiktok.com/seika.education" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a> |
-      <a href="https://www.instagram.com/seika.education" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      <a href="https://www.facebook.com/SeikaEducation" target="_blank" rel="noopener noreferrer">Facebook</a> |
+      <a href="https://tiktok.com/seikaedu" target="_blank" rel="noopener noreferrer">TikTok</a> |
+      <a href="https://www.instagram.com/seika.education?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script>
-    // === Header Loading ===
-function loadHeader() {
-  fetch('./header.html') // Use relative path for testing
-    .then(response => {
-      if (!response.ok) {
-        console.error(`Fetch failed. Status: ${response.status}, URL: ${response.url}`);
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(data => {
-      console.log('Header content:', data); // Log fetched content
-      document.getElementById('header-placeholder').innerHTML = data;
-      document.dispatchEvent(new Event('headerLoaded'));
-    })
-        .catch(error => console.error('Error loading header:', error));
-    }
 
-    // === Translations ===
+  <script>
+    // ヘッダーを動的に読み込む
+    fetch('/header.html') // header.htmlの正しいパスを指定
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+
+        // ヘッダーがロードされた後に、DOMContentLoaded イベントを発火させる (必要に応じて)
+        // これは、ヘッダースクリプト内のDOMReadyイベントをトリガーする場合に便利です
+        const event = new Event('headerLoaded');
+        document.dispatchEvent(event);
+      })
+      .catch(error => console.error('Error loading header:', error));
+
+    // --- Language Switcher の翻訳データ ---
     const translations = {
       en: {
         introTitle: "Welcome to Seika Education Consultancy",
@@ -452,10 +397,7 @@ function loadHeader() {
         contactButton: "Send Message",
         contactNamePlaceholder: "Your Name",
         contactEmailPlaceholder: "Your Email",
-        contactPhonePlaceholder: "Your Phone Number",
-        contactSubjectPlaceholder: "Subject",
-        contactMessagePlaceholder: "Your Message",
-        followUsLabel: "Follow us on"
+        contactMessagePlaceholder: "Your Message"
       },
       jp: {
         introTitle: "成果教育コンサルタンシーへようこそ",
@@ -467,8 +409,8 @@ function loadHeader() {
         service2Title: "言語トレーニング",
         service2Desc: "日本の日常生活、教育、仕事に必要なコミュニケーションスキルを構築するための日本語コース。",
         service3Title: "試験準備",
-        service3Desc: "ビ Facade
-        serviceshe3Title: "面接準備",
+        service3Desc: "ビザ申請や学校入学に必要な日本語試験（JLPT、JFT-Basic、Nat-Test）の準備。",
+        service4Title: "面接準備",
         service4Desc: "日本大使館でのビザ面接や、日本語の学校や雇用主との面接のためのコーチング。",
         service5Title: "書類サポート",
         service5Desc: "日本ビザ申請や学校入学に必要な書類の準備と整理の支援。",
@@ -482,101 +424,95 @@ function loadHeader() {
         contactButton: "メッセージを送信",
         contactNamePlaceholder: "お名前",
         contactEmailPlaceholder: "メールアドレス",
-        contactPhonePlaceholder: "電話番号",
-        contactSubjectPlaceholder: "件名",
-        contactMessagePlaceholder: "メッセージ",
-        followUsLabel: "フォローしてください"
-      }
+        contactMessagePlaceholder: "メッセージ"
+      },
     };
 
-    // === Language Switching ===
+    // --- メインコンテンツの言語切り替え関数 ---
     function switchContentLanguage(lang) {
-      const currentLangData = translations[lang] || translations.en;
+      const currentLangData = translations[lang];
+
       document.querySelectorAll('[data-key]').forEach(element => {
         const key = element.getAttribute('data-key');
         if (currentLangData[key]) {
           element.textContent = currentLangData[key];
         }
       });
+
       document.querySelectorAll('[data-key-placeholder]').forEach(element => {
         const key = element.getAttribute('data-key-placeholder');
         if (currentLangData[key] && (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA')) {
           element.setAttribute('placeholder', currentLangData[key]);
         }
       });
+      console.log(`Main content language switched to: ${lang}`);
     }
 
-    // === Form Submission Handler ===
-    function handleFormSubmission(event) {
-      event.preventDefault();
-      alert('Form submission is under development. Please contact us directly.');
-      // TODO: Implement actual form submission logic with backend integration
-    }
 
-    // === Swiper Initialization ===
-    function initSwiper() {
-      const swiperContainer = document.querySelector('.mySwiper');
-      if (!swiperContainer) {
-        console.warn('Swiper container not found.');
-        return;
+    // --- DOMContentLoaded イベントリスナー ---
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("DOM Content Loaded. Initializing scripts...");
+
+      // Swiper Initialization
+      const swiperContainer = document.querySelector(".mySwiper");
+      if (swiperContainer) {
+        try {
+          const swiper = new Swiper(swiperContainer, {
+            loop: true,
+            speed: 700, 
+            autoplay: {
+              delay: 4000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            on: {
+              init: function () {
+                this.update();
+                console.log("Swiper initialized successfully.");
+              },
+              resize: function () {
+                this.update();
+                console.log("Swiper resized.");
+              },
+            },
+          });
+        } catch (error) {
+          console.error("Swiper initialization failed:", error);
+        }
+      } else {
+        console.warn("Swiper container '.mySwiper' not found.");
       }
-      try {
-        new Swiper(swiperContainer, {
-          loop: true,
-          speed: 700,
-          autoplay: {
-            delay: 4000,
-            disableOnInteraction: false
-          },
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-          },
-          navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          },
-          on: {
-            init() { this.update(); },
-            resize() { this.update(); }
-          }
-        });
-      } catch (error) {
-        console.error('Swiper initialization failed:', error);
-      }
-    }
 
-    // === Event Listeners ===
-    document.addEventListener('DOMContentLoaded', () => {
-      loadHeader();
-      initSwiper();
+      // ページ読み込み時に保存された言語を設定 (メインコンテンツ)
       const savedLang = localStorage.getItem('selectedLanguage') || 'en';
       switchContentLanguage(savedLang);
 
-      // Language button click handler
-      document.addEventListener('click', (event) => {
-        if (event.target.id === 'enBtn' || event.target.id === 'jpBtn') {
-          const lang = event.target.id === 'enBtn' ? 'en' : 'jp';
-          localStorage.setItem('selectedLanguage', lang);
-          switchContentLanguage(lang);
-          if (typeof window.switchHeaderLanguage === 'function') {
-            window.switchHeaderLanguage(lang);
-          }
+      // headerLoaded イベントをリッスンし、言語切り替えを適用
+      document.addEventListener('headerLoaded', () => {
+        const currentLang = localStorage.getItem('selectedLanguage') || 'en';
+        // ヘッダー内の言語切り替え関数を呼び出す
+        if (typeof switchHeaderLanguage === 'function') {
+          switchHeaderLanguage(currentLang);
         }
       });
-
-      // Form submission
-      const form = document.querySelector('.contact-form');
-      if (form) {
-        form.addEventListener('submit', handleFormSubmission);
-      }
     });
 
-    // Header loaded event
-    document.addEventListener('headerLoaded', () => {
-      const currentLang = localStorage.getItem('selectedLanguage') || 'en';
-      if (typeof window.switchHeaderLanguage === 'function') {
-        window.switchHeaderLanguage(currentLang);
+    // 言語ボタンがクリックされたら、ヘッダーとコンテンツの両方を更新
+    document.addEventListener("click", (event) => {
+      if (event.target.id === "enBtn" || event.target.id === "jpBtn") {
+        const lang = event.target.id === "enBtn" ? "en" : "jp";
+        switchContentLanguage(lang);
+        // header.html 内の switchHeaderLanguage も呼び出す
+        if (typeof window.switchHeaderLanguage === 'function') { // グローバルスコープにあることを確認
+          window.switchHeaderLanguage(lang);
+        }
       }
     });
   </script>
