@@ -585,54 +585,43 @@
         }
       }
     });
-    
+ </script>
+    <script>
 document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent default form submission
+    event.preventDefault(); // Prevent default form submission
 
-  const form = event.target;
-  const status = document.getElementById('form-status');
-  const submitButton = form.querySelector('button[type="submit"]');
-  const originalButtonText = submitButton.textContent;
+    const form = event.target;
+    const status = document.getElementById('form-status');
 
-  // Disable button and show loading state
-  submitButton.disabled = true;
-  submitButton.textContent = 'Sending...';
-  status.textContent = '';
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
 
-  const data = {
-    name: form.name.value,
-    email: form.email.value,
-    phone: form.phone.value,
-    subject: form.subject.value,
-    message: form.message.value
-  };
-
-  fetch('https://formspree.io/f/mvgrwyve', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-    .then(response => {
-      if (response.ok) {
-        // Success: redirect to thank you page
-        window.location.href = 'https://seikaeducation.com/thankyou.html';
-      } else {
-        return response.json().then(data => {
-          throw new Error(data.errors ? data.errors.map(error => error.message).join(', ') : 'Submission failed');
-        });
-      }
-    })
-    .catch(error => {
-      // Display error message
-      status.textContent = error.message || 'Oops! There was a problem submitting your form';
-    })
-    .finally(() => {
-      // Re-enable button and restore text
-      submitButton.disabled = false;
-      submitButton.textContent = originalButtonText;
+    fetch('https://formspree.io/f/mvgrwyve', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (response.ok) {
+            // Success: redirect or show success message
+            window.location.href = 'https://seikaeducation.com/thankyou.html';
+        } else {
+            return response.json().then(data => {
+                if (data.errors) {
+                    status.textContent = data.errors.map(error => error.message).join(", ");
+                } else {
+                    status.textContent = 'Oops! There was a problem submitting your form';
+                }
+            });
+        }
+    }).catch(error => {
+        status.textContent = 'Oops! There was a problem submitting your form';
     });
 });
 </script>
