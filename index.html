@@ -578,5 +578,44 @@
       }
     });
   </script>
+    <script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const form = event.target;
+    const status = document.getElementById('form-status');
+
+    const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
+
+    fetch('https://formspree.io/f/mvgrwyve', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response => {
+        if (response.ok) {
+            // Success: redirect or show success message
+            window.location.href = 'https://seikaeducation.com/thankyou.html';
+        } else {
+            return response.json().then(data => {
+                if (data.errors) {
+                    status.textContent = data.errors.map(error => error.message).join(", ");
+                } else {
+                    status.textContent = 'Oops! There was a problem submitting your form';
+                }
+            });
+        }
+    }).catch(error => {
+        status.textContent = 'Oops! There was a problem submitting your form';
+    });
+});
+</script>
 </body>
 </html>
