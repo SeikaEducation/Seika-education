@@ -408,16 +408,20 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
     // === Header Loading ===
-    function loadHeader() {
-      fetch('https://seikaeducation.com/header.html')
-        .then(response => {
-          if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
-          return response.text();
-        })
-        .then(data => {
-          document.getElementById('header-placeholder').innerHTML = data;
-          document.dispatchEvent(new Event('headerLoaded'));
-        })
+function loadHeader() {
+  fetch('./header.html') // Use relative path for testing
+    .then(response => {
+      if (!response.ok) {
+        console.error(`Fetch failed. Status: ${response.status}, URL: ${response.url}`);
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      console.log('Header content:', data); // Log fetched content
+      document.getElementById('header-placeholder').innerHTML = data;
+      document.dispatchEvent(new Event('headerLoaded'));
+    })
         .catch(error => console.error('Error loading header:', error));
     }
 
