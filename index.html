@@ -334,9 +334,25 @@
       <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
         <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required />
         <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" data-key-placeholder="contactPhonePlaceholder" required />
+        <input type="text" name="subject" placeholder="Subject" data-key-placeholder="contactSubjectPlaceholder" required />
         <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required></textarea>
         <button type="submit" data-key="contactButton">Send Message</button>
       </form>
+
+<div class="qr-box">
+<div class="qr-images">
+  <a href="https://www.tiktok.com/@seika.education" target="_blank" rel="noopener noreferrer">
+    <img src="./images/TiktokQR.png" alt="TikTok QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+  </a>
+  <a href="https://www.instagram.com/seika.education" target="_blank" rel="noopener noreferrer">
+    <img src="/images/InstaQR.png" alt="Instagram QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+  </a>
+  <a href="https://www.facebook.com/SeikaEducation" target="_blank" rel="noopener noreferrer">
+    <img src="./images/FacebookQR.png" alt="Facebook QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+  </a>
+</div>
+                
     </section>
   </main>
 
