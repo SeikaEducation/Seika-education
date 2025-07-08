@@ -331,12 +331,23 @@
 
     <section class="contact-cta" id="contact">
       <h2 data-key="contactTitle">Contact Us for More Information</h2>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
-        <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required />
-        <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required />
-        <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required></textarea>
-        <button type="submit" data-key="contactButton">Send Message</button>
-      </form>
+      <div class="contact-content">
+        <form class="contact-form" action="/submit-form" method="POST">
+          <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required aria-label="Your Name">
+          <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required aria-label="Your Email">
+          <input type="tel" name="phone" placeholder="Your Phone Number" data-key-placeholder="contactPhonePlaceholder" required aria-label="Your Phone Number">
+          <input type="text" name="subject" placeholder="Subject" data-key-placeholder="contactSubjectPlaceholder" required aria-label="Subject">
+          <textarea name="message" placeholder="Your Message" data-key-placeholder="contactMessagePlaceholder" required aria-label="Your Message"></textarea>
+          <button type="submit" data-key="contactButton">Send Message</button>
+        </form>
+                <div class="qr-box">
+          <div class="qr-images">
+            <img src="./images/TiktokQR.png" alt="TikTok QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+            <img src="./images/InstaQR.png" alt="Instagram QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+            <img src="./images/FacebookQR.png" alt="Facebook QR Code" onerror="this.src='https://via.placeholder.com/150x150?text=QR';">
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
