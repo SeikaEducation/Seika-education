@@ -375,7 +375,7 @@
     <section class="contact-cta" id="contact">
       <h2 data-key="contactTitle">Contact & Follow Us for More Information</h2>
       <div class="contact-content">
-        <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submission coming soon!');">
+        <form class="contact-form" onsubmit="return validateForm()">
           <input type="text" name="name" placeholder="Your Name" data-key-placeholder="contactNamePlaceholder" required />
           <input type="email" name="email" placeholder="Your Email" data-key-placeholder="contactEmailPlaceholder" required />
           <input type="tel" name="phone" placeholder="Your Phone Number" data-key-placeholder="contactPhonePlaceholder" required />
