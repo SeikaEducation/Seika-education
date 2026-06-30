@@ -358,7 +358,7 @@
         </div>
         <!-- 2. Co-Founder -->
                 <div class="team-member">
-          <img src="./images/sanjeeb.jpg" alt="Chaulagain Sanjeeb, Advisor at Seika Education Consultancy" />
+          <img src="./images/sanjeeb.jpg" alt="Chaulagain Sanjeeb, Co-Founder of Seika Education Consultancy" />
           <div class="name" data-key="teamSanjeeb">Chaulagain Sanjeeb</div>
           <div class="role" data-key="teamSanjeebRole">Co-Founder</div>
         </div>
@@ -516,7 +516,7 @@
         teamTitle: "チームメンバー",
         teamSrishti: "パウデル・スリシュティ",
         teamSrishtiRole: "代表取締役社長",
-        teamSharmila: "チャウラガイ・シャルミラ",
+        teamSharmila: "チャウラゲン・サンジーブ",
         teamSharmilaRole: "共同創業者",
         teamSuman: "パウデル・スマン",
         teamSumanRole: "共同創業者",
@@ -524,7 +524,7 @@
         teamYubRajRole: "語学教師",
         teamSaroj: "チェトリ・サロジ",
         teamSarojRole: "語学教師",
-        teamSanjeeb: "チャウラゲン・サンジーブ",
+        teamSanjeeb: "チャウラガイ・シャルミラ",
         teamSanjeebRole: "アドバイザー",
         teamSubhas: "ポウデル・スバス",
         teamSubhasRole: "アドバイザー",
@@ -561,7 +561,7 @@
       document.querySelectorAll('.team-member').forEach((member, index) => {
         const nameEl = member.querySelector('.name');
         const roleEl = member.querySelector('.role');
-        const nameKey = ['teamSrishti','teamSharmila','teamSuman','teamYubRaj','teamSaroj','teamSanjeeb','teamSubhas'][index];
+        const nameKey = ['teamSrishti','teamSanjeeb','teamSuman','teamYubRaj','teamSaroj','teamSharmila','teamSubhas'][index];
         const roleKey = nameKey + 'Role';
         if (nameEl && translations[lang][nameKey]) nameEl.textContent = translations[lang][nameKey];
         if (roleEl && translations[lang][roleKey]) roleEl.textContent = translations[lang][roleKey];
